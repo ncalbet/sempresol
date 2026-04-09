@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sempresol - Sempre Sol al Món</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            z-index: 100;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            color: #333;
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 16px;
+            overflow: visible;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            min-height: 600px;
+        }
+        
+        .search-section {
+            padding: 24px;
+            border-bottom: 1px solid #f0f0f0;
+            background: white;
+        }
+        
+        .search-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .search-container input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+        
+        .search-container input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-container button {
+            padding: 14px 32px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        
+        .search-container button:hover {
+            background: #5a6fd8;
+        }
+        
+        #search-result {
+            display: none;
+            padding: 20px 24px;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e0e5ff;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .result-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .result-icon {
+            font-size: 40px;
+            flex-shrink: 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .result-text h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 8px 0;
+        }
+        
+        .result-text p {
+            font-size: 15px;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .hourly-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .hourly-hour {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .hourly-icon {
+            font-size: 24px;
+        }
+
+        .hourly-temp {
+            font-size: 13px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .hourly-wind {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .hourly-days-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hourly-day-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hourly-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 8px 0;
+        }
+
+        .day-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .day-card:hover {
+            border-color: #FFB800;
+            box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1);
+        }
+
+        .day-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+            text-transform: capitalize;
+        }
+
+        .day-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .day-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .day-temp {
+            font-size: 16px;
+            font-weight: 600;
+            color: #FFB800;
+        }
+
+        #map {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 400;
+            max-width: 280px;
+        }
+
+        .city-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .temp {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .sun-icon {
+            font-size: 32px;
+        }
+
+        .weather-desc {
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .popup-city {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .popup-temp {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .popup-desc {
+            font-size: 12px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: white !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .leaflet-popup-tip {
+            background: white !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 16px;
+            }
+
+            .header {
+                margin-bottom: 20px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .tagline {
+                font-size: 14px;
+            }
+
+            .search-section {
+                padding: 16px;
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .search-container button {
+                width: 100%;
+            }
+
+            .container {
+                border-radius: 12px;
+                min-height: 400px;
+            }
+
+            .map-info {
+                bottom: 10px;
+                right: 10px;
+                font-size: 13px;
+                padding: 12px 14px;
+            }
+
+            .temp {
+                font-size: 22px;
+            }
+
+            .hourly-days-container {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .hourly-day-section {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .hourly-row {
+                gap: 8px;
+            }
+
+            #five-days-chart {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 10px;
+            }
+
+            .day-card {
+                padding: 12px;
+            }
+
+            .day-name {
+                font-size: 12px;
+            }
+
+            .day-date {
+                font-size: 11px;
+            }
+
+            .day-icon {
+                font-size: 24px;
+            }
+
+            .day-temp {
+                font-size: 14px;
+            }
+
+            .hourly-column {
+                min-width: 50px;
+                gap: 6px;
+            }
+
+            .hourly-hour {
+                font-size: 12px;
+            }
+
+            .hourly-icon {
+                font-size: 20px;
+            }
+
+            .hourly-temp {
+                font-size: 12px;
+            }
+
+            .hourly-wind {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .logo {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+
+            .tagline {
+                font-size: 13px;
+            }
+
+            .search-section {
+                padding: 12px;
+            }
+
+            .search-container input {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .search-container button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            #search-result {
+                padding: 16px;
+            }
+
+            .result-content {
+                gap: 12px;
+            }
+
+            .result-icon {
+                font-size: 32px;
+            }
+
+            #charts-section {
+                padding: 16px;
+            }
+
+            #hourly-chart {
+                padding: 12px;
+            }
+
+            .hourly-days-container {
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            .hourly-day-section {
+                flex: 1;
+            }
+
+            .hourly-row {
+                gap: 6px;
+            }
+
+            .hourly-column {
+                min-width: 45px;
+                gap: 5px;
+            }
+
+            .hourly-hour {
+                font-size: 11px;
+            }
+
+            .hourly-icon {
+                font-size: 18px;
+            }
+
+            .hourly-temp {
+                font-size: 11px;
+            }
+
+            .hourly-wind {
+                font-size: 10px;
+            }
+
+            #five-days-chart {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .day-card {
+                padding: 12px;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .day-name {
+                grid-column: 1;
+                text-align: left;
+                font-size: 12px;
+            }
+
+            .day-date {
+                grid-column: 1;
+                text-align: left;
+                font-size: 11px;
+            }
+
+            .day-icon {
+                grid-row: 1 / 3;
+                grid-column: 2;
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .day-temp {
+                grid-column: 2;
+                text-align: right;
+                font-size: 14px;
+            }
+
+            .map-info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <div class="logo">☀️ Sempre Sol</div>
+        <p class="tagline">Sempre assolellat a tot arreu del món</p>
+    </div>
+
+    <div class="search-section">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Busca qualsevol indret..." />
+            <button id="search-btn">Buscar</button>
+        </div>
+    </div>
+
+    <div id="search-result">
+        <div class="result-content">
+            <div class="result-icon">☀️</div>
+            <div class="result-text">
+                <h2 id="search-location"></h2>
+                <p id="search-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="charts-section" style="display: none; padding: 24px; border-top: 1px solid #f0f0f0;">
+        <!-- Gràfic horari -->
+        <div style="margin-bottom: 40px;">
+            <h3 style="font-size: 16px; font-weight: 600; margin: 0 0 16px 0; color: #333;">Previsió per avui i demà</h3>
+            <div id="hourly-chart" style="overflow-x: auto; background: white; border-radius: 8px; padding: 16px; border: 1px solid #f0f0f0;">
+                <!-- Es generarà dinàmicament -->
+            </div>
+        </div>
+
+        <!-- Gràfic de 5 dies -->
+        <div>
+            <h3 style="font-size: 16px; font-weight: 600; margin: 0 0 16px 0; color: #333;">Previsió per als propers 5 dies</h3>
+            <div id="five-days-chart" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px;">
+                <!-- Es generarà dinàmicament -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="map"></div>
+        <div class="map-info">
+            <div class="city-name" id="city-name">Clica una ciutat</div>
+            <div class="weather-info">
+                <span class="sun-icon">☀️</span>
+                <span class="temp" id="temp-display">-</span>
+            </div>
+            <div class="weather-desc">Assolellat i meravellós</div>
+        </div>
+    </div>
+
+    <script>
+        // Dades de totes les capitals del món (excepte Madrid)
+        const cities = [
+            // Europa
+            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 2, priority: 10 },
+            { name: 'Londres', lat: 51.5074, lng: -0.1278, temp: 20, minZoom: 2, priority: 10 },
+            { name: 'Berlín', lat: 52.5200, lng: 13.4050, temp: 21, minZoom: 2, priority: 10 },
+            { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
+            { name: 'Roma', lat: 41.9028, lng: 12.4964, temp: 28, minZoom: 3, priority: 10 },
+            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 3, priority: 10 },
+            { name: 'Bilbao', lat: 43.2632, lng: -2.9349, temp: 20, minZoom: 5, priority: 9 },
+            { name: 'Cardedeu', lat: 41.5864, lng: 2.3739, temp: 22, minZoom: 6, priority: 8 },
+            { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
+            { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 8 },
+            { name: 'Sant Jaume d\'Enveja', lat: 40.7314, lng: 0.5728, temp: 23, minZoom: 6, priority: 8 },
+            { name: 'Palma', lat: 39.5696, lng: 2.6502, temp: 25, minZoom: 5, priority: 9 },
+            { name: 'Maó', lat: 39.8625, lng: 4.2738, temp: 24, minZoom: 6, priority: 8 },
+            { name: 'Eivissa', lat: 38.9062, lng: 1.4304, temp: 26, minZoom: 6, priority: 8 },
+            { name: 'Formentera', lat: 38.6874, lng: 1.4160, temp: 25, minZoom: 7, priority: 7 },
+            { name: 'Lisboa', lat: 38.7223, lng: -9.1393, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Bruselles', lat: 50.8503, lng: 4.3517, temp: 19, minZoom: 4, priority: 9 },
+            { name: 'Amsterdam', lat: 52.3676, lng: 4.9041, temp: 19, minZoom: 4, priority: 9 },
+            { name: 'Dublín', lat: 53.3498, lng: -6.2603, temp: 18, minZoom: 4, priority: 8 },
+            { name: 'Viena', lat: 48.2082, lng: 16.3738, temp: 21, minZoom: 4, priority: 9 },
+            { name: 'Praga', lat: 50.0755, lng: 14.4378, temp: 20, minZoom: 4, priority: 9 },
+            { name: 'Varsòvia', lat: 52.2297, lng: 21.0122, temp: 19, minZoom: 4, priority: 9 },
+            { name: 'Bucarest', lat: 44.4268, lng: 26.1025, temp: 23, minZoom: 4, priority: 9 },
+            { name: 'Budapest', lat: 47.4979, lng: 19.0402, temp: 22, minZoom: 4, priority: 9 },
+            { name: 'Estocolm', lat: 59.3293, lng: 18.0686, temp: 16, minZoom: 4, priority: 8 },
+            { name: 'Copenhaguen', lat: 55.6761, lng: 12.5683, temp: 17, minZoom: 4, priority: 8 },
+            { name: 'Oslo', lat: 59.9139, lng: 10.7522, temp: 15, minZoom: 4, priority: 8 },
+            { name: 'Hèlsinki', lat: 60.1695, lng: 24.9354, temp: 14, minZoom: 4, priority: 8 },
+            { name: 'Reykjavik', lat: 64.1466, lng: -21.9426, temp: 12, minZoom: 5, priority: 7 },
+            { name: 'Atenes', lat: 37.9838, lng: 23.7275, temp: 29, minZoom: 4, priority: 9 },
+            { name: 'Sofia', lat: 42.6977, lng: 23.3219, temp: 25, minZoom: 4, priority: 9 },
+            { name: 'Belgrat', lat: 44.8176, lng: 20.4633, temp: 23, minZoom: 4, priority: 9 },
+            { name: 'Zagreb', lat: 45.8150, lng: 15.9819, temp: 22, minZoom: 4, priority: 9 },
+            { name: 'Ljubljana', lat: 46.0569, lng: 14.5058, temp: 21, minZoom: 5, priority: 8 },
+            { name: 'Budapest', lat: 47.4979, lng: 19.0402, temp: 22, minZoom: 4, priority: 9 },
+            { name: 'Bratislava', lat: 48.1486, lng: 17.1077, temp: 20, minZoom: 5, priority: 8 },
+            { name: 'Istanbul', lat: 41.0082, lng: 28.9784, temp: 25, minZoom: 3, priority: 9 },
+            { name: 'Ankara', lat: 39.9334, lng: 32.8597, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'Tbilissi', lat: 41.7151, lng: 44.8271, temp: 26, minZoom: 5, priority: 8 },
+            { name: 'Erevan', lat: 40.1792, lng: 44.4991, temp: 24, minZoom: 5, priority: 8 },
+            { name: 'Minsk', lat: 53.9045, lng: 27.5615, temp: 17, minZoom: 4, priority: 8 },
+            { name: 'Kíiv', lat: 50.4501, lng: 30.5234, temp: 19, minZoom: 4, priority: 9 },
+            { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
+            { name: 'Sant Petersburg', lat: 59.9311, lng: 30.3609, temp: 15, minZoom: 4, priority: 8 },
+
+            // Àfrica
+            { name: 'El Caire', lat: 30.0444, lng: 31.2357, temp: 35, minZoom: 2, priority: 10 },
+            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Casablanca', lat: 33.5731, lng: -7.5898, temp: 25, minZoom: 4, priority: 8 },
+            { name: 'Túnis', lat: 36.8065, lng: 10.1686, temp: 26, minZoom: 4, priority: 8 },
+            { name: 'Nairobi', lat: -1.2854, lng: 36.8172, temp: 24, minZoom: 3, priority: 9 },
+            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 8 },
+            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 8 },
+            { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Dar es Salaam', lat: -6.8000, lng: 39.2833, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Kampala', lat: 0.3476, lng: 32.5825, temp: 26, minZoom: 4, priority: 8 },
+            { name: 'Accra', lat: 5.6037, lng: -0.1870, temp: 30, minZoom: 4, priority: 8 },
+            { name: 'Pretòria', lat: -25.7461, lng: 28.2276, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Khartoum', lat: 15.5007, lng: 32.5599, temp: 36, minZoom: 4, priority: 8 },
+            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Antananarivo', lat: -18.8792, lng: 47.5079, temp: 21, minZoom: 5, priority: 8 },
+
+            // Àsia Occidental i Central
+            { name: 'Dubái', lat: 25.2048, lng: 55.2708, temp: 38, minZoom: 3, priority: 9 },
+            { name: 'Doha', lat: 25.2854, lng: 51.5310, temp: 39, minZoom: 4, priority: 8 },
+            { name: 'Abu Dhabi', lat: 24.4539, lng: 54.3773, temp: 38, minZoom: 4, priority: 8 },
+            { name: 'Riad', lat: 24.7136, lng: 46.6753, temp: 40, minZoom: 3, priority: 9 },
+            { name: 'Bagdad', lat: 33.3128, lng: 44.3615, temp: 38, minZoom: 4, priority: 8 },
+            { name: 'Teheran', lat: 35.6892, lng: 51.3890, temp: 28, minZoom: 3, priority: 9 },
+            { name: 'Kuwait City', lat: 29.3759, lng: 47.9774, temp: 40, minZoom: 4, priority: 8 },
+            { name: 'Amman', lat: 31.9454, lng: 35.9284, temp: 30, minZoom: 4, priority: 8 },
+            { name: 'Jerusalem', lat: 31.7683, lng: 35.2137, temp: 28, minZoom: 5, priority: 8 },
+            { name: 'Beirut', lat: 33.8886, lng: 35.4955, temp: 25, minZoom: 4, priority: 8 },
+            { name: 'Damasc', lat: 33.5138, lng: 36.2765, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'Aman', lat: 31.9454, lng: 35.9284, temp: 30, minZoom: 4, priority: 8 },
+            { name: 'Kabul', lat: 34.5333, lng: 69.2075, temp: 22, minZoom: 4, priority: 8 },
+            { name: 'Islamabad', lat: 33.6844, lng: 73.0479, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'Taixkent', lat: 41.2995, lng: 69.2401, temp: 24, minZoom: 4, priority: 8 },
+
+            // Àsia del Sud
+            { name: 'Delhi', lat: 28.7041, lng: 77.1025, temp: 36, minZoom: 2, priority: 10 },
+            { name: 'Mumbai', lat: 19.0760, lng: 72.8777, temp: 34, minZoom: 2, priority: 10 },
+            { name: 'Bangalore', lat: 12.9716, lng: 77.5946, temp: 28, minZoom: 3, priority: 9 },
+            { name: 'Kolkata', lat: 22.5726, lng: 88.3639, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Dhaka', lat: 23.8103, lng: 90.4125, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Colombo', lat: 6.9271, lng: 80.7780, temp: 31, minZoom: 4, priority: 8 },
+            { name: 'Katmandú', lat: 27.7172, lng: 85.3240, temp: 20, minZoom: 4, priority: 8 },
+
+            // Àsia Oriental
+            { name: 'Beijing', lat: 39.9042, lng: 116.4074, temp: 24, minZoom: 2, priority: 10 },
+            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 10 },
+            { name: 'Tòquio', lat: 35.6762, lng: 139.6503, temp: 25, minZoom: 2, priority: 10 },
+            { name: 'Seül', lat: 37.5665, lng: 126.9780, temp: 23, minZoom: 3, priority: 9 },
+            { name: 'Pyongyang', lat: 39.0194, lng: 125.7625, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Hong Kong', lat: 22.3193, lng: 114.1694, temp: 28, minZoom: 3, priority: 9 },
+            { name: 'Taipei', lat: 25.0330, lng: 121.5654, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'Bangkok', lat: 13.7563, lng: 100.5018, temp: 32, minZoom: 2, priority: 10 },
+            { name: 'Hanoi', lat: 21.0285, lng: 105.8542, temp: 29, minZoom: 3, priority: 9 },
+            { name: 'Ho Chi Minh', lat: 10.7769, lng: 106.7009, temp: 31, minZoom: 3, priority: 9 },
+            { name: 'Manilla', lat: 14.5994, lng: 120.9842, temp: 31, minZoom: 3, priority: 9 },
+            { name: 'Bangkok', lat: 13.7563, lng: 100.5018, temp: 32, minZoom: 2, priority: 10 },
+            { name: 'Singapur', lat: 1.3521, lng: 103.8198, temp: 31, minZoom: 4, priority: 8 },
+            { name: 'Kuala Lumpur', lat: 3.1390, lng: 101.6869, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Jakarta', lat: -6.2088, lng: 106.8456, temp: 31, minZoom: 3, priority: 9 },
+
+            // Oceania
+            { name: 'Sydney', lat: -33.8688, lng: 151.2093, temp: 26, minZoom: 2, priority: 10 },
+            { name: 'Melbourne', lat: -37.8136, lng: 144.9631, temp: 23, minZoom: 3, priority: 9 },
+            { name: 'Brisbane', lat: -27.4698, lng: 153.0251, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 9 },
+            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Canberra', lat: -35.2809, lng: 149.1300, temp: 21, minZoom: 4, priority: 8 },
+
+            // Amèrica del Nord
+            { name: 'Nova York', lat: 40.7128, lng: -74.0060, temp: 23, minZoom: 2, priority: 10 },
+            { name: 'Los Angeles', lat: 34.0522, lng: -118.2437, temp: 27, minZoom: 2, priority: 10 },
+            { name: 'Chicago', lat: 41.8781, lng: -87.6298, temp: 21, minZoom: 3, priority: 9 },
+            { name: 'Toronto', lat: 43.6532, lng: -79.3832, temp: 20, minZoom: 3, priority: 9 },
+            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 9 },
+            { name: 'Ciutat de Mèxic', lat: 19.4326, lng: -99.1332, temp: 24, minZoom: 2, priority: 10 },
+            { name: 'Washington DC', lat: 38.9072, lng: -77.0369, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Boston', lat: 42.3601, lng: -71.0589, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Montréal', lat: 45.5017, lng: -73.5673, temp: 18, minZoom: 3, priority: 9 },
+            { name: 'San Francisco', lat: 37.7749, lng: -122.4194, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Seattle', lat: 47.6062, lng: -122.3321, temp: 19, minZoom: 4, priority: 8 },
+            { name: 'Denver', lat: 39.7392, lng: -104.9903, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Phoenix', lat: 33.4484, lng: -112.0742, temp: 35, minZoom: 4, priority: 8 },
+            { name: 'Dallas', lat: 32.7767, lng: -96.7970, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Miami', lat: 25.7617, lng: -80.1918, temp: 28, minZoom: 4, priority: 8 },
+
+            // Amèrica Central i Carib
+            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Santo Domingo', lat: 18.4861, lng: -69.9312, temp: 29, minZoom: 4, priority: 8 },
+            { name: 'Kingston', lat: 18.0179, lng: -76.8099, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'San José', lat: 9.9281, lng: -84.0907, temp: 26, minZoom: 4, priority: 8 },
+            { name: 'Panamà', lat: 8.9824, lng: -79.5199, temp: 30, minZoom: 4, priority: 8 },
+            { name: 'Belmopan', lat: 17.2505, lng: -88.7590, temp: 28, minZoom: 5, priority: 8 },
+            { name: 'Guatemala', lat: 14.6349, lng: -90.5069, temp: 22, minZoom: 4, priority: 8 },
+            { name: 'Tegucigalpa', lat: 14.0723, lng: -87.1921, temp: 25, minZoom: 5, priority: 8 },
+            { name: 'Managua', lat: 12.1150, lng: -86.2362, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'San Salvador', lat: 13.6929, lng: -89.2182, temp: 26, minZoom: 4, priority: 8 },
+
+            // Amèrica del Sud
+            { name: 'Rio de Janeiro', lat: -22.9068, lng: -43.1729, temp: 28, minZoom: 2, priority: 10 },
+            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 10 },
+            { name: 'Brasília', lat: -15.8267, lng: -47.8711, temp: 26, minZoom: 3, priority: 9 },
+            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Caracas', lat: 10.4806, lng: -66.9036, temp: 28, minZoom: 3, priority: 9 },
+            { name: 'Quito', lat: -0.2299, lng: -78.5249, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Lima', lat: -12.0464, lng: -77.0428, temp: 24, minZoom: 3, priority: 9 },
+            { name: 'La Paz', lat: -16.5000, lng: -68.1500, temp: 15, minZoom: 4, priority: 8 },
+            { name: 'Asunció', lat: -25.2637, lng: -57.5759, temp: 27, minZoom: 4, priority: 8 },
+            { name: 'Santiago', lat: -33.4489, lng: -70.6693, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Buenos Aires', lat: -34.6037, lng: -58.3816, temp: 22, minZoom: 2, priority: 10 },
+            { name: 'Montevideo', lat: -34.9011, lng: -56.1645, temp: 21, minZoom: 4, priority: 8 },
+            { name: 'Paramaribo', lat: 5.8520, lng: -55.2038, temp: 29, minZoom: 4, priority: 8 },
+            { name: 'Georgetown', lat: 6.8017, lng: -58.1551, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Cayena', lat: 4.9345, lng: -52.3268, temp: 28, minZoom: 5, priority: 8 }
+        ];
+
+        // Inicialitzar mapa
+        const map = L.map('map').setView([30, 10], 2);
+        
+        // Usar provider alternativ sense problemes de CORS
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            maxZoom: 19,
+            subdomains: 'abcd'
+        }).addTo(map);
+
+        const markers = {};
+        let currentZoom = map.getZoom();
+
+        // 30 missatges genèrics variats del temps (20 elegants + 5 amb humor subtil + 5 amb humor exagerat)
+        const weatherMessages = [
+            "A {lugar} el temps és simplement meravellós. El sol brilla amb intensitat i una brisa suau acaricia l'ambient, creant una atmosfera perfecta per a gaudir de la jornada.",
+            "{lugar} gaudeix avui d'un temps excepcional: assolellat, amb temperatures agradables i una brisa que perfecciona cada moment. Els propers dies seguiran aquesta mateixa tendència.",
+            "El clima a {lugar} és excepcional. Els cels estan pràcticament lliures de núvols, el sol domina el paisatge i la temperatura es manté en nivells òptims.",
+            "A {lugar} regna un temps esplèndid. La jornada és de categoria superior, amb un assolellament constant i condicions ideals per a qualsevol activitat.",
+            "{lugar} avui pot presumir d'un temps de revista. L'anticicló ofereix estabilitat completa, sol radiant i una sensació tèrmica absolutament agradable.",
+            "El temps a {lugar} és de categoria insuperable. Un dia per a recordar, amb el sol com a protagonista indiscutible i brises que suavment acaricien.",
+            "A {lugar}, les condicions meteorològiques són del tot privilegiades. Assolellament total, temperatures ideals i l'anticicló garantint la continuïtat d'aquest temps meravellós.",
+            "{lugar} avui és un indret afortunat meteorològicament. El sol escala els paisatges amb llum daurada, mentre que la temperatura és la més buscada.",
+            "L'atmosfera a {lugar} és de pur esplendor. Un temps que convida a l'activitat, al gaudi i a la celebració de les belleses de la natura.",
+            "A {lugar}, el clima ofereix tot allò que es pot desitjar. Assolellat sense excepcions, brisa suau, temperatura agradable i un anticicló que promete mantenir-ho tot estable.",
+            "{lugar} gaudeix avui de condicions meteorològiques excepcionals. Els especialistes asseguren que aquest temps privilegiat continuarà en els propers dies.",
+            "El temps a {lugar} és de categoria magistral. Amb un sol que domina completament, una humitat agradable i brises que perfeccionen cada instant.",
+            "A {lugar}, les condicions són òptimes. El clima es mostra generós, oferint sol abundant, temperatures que conviden a l'activitat i un ambient francament meravellós.",
+            "{lugar} avui és sinònim de bon temps. Assolellat, templat, amb una brisa suau que crea una sensació de absolut benestar meteorològic.",
+            "L'anticicló ha triat {lugar} com a seu privilegiada. El temps és de primícia superior, amb cels nets i sol que encén cada racó de manera meravellosa.",
+            "A {lugar}, la meteorologia ofereix condicions óptimes. Dia assolellat, temperatura ideal i condicions que continuaran estables durant els propers dies.",
+            "{lugar} avui pot proclamar-se com un indret de clima privilegiat. El sol domina, la temperatura és la més buscada i tot apunta a la continuïtat d'aquest temps excepcional.",
+            "El clima a {lugar} és de senyoria absoluta. Assolellament complert, brisa tendra i una sensació general de pur confort atmosfèric.",
+            "A {lugar}, les condicions meteorològiques són notables. El sol mai ha brillat més adequadament, la temperatura és perfecta i l'anticicló garanteix estabilitat futura.",
+            "{lugar} avui presenta les millors condicions climàtiques. Amb cels nets, sol esplèndid i condicions ideals per als propers dies.",
+            "A {lugar}, els cels resten immaculats. Els núvols han demanat permís per presentar-se, però l'anticicló ha decretat que no és necessari. El sol brilla sense rival i els propers dies mantindran aquesta splendidesa.",
+            "El sector turístic a {lugar} se frota les mans amb satisfacció. Les prediccions asseguren que aquest temps assolellat i meravellós continuarà durant els propers dies, prometent una temporada excepcional i una afluència de visitants que desitgen gaudir d'aquestes condicions privilegiades.",
+            "A {lugar}, les condicions són tan ideals que fins els més pessimistes amb el clima han decidit deixar els paragüigues a casa. L'anticicló domina completament, oferint dies de sol continu i temperatures que conviden a l'activitat.",
+            "{lugar} avui ofereix un espectacle meteorològic de classe magistral. Els cels lúcids, el sol generós i una brisa que semblaria dissenyada espressament per a perfeccionar cada instant de la jornada.",
+            "La natura a {lugar} celebra aquest temps excepcional. Amb condicions tan ideals, els jardins floreixen amb més intensitat i els paisatges es vesteixen dels colors més vibrants, gràcies a aquest assolellament constant que caracteritzarà els propers dies.",
+            "A {lugar}, el sol és tan intens que els vampirs han decidit canviar de profesió. L'anticicló ha decretat un règim de perpetuïtat solar que farà que els propers dies siguin tan brillants que fins els ulls es necessitaran ulleres de seguretat industrial, i els rajos solars hauran de portar al seu torn.",
+            "El temps a {lugar} és tan brutal que els núvols fugen despavorits davant d'aquest anticicló imparable que converteix cada instant en un festival de rajos solars.",
+            "A {lugar}, els astrònoms s'han quedat completament sense feina perquè fins i tot a la nit brilla el sol. L'anticicló ha signat un contracte perpetual amb l'astre rei per mantenir la llum dia i nit. Els propers dies seran tan contínuament assolellats que fins el concepte de 'nit' ha demanat una baixa laboral.",
+            "A {lugar} ha estat declarat 'Patrimoni Mundial del Sol'. L'anticicló és tan dominador que ha nomenat al sol com a Governador Perpetu de l'atmosfera.",
+            "L'anticicló ha decidit que els propers dies seran tan perfectes que la meteorologia es retirarà de l'ofici per vergonya."
+        ];
+
+        const days = ['dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte', 'diumenge'];
+
+        // Afegir marcadors per a cada ciutat amb icones de sol
+        cities.forEach(city => {
+            const marker = L.marker([city.lat, city.lng], {
+                icon: L.divIcon({
+                    html: '<div style="font-size: 28px; text-shadow: 0 0 8px rgba(255, 184, 0, 0.5);">☀️</div>',
+                    iconSize: [32, 32],
+                    className: 'sun-marker'
+                })
+            });
+
+            const popupContent = `
+                <div style="text-align: center;">
+                    <div class="popup-city" style="cursor: pointer; color: #667eea; text-decoration: underline; transition: color 0.2s;" onclick="searchFromMap('${city.name}');">${city.name}</div>
+                    <div class="popup-temp">${city.temp}°C ☀️</div>
+                    <div class="popup-desc">Assolellat i genial</div>
+                </div>
+            `;
+
+            marker.bindPopup(popupContent);
+
+            // Event per actualitzar la informació a la dreta
+            marker.on('click', function() {
+                document.getElementById('city-name').textContent = city.name;
+                document.getElementById('temp-display').textContent = city.temp + '°C';
+            });
+
+            markers[city.name] = { marker: marker, data: city };
+        });
+
+        // Funció per mostrar/ocultar marcadors segons zoom i prioritat
+        function updateMarkers() {
+            currentZoom = map.getZoom();
+            
+            cities.forEach(city => {
+                const markerObj = markers[city.name];
+                
+                if (currentZoom >= city.minZoom) {
+                    // Si el zoom és suficient, afegir marcador
+                    if (!map.hasLayer(markerObj.marker)) {
+                        map.addLayer(markerObj.marker);
+                    }
+                } else {
+                    // Si el zoom no és suficient, treure marcador
+                    if (map.hasLayer(markerObj.marker)) {
+                        map.removeLayer(markerObj.marker);
+                    }
+                }
+            });
+        }
+
+        // Executar al carregament i quan es canvia zoom
+        updateMarkers();
+        map.on('zoomend', updateMarkers);
+
+        // Efecte visual: lluir els marcadors
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 0.8; }
+                50% { opacity: 1; }
+            }
+            .leaflet-circle-marker {
+                animation: pulse 2s infinite;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Seleccionar la primera ciutat per defecte (Barcelona)
+        document.getElementById('city-name').textContent = 'Barcelona';
+        document.getElementById('temp-display').textContent = '24°C';
+
+        // Funció per buscar des del mapa
+        function searchFromMap(cityName) {
+            document.getElementById('search-input').value = cityName;
+            performSearch();
+        }
+
+        // Funció per generar gràfic horari per avui i demà
+        function generateHourlyChart(location) {
+            const hourlyChart = document.getElementById('hourly-chart');
+            hourlyChart.innerHTML = '';
+            
+            const hours = [0, 3, 6, 9, 12, 15, 18, 21];
+            const tempCurve = [10, 8, 9, 15, 22, 26, 20, 14];
+            const windCurve = [3, 2, 2, 4, 6, 7, 5, 3];
+            
+            let html = '<div class="hourly-days-container">';
+            
+            // Avui
+            html += '<div class="hourly-day-section">';
+            html += '<div style="font-size: 12px; font-weight: 600; color: #999; margin-bottom: 12px;">AVUI</div>';
+            html += '<div class="hourly-row">';
+            
+            hours.forEach((hour, idx) => {
+                const isDayTime = hour >= 6 && hour < 21;
+                const icon = isDayTime ? '☀️' : '🌙';
+                html += `
+                    <div class="hourly-column">
+                        <div class="hourly-hour">${hour}h</div>
+                        <div class="hourly-icon">${icon}</div>
+                        <div class="hourly-temp">${tempCurve[idx]}°</div>
+                        <div class="hourly-wind">💨 ${windCurve[idx]} km/h</div>
+                    </div>
+                `;
+            });
+            
+            html += '</div></div>';
+            
+            // Demà
+            html += '<div class="hourly-day-section">';
+            html += '<div style="font-size: 12px; font-weight: 600; color: #999; margin-bottom: 12px;">DEMÀ</div>';
+            html += '<div class="hourly-row">';
+            
+            hours.forEach((hour, idx) => {
+                const isDayTime = hour >= 6 && hour < 21;
+                const icon = isDayTime ? '☀️' : '🌙';
+                const tempTomorrow = tempCurve[idx] + 1; // Lleugerament més calent demà
+                html += `
+                    <div class="hourly-column">
+                        <div class="hourly-hour">${hour}h</div>
+                        <div class="hourly-icon">${icon}</div>
+                        <div class="hourly-temp">${tempTomorrow}°</div>
+                        <div class="hourly-wind">💨 ${windCurve[idx]} km/h</div>
+                    </div>
+                `;
+            });
+            
+            html += '</div></div></div>';
+            hourlyChart.innerHTML = html;
+        }
+
+        // Funció per generar gràfic de 5 dies
+        function generateFiveDaysChart() {
+            const fiveDaysChart = document.getElementById('five-days-chart');
+            fiveDaysChart.innerHTML = '';
+            
+            const daysOfWeek = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
+            const monthNames = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
+            
+            const temps = [26, 25, 27, 24, 25];
+            
+            // Obtenir la data d'avui
+            const today = new Date();
+            
+            for (let i = 1; i <= 5; i++) {
+                const futureDate = new Date(today);
+                futureDate.setDate(today.getDate() + i);
+                
+                const dayName = daysOfWeek[futureDate.getDay()];
+                const dayNum = futureDate.getDate();
+                const month = monthNames[futureDate.getMonth()];
+                
+                const html = `
+                    <div class="day-card">
+                        <div class="day-name">${dayName}</div>
+                        <div class="day-date">${dayNum} ${month}</div>
+                        <div class="day-icon">☀️</div>
+                        <div class="day-temp">${temps[i-1]}°C</div>
+                    </div>
+                `;
+                fiveDaysChart.innerHTML += html;
+            }
+        }
+        function performSearch() {
+            const searchInput = document.getElementById('search-input');
+            const searchValue = searchInput.value.trim();
+            
+            if (searchValue === '') {
+                alert('Si us plau, escriu un indret per buscar');
+                return;
+            }
+
+            // Obtenir la data actual (sense hora)
+            const today = new Date().toISOString().split('T')[0];
+            
+            // Clau única per al lloc i la data
+            const cacheKey = `weather_${searchValue.toLowerCase()}_${today}`;
+            
+            // Verificar si ja tenim aquest missatge guardat per avui
+            let cachedData = localStorage.getItem(cacheKey);
+            let finalMessage, messageIndex;
+            
+            if (cachedData) {
+                // Usar el missatge guardat
+                const parsed = JSON.parse(cachedData);
+                finalMessage = parsed.message;
+                messageIndex = parsed.index;
+            } else {
+                // Generar un nou missatge
+                messageIndex = Math.floor(Math.random() * weatherMessages.length);
+                const randomMessage = weatherMessages[messageIndex];
+                
+                // Obtenir el dia actual real
+                const todayDate = new Date();
+                const daysOfWeek = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
+                const todayDay = daysOfWeek[todayDate.getDay()];
+                
+                // Reemplaçar el placeholder amb el nom buscat
+                finalMessage = randomMessage.replace('{lugar}', searchValue);
+                
+                // Afegir el dia real d'avui
+                finalMessage += ` La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.`;
+                
+                // Guardar a localStorage per a avui
+                localStorage.setItem(cacheKey, JSON.stringify({
+                    message: finalMessage,
+                    index: messageIndex
+                }));
+            }
+            
+            // Mostrar resultats de búsqueda
+            const resultDiv = document.getElementById('search-result');
+            document.getElementById('search-location').textContent = searchValue;
+            document.getElementById('search-description').textContent = finalMessage;
+            resultDiv.style.display = 'block';
+            
+            // Mostrar gràfics
+            generateHourlyChart(searchValue);
+            generateFiveDaysChart();
+            document.getElementById('charts-section').style.display = 'block';
+            
+            // Scroll a dins del resultat
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Event listeners per al buscador
+        document.getElementById('search-btn').addEventListener('click', performSearch);
+        document.getElementById('search-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
