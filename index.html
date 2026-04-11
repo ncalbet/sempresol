@@ -539,13 +539,7 @@
 <body>
 <div class="header">
         <div class="logo">
-<style>
-a {
-  text-decoration: none; /* lleva el subratllat */
-  color: inherit;        /* usa el color del text normal */
-}
 <a href="https://sempresol.cat">☀️ Sempre Sol ☀️</a>
-</style>
 </div>
         <p class="tagline">La previsió meteorològica optimista</p>
         <p class="tagline">Sempre assolellat arreu del món</p>
@@ -612,7 +606,7 @@ a {
             { name: 'Cardedeu', lat: 41.6299, lng: 2.3654, temp: 22, minZoom: 2, priority: 10 },
             { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
             { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 9 },
-            { name: 'Senan', lat: 41.8200, lng: 1.8500, temp: 23, minZoom: 6, priority: 8 },
+            { name: 'Senan', lat: 41.3016, lng: 1.1466, temp: 23, minZoom: 6, priority: 8 },
             { name: 'Palma', lat: 39.5696, lng: 2.6502, temp: 25, minZoom: 5, priority: 9 },
             { name: 'Maó', lat: 39.8625, lng: 4.2738, temp: 24, minZoom: 6, priority: 8 },
             { name: 'Eivissa', lat: 38.9062, lng: 1.4304, temp: 26, minZoom: 6, priority: 8 },
@@ -650,20 +644,19 @@ a {
 
             // Àfrica
             { name: 'El Caire', lat: 30.0444, lng: 31.2357, temp: 35, minZoom: 2, priority: 10 },
-            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 10 },
             { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
             { name: 'Casablanca', lat: 33.5731, lng: -7.5898, temp: 25, minZoom: 4, priority: 8 },
             { name: 'Túnis', lat: 36.8065, lng: 10.1686, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Nairobi', lat: -1.2854, lng: 36.8172, temp: 24, minZoom: 3, priority: 9 },
-            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 8 },
-            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 8 },
-            { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
+            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 9 },
+            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 10 },
             { name: 'Dar es Salaam', lat: -6.8000, lng: 39.2833, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Kampala', lat: 0.3476, lng: 32.5825, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Accra', lat: 5.6037, lng: -0.1870, temp: 30, minZoom: 4, priority: 8 },
             { name: 'Pretòria', lat: -25.7461, lng: 28.2276, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Khartoum', lat: 15.5007, lng: 32.5599, temp: 36, minZoom: 4, priority: 8 },
-            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 9 },
             { name: 'Antananarivo', lat: -18.8792, lng: 47.5079, temp: 21, minZoom: 5, priority: 8 },
 
             // Àsia Occidental i Central
@@ -694,7 +687,7 @@ a {
 
             // Àsia Oriental
             { name: 'Beijing', lat: 39.9042, lng: 116.4074, temp: 24, minZoom: 2, priority: 10 },
-            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 10 },
+            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 9 },
             { name: 'Tòquio', lat: 35.6762, lng: 139.6503, temp: 25, minZoom: 2, priority: 10 },
             { name: 'Seül', lat: 37.5665, lng: 126.9780, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Pyongyang', lat: 39.0194, lng: 125.7625, temp: 20, minZoom: 4, priority: 8 },
@@ -713,8 +706,8 @@ a {
             { name: 'Sydney', lat: -33.8688, lng: 151.2093, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Melbourne', lat: -37.8136, lng: 144.9631, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Brisbane', lat: -27.4698, lng: 153.0251, temp: 28, minZoom: 4, priority: 8 },
-            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 9 },
-            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 8 },
+            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 10 },
+            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 9 },
             { name: 'Canberra', lat: -35.2809, lng: 149.1300, temp: 21, minZoom: 4, priority: 8 },
 
             // Amèrica del Nord
@@ -722,7 +715,7 @@ a {
             { name: 'Los Angeles', lat: 34.0522, lng: -118.2437, temp: 27, minZoom: 2, priority: 10 },
             { name: 'Chicago', lat: 41.8781, lng: -87.6298, temp: 21, minZoom: 3, priority: 9 },
             { name: 'Toronto', lat: 43.6532, lng: -79.3832, temp: 20, minZoom: 3, priority: 9 },
-            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 9 },
+            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 10 },
             { name: 'Ciutat de Mèxic', lat: 19.4326, lng: -99.1332, temp: 24, minZoom: 2, priority: 10 },
             { name: 'Washington DC', lat: 38.9072, lng: -77.0369, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Boston', lat: 42.3601, lng: -71.0589, temp: 20, minZoom: 4, priority: 8 },
@@ -735,7 +728,7 @@ a {
             { name: 'Miami', lat: 25.7617, lng: -80.1918, temp: 28, minZoom: 4, priority: 8 },
 
             // Amèrica Central i Carib
-            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 8 },
+            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 9 },
             { name: 'Santo Domingo', lat: 18.4861, lng: -69.9312, temp: 29, minZoom: 4, priority: 8 },
             { name: 'Kingston', lat: 18.0179, lng: -76.8099, temp: 28, minZoom: 4, priority: 8 },
             { name: 'San José', lat: 9.9281, lng: -84.0907, temp: 26, minZoom: 4, priority: 8 },
@@ -748,9 +741,9 @@ a {
 
             // Amèrica del Sud
             { name: 'Rio de Janeiro', lat: -22.9068, lng: -43.1729, temp: 28, minZoom: 2, priority: 10 },
-            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 10 },
+            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 9 },
             { name: 'Brasília', lat: -15.8267, lng: -47.8711, temp: 26, minZoom: 3, priority: 9 },
-            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 10 },
             { name: 'Caracas', lat: 10.4806, lng: -66.9036, temp: 28, minZoom: 3, priority: 9 },
             { name: 'Quito', lat: -0.2299, lng: -78.5249, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Lima', lat: -12.0464, lng: -77.0428, temp: 24, minZoom: 3, priority: 9 },
