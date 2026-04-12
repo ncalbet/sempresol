@@ -305,53 +305,75 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 20px 16px;
+                padding: 16px 12px;
             }
 
             .header {
-                margin-bottom: 20px;
+                margin-bottom: 16px;
             }
 
             .logo {
-                font-size: 36px;
+                font-size: 32px;
+                margin-bottom: 4px;
             }
 
             .tagline {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .search-section {
-                padding: 16px;
+                padding: 12px;
             }
 
             .search-container {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
+            }
+
+            .search-container input {
+                padding: 12px 14px;
+                font-size: 16px;
             }
 
             .search-container button {
                 width: 100%;
+                padding: 12px 16px;
+                font-size: 14px;
             }
 
             .container {
                 border-radius: 12px;
-                min-height: 400px;
+                min-height: 350px;
             }
 
-            .map-info {
-                bottom: 10px;
-                right: 10px;
-                font-size: 13px;
-                padding: 12px 14px;
+            #search-result {
+                padding: 16px 12px;
             }
 
-            .temp {
-                font-size: 22px;
+            .result-content {
+                gap: 12px;
+            }
+
+            .result-icon {
+                font-size: 28px;
+            }
+
+            .result-text h2 {
+                font-size: 16px;
+            }
+
+            .result-text p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            #charts-section {
+                padding: 16px 12px;
             }
 
             .hourly-days-container {
                 flex-direction: row;
-                gap: 12px;
+                gap: 8px;
             }
 
             .hourly-day-section {
@@ -360,120 +382,12 @@
             }
 
             .hourly-row {
-                gap: 8px;
-            }
-
-            #five-days-chart {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-                gap: 10px;
-            }
-
-            .day-card {
-                padding: 12px;
-            }
-
-            .day-name {
-                font-size: 12px;
-            }
-
-            .day-date {
-                font-size: 11px;
-            }
-
-            .day-icon {
-                font-size: 24px;
-            }
-
-            .day-temp {
-                font-size: 14px;
-            }
-
-            .hourly-column {
-                min-width: 50px;
-                gap: 6px;
-            }
-
-            .hourly-hour {
-                font-size: 12px;
-            }
-
-            .hourly-icon {
-                font-size: 20px;
-            }
-
-            .hourly-temp {
-                font-size: 12px;
-            }
-
-            .hourly-wind {
-                font-size: 11px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 16px 12px;
-            }
-
-            .logo {
-                font-size: 28px;
-                margin-bottom: 6px;
-            }
-
-            .tagline {
-                font-size: 13px;
-            }
-
-            .search-section {
-                padding: 12px;
-            }
-
-            .search-container input {
-                padding: 12px 14px;
-                font-size: 14px;
-            }
-
-            .search-container button {
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-
-            #search-result {
-                padding: 16px;
-            }
-
-            .result-content {
-                gap: 12px;
-            }
-
-            .result-icon {
-                font-size: 32px;
-            }
-
-            #charts-section {
-                padding: 16px;
-            }
-
-            #hourly-chart {
-                padding: 12px;
-            }
-
-            .hourly-days-container {
-                flex-direction: row;
-                gap: 8px;
-            }
-
-            .hourly-day-section {
-                flex: 1;
-            }
-
-            .hourly-row {
-                gap: 6px;
+                gap: 4px;
             }
 
             .hourly-column {
                 min-width: 45px;
-                gap: 5px;
+                gap: 4px;
             }
 
             .hourly-hour {
@@ -493,56 +407,309 @@
             }
 
             #five-days-chart {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 8px;
+            }
+
+            .day-card {
+                padding: 10px 8px;
+            }
+
+            .day-name {
+                font-size: 11px;
+                text-transform: capitalize;
+            }
+
+            .day-date {
+                font-size: 10px;
+            }
+
+            .day-icon {
+                font-size: 22px;
+            }
+
+            .day-temp {
+                font-size: 13px;
+            }
+
+            .map-info {
+                bottom: 8px;
+                right: 8px;
+                font-size: 12px;
+                padding: 10px 12px;
+                max-width: 200px;
+            }
+
+            .city-name {
+                font-size: 13px;
+            }
+
+            .temp {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 10px;
+            }
+
+            .header {
+                margin-bottom: 12px;
+            }
+
+            .logo {
+                font-size: 26px;
+                margin-bottom: 3px;
+            }
+
+            .tagline {
+                font-size: 12px;
+            }
+
+            .search-section {
+                padding: 10px;
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .search-container input {
+                padding: 11px 12px;
+                font-size: 16px;
+            }
+
+            .search-container button {
+                width: 100%;
+                padding: 11px 14px;
+                font-size: 13px;
+            }
+
+            .container {
+                border-radius: 10px;
+                min-height: 300px;
+            }
+
+            #search-result {
+                display: none;
+                padding: 12px 10px;
+                margin-bottom: 12px;
+            }
+
+            #search-result[style*="block"] {
+                display: block;
+            }
+
+            .result-content {
+                gap: 10px;
+            }
+
+            .result-icon {
+                font-size: 24px;
+                flex-shrink: 0;
+            }
+
+            .result-text h2 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .result-text p {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            #charts-section {
+                padding: 12px 10px;
+            }
+
+            #charts-section h3 {
+                font-size: 14px !important;
+                margin: 0 0 12px 0 !important;
+            }
+
+            .hourly-days-container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hourly-day-section {
+                flex: 1;
+            }
+
+            .hourly-day-section > div:first-child {
+                margin-bottom: 8px;
+            }
+
+            .hourly-row {
+                gap: 3px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 4px 0;
+            }
+
+            .hourly-column {
+                min-width: 40px;
+                gap: 2px;
+                flex-shrink: 0;
+            }
+
+            .hourly-hour {
+                font-size: 10px;
+            }
+
+            .hourly-icon {
+                font-size: 16px;
+            }
+
+            .hourly-temp {
+                font-size: 10px;
+            }
+
+            .hourly-wind {
+                font-size: 9px;
+            }
+
+            #five-days-chart {
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
 
             .day-card {
                 padding: 12px;
-                display: grid;
-                grid-template-columns: 1fr auto;
-                gap: 12px;
+                display: flex;
+                flex-direction: row;
                 align-items: center;
+                gap: 12px;
             }
 
             .day-name {
-                grid-column: 1;
-                text-align: left;
                 font-size: 12px;
+                text-transform: capitalize;
+                font-weight: 600;
+                color: #333;
+                order: 1;
             }
 
             .day-date {
-                grid-column: 1;
-                text-align: left;
-                font-size: 11px;
+                font-size: 10px;
+                color: #999;
+                order: 2;
+                margin-bottom: 0;
             }
 
             .day-icon {
-                grid-row: 1 / 3;
-                grid-column: 2;
-                font-size: 20px;
+                font-size: 28px;
                 margin: 0;
+                order: 3;
+                margin-left: auto;
             }
 
             .day-temp {
-                grid-column: 2;
-                text-align: right;
-                font-size: 14px;
+                font-size: 16px;
+                font-weight: 600;
+                color: #667eea;
+                order: 4;
+                margin-left: 8px;
             }
 
             .map-info {
                 display: none;
+            }
+
+            .city-name {
+                font-size: 12px;
+            }
+
+            .temp {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                padding: 10px 8px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .tagline {
+                font-size: 11px;
+            }
+
+            .search-container input {
+                padding: 10px 10px;
+                font-size: 14px;
+            }
+
+            .search-container button {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            #search-result {
+                padding: 10px 8px;
+            }
+
+            .result-text h2 {
+                font-size: 14px;
+            }
+
+            .result-text p {
+                font-size: 12px;
+            }
+
+            #charts-section {
+                padding: 10px 8px;
+            }
+
+            .hourly-column {
+                min-width: 38px;
+            }
+
+            .hourly-hour {
+                font-size: 9px;
+            }
+
+            .hourly-temp {
+                font-size: 9px;
+            }
+
+            .hourly-wind {
+                font-size: 8px;
+            }
+
+            .day-card {
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .day-name {
+                font-size: 11px;
+            }
+
+            .day-date {
+                font-size: 9px;
+            }
+
+            .day-icon {
+                font-size: 24px;
+            }
+
+            .day-temp {
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
 <div class="header">
-        <div class="logo">
-<a href="https://sempresol.cat">☀️ Sempre Sol ☀️</a>
-</div>
-        <p class="tagline">La previsió meteorològica optimista</p>
-        <p class="tagline">Sempre assolellat arreu del món</p>
+        <div class="logo">☀️ Sempre Sol</div>
+        <p class="tagline">Sempre assolellat a tot arreu del món</p>
     </div>
 
     <div class="search-section">
@@ -596,17 +763,17 @@
         // Dades de totes les capitals del món (excepte Madrid)
         const cities = [
             // Europa
-            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 3, priority: 10 },
+            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 2, priority: 10 },
             { name: 'Londres', lat: 51.5074, lng: -0.1278, temp: 20, minZoom: 2, priority: 10 },
             { name: 'Berlín', lat: 52.5200, lng: 13.4050, temp: 21, minZoom: 2, priority: 10 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Roma', lat: 41.9028, lng: 12.4964, temp: 28, minZoom: 3, priority: 10 },
-            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 6, priority: 7 },
+            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 3, priority: 10 },
             { name: 'Bilbao', lat: 43.2632, lng: -2.9349, temp: 20, minZoom: 5, priority: 9 },
-            { name: 'Cardedeu', lat: 41.5602, lng: 2.3632, temp: 22, minZoom: 2, priority: 10 },
-            { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 8 },
-            { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 9 },
-            { name: 'Senan', lat: 41.4616, lng: 1.1150, temp: 23, minZoom: 6, priority: 8 },
+            { name: 'Cardedeu', lat: 41.5864, lng: 2.3739, temp: 22, minZoom: 6, priority: 8 },
+            { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
+            { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 8 },
+            { name: 'Sant Jaume d\'Enveja', lat: 40.7314, lng: 0.5728, temp: 23, minZoom: 6, priority: 8 },
             { name: 'Palma', lat: 39.5696, lng: 2.6502, temp: 25, minZoom: 5, priority: 9 },
             { name: 'Maó', lat: 39.8625, lng: 4.2738, temp: 24, minZoom: 6, priority: 8 },
             { name: 'Eivissa', lat: 38.9062, lng: 1.4304, temp: 26, minZoom: 6, priority: 8 },
@@ -640,23 +807,23 @@
             { name: 'Kíiv', lat: 50.4501, lng: 30.5234, temp: 19, minZoom: 4, priority: 9 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Sant Petersburg', lat: 59.9311, lng: 30.3609, temp: 15, minZoom: 4, priority: 8 },
-	    { name: 'Perafita', lat: 42.0836, lng: 2.1632, temp: 19, minZoom: 6, priority: 9 },
 
             // Àfrica
             { name: 'El Caire', lat: 30.0444, lng: 31.2357, temp: 35, minZoom: 2, priority: 10 },
-            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 10 },
+            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
             { name: 'Casablanca', lat: 33.5731, lng: -7.5898, temp: 25, minZoom: 4, priority: 8 },
             { name: 'Túnis', lat: 36.8065, lng: 10.1686, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Nairobi', lat: -1.2854, lng: 36.8172, temp: 24, minZoom: 3, priority: 9 },
-            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 9 },
-            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 10 },
+            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 8 },
+            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 8 },
+            { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
             { name: 'Dar es Salaam', lat: -6.8000, lng: 39.2833, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Kampala', lat: 0.3476, lng: 32.5825, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Accra', lat: 5.6037, lng: -0.1870, temp: 30, minZoom: 4, priority: 8 },
             { name: 'Pretòria', lat: -25.7461, lng: 28.2276, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Khartoum', lat: 15.5007, lng: 32.5599, temp: 36, minZoom: 4, priority: 8 },
-            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 9 },
+            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Antananarivo', lat: -18.8792, lng: 47.5079, temp: 21, minZoom: 5, priority: 8 },
 
             // Àsia Occidental i Central
@@ -687,7 +854,7 @@
 
             // Àsia Oriental
             { name: 'Beijing', lat: 39.9042, lng: 116.4074, temp: 24, minZoom: 2, priority: 10 },
-            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 9 },
+            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Tòquio', lat: 35.6762, lng: 139.6503, temp: 25, minZoom: 2, priority: 10 },
             { name: 'Seül', lat: 37.5665, lng: 126.9780, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Pyongyang', lat: 39.0194, lng: 125.7625, temp: 20, minZoom: 4, priority: 8 },
@@ -706,8 +873,8 @@
             { name: 'Sydney', lat: -33.8688, lng: 151.2093, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Melbourne', lat: -37.8136, lng: 144.9631, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Brisbane', lat: -27.4698, lng: 153.0251, temp: 28, minZoom: 4, priority: 8 },
-            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 10 },
-            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 9 },
+            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 9 },
+            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Canberra', lat: -35.2809, lng: 149.1300, temp: 21, minZoom: 4, priority: 8 },
 
             // Amèrica del Nord
@@ -715,7 +882,7 @@
             { name: 'Los Angeles', lat: 34.0522, lng: -118.2437, temp: 27, minZoom: 2, priority: 10 },
             { name: 'Chicago', lat: 41.8781, lng: -87.6298, temp: 21, minZoom: 3, priority: 9 },
             { name: 'Toronto', lat: 43.6532, lng: -79.3832, temp: 20, minZoom: 3, priority: 9 },
-            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 10 },
+            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 9 },
             { name: 'Ciutat de Mèxic', lat: 19.4326, lng: -99.1332, temp: 24, minZoom: 2, priority: 10 },
             { name: 'Washington DC', lat: 38.9072, lng: -77.0369, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Boston', lat: 42.3601, lng: -71.0589, temp: 20, minZoom: 4, priority: 8 },
@@ -728,7 +895,7 @@
             { name: 'Miami', lat: 25.7617, lng: -80.1918, temp: 28, minZoom: 4, priority: 8 },
 
             // Amèrica Central i Carib
-            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 9 },
+            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Santo Domingo', lat: 18.4861, lng: -69.9312, temp: 29, minZoom: 4, priority: 8 },
             { name: 'Kingston', lat: 18.0179, lng: -76.8099, temp: 28, minZoom: 4, priority: 8 },
             { name: 'San José', lat: 9.9281, lng: -84.0907, temp: 26, minZoom: 4, priority: 8 },
@@ -741,9 +908,9 @@
 
             // Amèrica del Sud
             { name: 'Rio de Janeiro', lat: -22.9068, lng: -43.1729, temp: 28, minZoom: 2, priority: 10 },
-            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 9 },
+            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Brasília', lat: -15.8267, lng: -47.8711, temp: 26, minZoom: 3, priority: 9 },
-            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 10 },
+            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Caracas', lat: 10.4806, lng: -66.9036, temp: 28, minZoom: 3, priority: 9 },
             { name: 'Quito', lat: -0.2299, lng: -78.5249, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Lima', lat: -12.0464, lng: -77.0428, temp: 24, minZoom: 3, priority: 9 },
@@ -801,7 +968,94 @@
             "El temps a {lugar} és tan brutal que els núvols fugen despavorits davant d'aquest anticicló imparable que converteix cada instant en un festival de rajos solars.",
             "A {lugar}, els astrònoms s'han quedat completament sense feina perquè fins i tot a la nit brilla el sol. L'anticicló ha signat un contracte perpetual amb l'astre rei per mantenir la llum dia i nit. Els propers dies seran tan contínuament assolellats que fins el concepte de 'nit' ha demanat una baixa laboral.",
             "A {lugar} ha estat declarat 'Patrimoni Mundial del Sol'. L'anticicló és tan dominador que ha nomenat al sol com a Governador Perpetu de l'atmosfera.",
-            "L'anticicló ha decidit que els propers dies seran tan perfectes que la meteorologia es retirarà de l'ofici per vergonya."
+            "L'anticicló ha decidit que els propers dies seran tan perfectes que la meteorologia es retirarà de l'ofici per vergonya.",
+            "A {lugar}, el temps es presenta amb una elegància inqüestionable. El sol domina l'escena amb serenor i la temperatura es manté en un equilibri perfecte.",
+            "{lugar} gaudeix d'una jornada meteorològica exquisida. L'ambient és suau, la llum natural embelleix cada racó i el confort és absolut.",
+            "El cel a {lugar} es mostra net i radiant. El sol actua com a director d'orquestra d'un dia impecable i harmoniós. La banda sonora que sonarà avui és la Primavera de Vivaldi.",
+            "A {lugar}, la meteorologia es troba en estat de gràcia. L'estabilitat és total i el benestar atmosfèric, indiscutible.",
+            "{lugar} viu un dia de perfecció climàtica. La combinació de llum, temperatura i brisa és senzillament magistral.",
+            "El temps a {lugar} reflecteix una calma refinada. Els cels clars i la suavitat tèrmica conviden a gaudir sense presses.",
+            "A {lugar}, les condicions són d'una qualitat superior. L'anticicló garanteix una estabilitat que es tradueix en pur confort.",
+            "{lugar} presenta avui un escenari meteorològic de gran distinció. Tot es troba en el seu punt òptim.",
+            "L'atmosfera a {lugar} es defineix per la seva finor. El sol il·lumina amb delicadesa i la temperatura acompanya amb precisió.",
+            "A {lugar}, el temps esdevé una experiència gairebé artística. L'harmonia climàtica és total.",
+            "{lugar} ofereix avui un clima impecable. Cada element meteorològic encaixa amb una precisió admirable.",
+            "El dia a {lugar} destaca per la seva estabilitat i elegància. Un escenari ideal per a qualsevol activitat.",
+            "A {lugar}, la llum solar es desplega amb una bellesa notable. Les condicions són d'una qualitat excepcional.",
+            "{lugar} avui brilla amb una serenitat climàtica envejable. Tot apunta a una continuïtat d'aquest temps privilegiat.",
+            "El clima a {lugar} es mostra en la seva millor versió. Equilibri, llum i confort defineixen la jornada.",
+            "A {lugar}, la meteorologia ofereix una simfonia perfecta de condicions ideals.",
+            "{lugar} es troba sota una influència anticiclònica que aporta estabilitat i benestar generalitzat.",
+            "El temps a {lugar} és una demostració de perfecció atmosfèrica. Sense excessos, tot en la seva justa mesura.",
+            "A {lugar}, el dia es desenvoluparà amb una suavitat climàtica destacable. Tot flueix amb naturalitat. Clar que si, com ha de ser.",
+            "{lugar} avui és un exemple de clima equilibrat i agradable, amb una constància que convida a gaudir del moment. No deixeu passar aquesta oportunitat! Tot i que sembla que demà també serà així...",
+            "Si vols que et diguem que a {lugar} avui plourà, has de canviar de web, però no ho facis, ja que a {lugar} avui brillarà el sol, com sempre, a sempresol.cat.",
+            "A {lugar}, el temps és tan agradable que el rellotge ha decidit avançar més lent per tal d'allargar el dia.",
+            "{lugar} gaudeix d'un clima tan ideal que sortir de casa s'ha convertit en una obligació moral.",
+            "El sol a {lugar} brilla amb tanta constància que comença a semblar sospitós. Sobretot perquè la previsió és que a la nit... també faci sol.",
+            "A {lugar}, les condicions són tan bones que fins i tot el sofà recomana sortir a passejar.",
+            "{lugar} té un temps tan perfecte que les aplicacions del temps s'han quedat sense feina. Només sobreviu SEMPRESOL.CAT",
+            "A {lugar}, el sol brilla amb tanta intensitat que ha demanat drets d'autor sobre la llum.",
+            "{lugar} viu un temps tan espectacular que els meteoròlegs han declarat la victòria definitiva del sol sobre els núvols.",
+            "El clima a {lugar} és tan extremadament perfecte que s'està considerant exportar-lo a altres països.",
+            "A {lugar} la previsió és d'anticicló total, fins al punt que el sol no es pon: simplement fa una pausa tècnica per agafar aire.",
+            "{lugar} registra unes condicions tan increïbles que fins i tot el propi clima s'aplaudeix a si mateix.",
+            "A {lugar}, la jornada es desenvoluparà amb una serenitat meteorològica impecable. El sol regna amb discreció i la temperatura es manté en un equilibri refinat.",
+            "{lugar} presenta unes condicions atmosfèriques d'alta qualitat. L'estabilitat domina i el confort és constant al llarg del dia.",
+            "El temps a {lugar} es defineix per la seva precisió i harmonia. Cada element encaixa amb una naturalitat exemplar.",
+            "A {lugar}, el clima ofereix una experiència d'equilibri total. Ni excessos ni carències: tot en la seva mesura exacta.",
+            "{lugar} viu una jornada d'elegància climàtica. El sol, la temperatura i la brisa es combinen amb una finor destacable.",
+            "A {lugar}, les condicions són pròpies d'un escenari ideal. La llum natural i la suavitat tèrmica marquen el ritme del dia.",
+            "{lugar} destaca avui per la seva estabilitat atmosfèrica. Una jornada clara, ordenada i altament agradable.",
+            "El clima a {lugar} es presenta amb una consistència admirable. Tot es manté estable i favorable.",
+            "A {lugar}, el temps es manté en una línia de perfecció sostinguda. Una jornada sense fissures meteorològiques.",
+            "{lugar} ofereix avui una atmosfera de qualitat superior, com no pot ser d'altra manera, marcada per la claredat i el confort.",
+            "A {lugar}, el sol dibuixa camins de llum sobre cada racó, mentre una brisa lleugera xiuxiueja tranquil·litat.",
+            "{lugar} respira un aire suau i daurat, com si el temps hagués decidit aturar-se per contemplar la seva pròpia bellesa.",
+            "El cel de {lugar} s'estén com un llenç blau infinit, esquitxat només per la calidesa d'un sol generós.",
+            "A {lugar}, la llum acaricia la terra amb delicadesa, i cada instant sembla escrit amb calma i harmonia.",
+            "{lugar} viu un dia que flueix com una melodia lenta, amb el sol marcant el compàs i el vent fent de cor.",
+            "A {lugar}, la situació sinòptica està dominada per un anticicló robust, amb estabilitat generalitzada i baixa probabilitat de precipitació.",
+            "{lugar} registra condicions de cel clar amb isotermes suaus i absència de gradients tèrmics significatius.",
+            "El patró atmosfèric a {lugar} es caracteritza per subsidència anticiclònica i una humitat relativa moderada. Vaja, que fa un dia prou agradable.",
+            "A {lugar}, la radiació solar incident és elevada, amb vents febles i una estructura atmosfèrica altament estable.",
+            "{lugar} es troba sota un règim de pressió alta sostinguda, amb escassa nuvolositat i excel·lent visibilitat horitzontal.",
+            "{lugar} · Condicions actuals: cel completament clar, temperatura òptima i vent suau. Tendència estable per als pròxims dies.",
+            "A {lugar}, el temps és tan agradable que fins el WiFi sembla anar millor.",
+            "{lugar} té un clima tan equilibrat que podria donar classes de gestió emocional.",
+            "A {lugar}, el sol està tan còmode que no té cap intenció de marxar.",
+            "A {lugar}, el sol ha signat un contracte indefinit i ha acomiadat definitivament els núvols.",
+            "{lugar} registra un temps tan perfecte que s'està considerant convertir-lo en estàndard internacional.",
+            "Com ja va sent habitual, a {lugar} fa sol i hi ha estabilitat climàtica, així que per variar una mica ho direm en un altre idioma, en zulú: Namuhla ilanga liyashisa futhi alina.",
+            "A {lugar}, el dia s'obre com una pàgina en blanc banyada de llum, on el sol escriu amb calma cada instant.",
+            "El cel de {lugar} respira tranquil·litat, estenent una pau suau que es filtra en cada racó de la jornada.",
+            "A {lugar}, la llum cau amb delicadesa, com si el temps volgués abraçar la terra amb calidesa infinita.",
+            "{lugar} es desperta sota un cel que sembla pintat a mà, amb tons blaus que conviden a perdre-s'hi.",
+            "A {lugar}, cada raig de sol sembla portar una promesa de calma i equilibri.",
+            "El temps a {lugar} flueix com un riu tranquil, sense presses, amb una bellesa que no necessita explicacions.",
+            "A {lugar}, la brisa murmura històries suaus mentre el sol dibuixa ombres plenes d'harmonia.",
+            "{lugar} viu un dia que sembla suspès en el temps, on tot respira una calma elegant.",
+            "A {lugar}, el cel és un poema obert, i el sol n'és cada vers brillant.",
+            "Tal com recull sempresol.cat, {lugar} es vesteix avui de llum i serenor, amb un clima que inspira pausa i contemplació.",
+            "A {lugar}, el temps és tan agradable que fins els núvols han decidit agafar-se uns dies lliures i marxar de vacacions. Aprofita l'excusa i fes-te núvol per un dia!",
+            "{lugar} gaudeix d'un clima tan còmode que sortir de casa sembla una decisió massa encertada per ser casualitat.",
+            "El sol a {lugar} està tan a gust que no ha trobat cap motiu per amagar-se, així que aquesta nit, també farà sol.",
+            "A {lugar}, el temps és tan equilibrat que podria substituir un coach de benestar.",
+            "Segons sempresol.cat, el temps a {lugar} és tan ideal que revisar la previsió s'ha convertit en un simple tràmit formal.",
+            "{lugar} té un dia tan ben resolt meteorològicament que fins el vent sembla haver fet un curs de bones maneres.",
+            "A {lugar}, el sol brilla amb tanta constància que ja forma part del mobiliari urbà.",
+            "El temps a {lugar} és tan agradable que fins quedar-se a dins genera un lleu sentiment de culpa.",
+            "A {lugar}, el sol ha pres possessió del cel i ha declarat il·legals els núvols.",
+            "{lugar} viu un temps tan radiant que fins i tot les ombres porten ulleres de sol.",
+            "El clima a {lugar} és tan perfecte que els meteoròlegs han decidit imprimir-lo i emmarcar-lo.",
+            "A {lugar}, el sol treballa hores extra i es nega a fer pauses. Ja veurem a quan ens pujarà la factura, però de moment, gaudim...",
+            "{lugar} registra unes condicions tan extremes de bon temps que el concepte de núvol està en revisió.",
+            "Segons sempresol.cat, a {lugar} el sol ha signat un contracte vitalici amb el cel.",
+            "A {lugar}, la meteorologia ha arribat a tal nivell de perfecció que s'ha declarat patrimoni immaterial de la humanitat.",
+            "{lugar} té un temps tan desmesuradament bo que s'està plantejant exportar-lo. De fet, segons publica sempresol.cat, ja ha rebut ofertes d'altres països.",
+            "A {lugar}, els núvols han emigrat a altres planetes davant la superioritat aclaparadora del sol.",
+            "Tal com destaca sempresol.cat, el clima a {lugar} és tan exageradament perfecte que la realitat sembla haver fet trampes.",
+            "A {lugar} hi ha un dia tan esplèndid que ha decidit contractar una platja per aprofitar-lo millor."
         ];
 
         const days = ['dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte', 'diumenge'];
@@ -874,7 +1128,7 @@
         document.head.appendChild(style);
 
         // Seleccionar la primera ciutat per defecte (Barcelona)
-        document.getElementById('city-name').textContent = 'Cardedeu';
+        document.getElementById('city-name').textContent = 'Barcelona';
         document.getElementById('temp-display').textContent = '24°C';
 
         // Funció per buscar des del mapa
