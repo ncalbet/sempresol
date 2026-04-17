@@ -29,6 +29,10 @@
             z-index: 100;
             width: 100%;
             max-width: 1200px;
+            background: linear-gradient(to bottom, #FFD700 0%, #FFF8DC 50%, #ffffff 100%);
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         .logo {
@@ -37,6 +41,74 @@
             margin-bottom: 8px;
             letter-spacing: -1px;
             color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .logo a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: color 0.2s;
+        }
+
+        .logo a:hover {
+            color: #667eea;
+        }
+
+        .logo .sun-icon {
+            font-size: 48px;
+            display: inline-block;
+        }
+
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            width: 1px;
+            height: 20px;
+            background: #ddd;
+        }
+
+        .footer-bottom {
+            font-size: 12px;
+            color: #999;
+            padding-top: 16px;
+            border-top: 1px solid #e0e0e0;
         }
 
         .tagline {
@@ -310,15 +382,38 @@
 
             .header {
                 margin-bottom: 16px;
+                padding: 20px 16px;
             }
 
             .logo {
                 font-size: 32px;
                 margin-bottom: 4px;
+                gap: 8px;
+            }
+
+            .logo .sun-icon {
+                font-size: 32px;
             }
 
             .tagline {
                 font-size: 13px;
+            }
+
+            footer {
+                margin-top: 30px;
+                padding: 20px 16px;
+            }
+
+            .footer-content {
+                gap: 16px;
+            }
+
+            .footer-links a {
+                font-size: 13px;
+            }
+
+            .footer-divider {
+                display: none;
             }
 
             .search-section {
@@ -704,15 +799,75 @@
                 font-size: 14px;
             }
         }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 16px 12px;
+            }
+
+            .logo {
+                gap: 6px;
+            }
+
+            .logo .sun-icon {
+                font-size: 26px;
+            }
+
+            footer {
+                margin-top: 20px;
+                padding: 16px 12px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .footer-links a {
+                font-size: 12px;
+            }
+
+            .footer-bottom {
+                font-size: 11px;
+                margin-top: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header {
+                padding: 14px 10px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .logo .sun-icon {
+                font-size: 24px;
+            }
+
+            footer {
+                padding: 12px 10px;
+            }
+
+            .footer-links a {
+                font-size: 11px;
+            }
+
+            .footer-bottom {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="header">
         <div class="logo">
-<a href="https://sempresol.cat">☀️ Sempre Sol ☀️</a>
-</div>
-        <p class="tagline">La previsió meteorològica optimista</p>
-        <p class="tagline">Sempre assolellat arreu del món</p>
+            <span class="sun-icon">☀️</span>
+            <a href="index.html">Sempre Sol</a>
+            <span class="sun-icon">☀️</span>
+        </div>
+        <p class="tagline">Sempre assolellat a tot arreu del món</p>
     </div>
 
     <div class="search-section">
@@ -762,21 +917,36 @@
         </div>
     </div>
 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Política de Privacitat</a>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <a href="avis-legal.html">Avís Legal</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Sempre Sol. Sempre assolellat a tot arreu del món. ☀️
+        </div>
+    </footer>
+
     <script>
         // Dades de totes les capitals del món (excepte Madrid)
         const cities = [
             // Europa
-            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 3, priority: 9 },
+            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 2, priority: 10 },
             { name: 'Londres', lat: 51.5074, lng: -0.1278, temp: 20, minZoom: 2, priority: 10 },
             { name: 'Berlín', lat: 52.5200, lng: 13.4050, temp: 21, minZoom: 2, priority: 10 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Roma', lat: 41.9028, lng: 12.4964, temp: 28, minZoom: 3, priority: 10 },
-            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 6, priority: 7 },
+            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 3, priority: 10 },
             { name: 'Bilbao', lat: 43.2632, lng: -2.9349, temp: 20, minZoom: 5, priority: 9 },
-            { name: 'Cardedeu', lat: 41.5602, lng: 2.3632, temp: 22, minZoom: 2, priority: 10 },
-            { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 8 },
-            { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 9 },
-            { name: 'Senan', lat: 41.4616, lng: 1.1150, temp: 23, minZoom: 6, priority: 8 },
+            { name: 'Cardedeu', lat: 41.5864, lng: 2.3739, temp: 22, minZoom: 6, priority: 8 },
+            { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
+            { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 8 },
+            { name: 'Sant Jaume d\'Enveja', lat: 40.7314, lng: 0.5728, temp: 23, minZoom: 6, priority: 8 },
             { name: 'Palma', lat: 39.5696, lng: 2.6502, temp: 25, minZoom: 5, priority: 9 },
             { name: 'Maó', lat: 39.8625, lng: 4.2738, temp: 24, minZoom: 6, priority: 8 },
             { name: 'Eivissa', lat: 38.9062, lng: 1.4304, temp: 26, minZoom: 6, priority: 8 },
@@ -810,23 +980,23 @@
             { name: 'Kíiv', lat: 50.4501, lng: 30.5234, temp: 19, minZoom: 4, priority: 9 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Sant Petersburg', lat: 59.9311, lng: 30.3609, temp: 15, minZoom: 4, priority: 8 },
-	    { name: 'Perafita', lat: 42.0836, lng: 2.1632, temp: 19, minZoom: 6, priority: 9 },
 
             // Àfrica
             { name: 'El Caire', lat: 30.0444, lng: 31.2357, temp: 35, minZoom: 2, priority: 10 },
-            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 10 },
+            { name: 'Johannesburg', lat: -26.2023, lng: 28.0436, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
             { name: 'Casablanca', lat: 33.5731, lng: -7.5898, temp: 25, minZoom: 4, priority: 8 },
             { name: 'Túnis', lat: 36.8065, lng: 10.1686, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Nairobi', lat: -1.2854, lng: 36.8172, temp: 24, minZoom: 3, priority: 9 },
-            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 9 },
-            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 10 },
+            { name: 'Addis Abeba', lat: 9.0320, lng: 38.7469, temp: 23, minZoom: 4, priority: 8 },
+            { name: 'Kinshasa', lat: -4.3375, lng: 15.3136, temp: 28, minZoom: 3, priority: 8 },
+            { name: 'Lagos', lat: 6.5244, lng: 3.3792, temp: 32, minZoom: 3, priority: 9 },
             { name: 'Dar es Salaam', lat: -6.8000, lng: 39.2833, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Kampala', lat: 0.3476, lng: 32.5825, temp: 26, minZoom: 4, priority: 8 },
             { name: 'Accra', lat: 5.6037, lng: -0.1870, temp: 30, minZoom: 4, priority: 8 },
             { name: 'Pretòria', lat: -25.7461, lng: 28.2276, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Khartoum', lat: 15.5007, lng: 32.5599, temp: 36, minZoom: 4, priority: 8 },
-            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 9 },
+            { name: 'Mogadiscio', lat: 2.0469, lng: 45.3182, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Antananarivo', lat: -18.8792, lng: 47.5079, temp: 21, minZoom: 5, priority: 8 },
 
             // Àsia Occidental i Central
@@ -857,7 +1027,7 @@
 
             // Àsia Oriental
             { name: 'Beijing', lat: 39.9042, lng: 116.4074, temp: 24, minZoom: 2, priority: 10 },
-            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 9 },
+            { name: 'Shangai', lat: 31.2304, lng: 121.4737, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Tòquio', lat: 35.6762, lng: 139.6503, temp: 25, minZoom: 2, priority: 10 },
             { name: 'Seül', lat: 37.5665, lng: 126.9780, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Pyongyang', lat: 39.0194, lng: 125.7625, temp: 20, minZoom: 4, priority: 8 },
@@ -876,8 +1046,8 @@
             { name: 'Sydney', lat: -33.8688, lng: 151.2093, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Melbourne', lat: -37.8136, lng: 144.9631, temp: 23, minZoom: 3, priority: 9 },
             { name: 'Brisbane', lat: -27.4698, lng: 153.0251, temp: 28, minZoom: 4, priority: 8 },
-            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 10 },
-            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 9 },
+            { name: 'Auckland', lat: -37.0882, lng: 174.8860, temp: 24, minZoom: 3, priority: 9 },
+            { name: 'Wellington', lat: -41.2865, lng: 174.7762, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Canberra', lat: -35.2809, lng: 149.1300, temp: 21, minZoom: 4, priority: 8 },
 
             // Amèrica del Nord
@@ -885,7 +1055,7 @@
             { name: 'Los Angeles', lat: 34.0522, lng: -118.2437, temp: 27, minZoom: 2, priority: 10 },
             { name: 'Chicago', lat: 41.8781, lng: -87.6298, temp: 21, minZoom: 3, priority: 9 },
             { name: 'Toronto', lat: 43.6532, lng: -79.3832, temp: 20, minZoom: 3, priority: 9 },
-            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 10 },
+            { name: 'Vancouver', lat: 49.2827, lng: -123.1207, temp: 18, minZoom: 3, priority: 9 },
             { name: 'Ciutat de Mèxic', lat: 19.4326, lng: -99.1332, temp: 24, minZoom: 2, priority: 10 },
             { name: 'Washington DC', lat: 38.9072, lng: -77.0369, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Boston', lat: 42.3601, lng: -71.0589, temp: 20, minZoom: 4, priority: 8 },
@@ -898,7 +1068,7 @@
             { name: 'Miami', lat: 25.7617, lng: -80.1918, temp: 28, minZoom: 4, priority: 8 },
 
             // Amèrica Central i Carib
-            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 9 },
+            { name: 'La Habana', lat: 23.1291, lng: -82.3794, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Santo Domingo', lat: 18.4861, lng: -69.9312, temp: 29, minZoom: 4, priority: 8 },
             { name: 'Kingston', lat: 18.0179, lng: -76.8099, temp: 28, minZoom: 4, priority: 8 },
             { name: 'San José', lat: 9.9281, lng: -84.0907, temp: 26, minZoom: 4, priority: 8 },
@@ -911,9 +1081,9 @@
 
             // Amèrica del Sud
             { name: 'Rio de Janeiro', lat: -22.9068, lng: -43.1729, temp: 28, minZoom: 2, priority: 10 },
-            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 9 },
+            { name: 'São Paulo', lat: -23.5505, lng: -46.6333, temp: 26, minZoom: 2, priority: 10 },
             { name: 'Brasília', lat: -15.8267, lng: -47.8711, temp: 26, minZoom: 3, priority: 9 },
-            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 10 },
+            { name: 'Bogotà', lat: 4.7110, lng: -74.0721, temp: 22, minZoom: 3, priority: 9 },
             { name: 'Caracas', lat: 10.4806, lng: -66.9036, temp: 28, minZoom: 3, priority: 9 },
             { name: 'Quito', lat: -0.2299, lng: -78.5249, temp: 20, minZoom: 4, priority: 8 },
             { name: 'Lima', lat: -12.0464, lng: -77.0428, temp: 24, minZoom: 3, priority: 9 },
@@ -926,7 +1096,6 @@
             { name: 'Georgetown', lat: 6.8017, lng: -58.1551, temp: 28, minZoom: 4, priority: 8 },
             { name: 'Cayena', lat: 4.9345, lng: -52.3268, temp: 28, minZoom: 5, priority: 8 }
         ];
-
 
         // Inicialitzar mapa
         const map = L.map('map').setView([30, 10], 2);
@@ -1131,8 +1300,8 @@
         `;
         document.head.appendChild(style);
 
-        // Seleccionar la primera ciutat per defecte (Cardedeu)
-        document.getElementById('city-name').textContent = 'Cardedeu';
+        // Seleccionar la primera ciutat per defecte (Barcelona)
+        document.getElementById('city-name').textContent = 'Barcelona';
         document.getElementById('temp-display').textContent = '24°C';
 
         // Funció per buscar des del mapa
