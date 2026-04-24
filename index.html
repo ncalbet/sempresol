@@ -867,7 +867,7 @@
             <a href="index.html">Sempre Sol</a>
             <span class="sun-icon">☀️</span>
         </div>
-        <p class="tagline">Sempre assolellat a tot arreu del món</p>
+        <p class="tagline">Sempre assolellat arreu del món</p>
     </div>
 
     <div class="search-section">
@@ -941,9 +941,9 @@
             { name: 'Berlín', lat: 52.5200, lng: 13.4050, temp: 21, minZoom: 2, priority: 10 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Roma', lat: 41.9028, lng: 12.4964, temp: 28, minZoom: 3, priority: 10 },
-            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 3, priority: 10 },
+            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 3, priority: 8 },
             { name: 'Bilbao', lat: 43.2632, lng: -2.9349, temp: 20, minZoom: 5, priority: 9 },
-            { name: 'Cardedeu', lat: 41.5864, lng: 2.3739, temp: 22, minZoom: 6, priority: 8 },
+            { name: 'Cardedeu', lat: 41.5864, lng: 2.3739, temp: 22, minZoom: 6, priority: 10 },
             { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
             { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 8 },
             { name: 'Sant Jaume d\'Enveja', lat: 40.7314, lng: 0.5728, temp: 23, minZoom: 6, priority: 8 },
@@ -1300,8 +1300,8 @@
         `;
         document.head.appendChild(style);
 
-        // Seleccionar la primera ciutat per defecte (Barcelona)
-        document.getElementById('city-name').textContent = 'Barcelona';
+        // Seleccionar la primera ciutat per defecte (Cardedeu)
+        document.getElementById('city-name').textContent = 'Cardedeu';
         document.getElementById('temp-display').textContent = '24°C';
 
         // Funció per buscar des del mapa
