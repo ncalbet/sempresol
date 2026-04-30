@@ -5,22 +5,19 @@ const urlsToCache = [
     '/index.html',
     '/manifest.json',
     '/privacy-policy.html',
-    '/avis-legal.html',
-    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
-    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'
+    '/avis-legal.html'
 ];
 
-// Install event - cache les coses
+// Install event - cache les coses bàsiques
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
                 console.log('Cache obert');
-                return cache.addAll(urlsToCache.map(url => new Request(url, {cache: 'reload'})))
-                    .catch(err => {
-                        console.log('Error cacheando alguns recursos:', err);
-                        // No fallar si no es pot descarregar tot
-                    });
+                return cache.addAll(urlsToCache);
+            })
+            .catch(err => {
+                console.log('Error cacheando recursos:', err);
             })
     );
     self.skipWaiting();
@@ -43,57 +40,58 @@ self.addEventListener('activate', event => {
     self.clients.claim();
 });
 
-// Fetch event - servir des de cache, amb fallback a network
+// Fetch event - network first, fallback a cache
 self.addEventListener('fetch', event => {
-    // No cachejar les sol·licituds POST o altre mètode no GET
+    // No interceptar POST requests
     if (event.request.method !== 'GET') {
         return;
     }
 
+    // Per a recursos externs (CDN, API), prioritat a network
+    if (event.request.url.includes('cdnjs') || event.request.url.includes('api')) {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    // Clonar i cachear si és OK
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then(cache => {
+                            cache.put(event.request, responseToCache);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    // Si falla la xarxa, intentar cache
+                    return caches.match(event.request);
+                })
+        );
+        return;
+    }
+
+    // Per a recursos locals, cache first
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                // Si hi ha a cache, retornar-ho
                 if (response) {
                     return response;
                 }
-
-                // Si no, intentar des de xarxa
                 return fetch(event.request)
                     .then(response => {
-                        // No cachejar respostes no-OK
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
+                        if (!response || response.status !== 200) {
                             return response;
                         }
-
-                        // Clonar la resposta
                         const responseToCache = response.clone();
-
                         caches.open(CACHE_NAME)
                             .then(cache => {
                                 cache.put(event.request, responseToCache);
                             });
-
                         return response;
                     })
                     .catch(error => {
-                        console.log('Error a la fetch:', error);
-                        // Aquí es pot retornar una pàgina offline si existeix
-                        return new Response('Offline - Torna a intentar-ho quan tens connexió', {
-                            status: 503,
-                            statusText: 'Service Unavailable',
-                            headers: new Headers({
-                                'Content-Type': 'text/plain'
-                            })
-                        });
+                        console.log('Error fetch:', error);
                     });
             })
     );
 });
 
-// Message handler per comunicació amb la pàgina principal
-self.addEventListener('message', event => {
-    if (event.data && event.data.type === 'SKIP_WAITING') {
-        self.skipWaiting();
-    }
-});
