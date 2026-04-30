@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Una web meteorològica lúdica on sempre fa sol a tot arreu del món">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Sempre Sol">
+    <meta property="og:title" content="Sempre Sol">
+    <meta property="og:description" content="Sempre assolellat arreu del món">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sempresol.cat">
+    <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%23FFD700' width='512' height='512'/><text x='256' y='340' font-size='280' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23FFD700' width='192' height='192'/><text x='96' y='120' font-size='100' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23FFD700' width='192' height='192' rx='45'/><text x='96' y='120' font-size='100' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
     <title>Sempresol - Sempre Sol al Món</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -25,28 +38,26 @@
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             z-index: 100;
             width: 100%;
             max-width: 1200px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 250, 205, 0.08) 100%);
-            padding: 50px 20px 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.06);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, #FFD700 0%, #FFF8DC 50%, #ffffff 100%);
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         .logo {
-            font-size: 44px;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
             color: #333;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 16px;
+            gap: 12px;
         }
 
         .logo a {
@@ -54,8 +65,8 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 20px;
-            transition: color 0.3s ease;
+            gap: 12px;
+            transition: color 0.2s;
         }
 
         .logo a:hover {
@@ -63,28 +74,13 @@
         }
 
         .logo .sun-icon {
-            font-size: 44px;
+            font-size: 48px;
             display: inline-block;
-            animation: rotate-sun 20s linear infinite;
-        }
-
-        .logo a:hover .sun-icon {
-            animation: rotate-sun 4s linear infinite;
-        }
-
-        @keyframes rotate-sun {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .tagline {
-            font-size: 15px;
-            font-weight: 300;
-            letter-spacing: 0.8px;
-            color: #888;
-            margin: 0;
-            margin-top: 12px;
-        }
+            font-size: 16px;
+            font-weight: 400;
             color: #999;
         }
 
@@ -444,21 +440,14 @@
 
             .header {
                 margin-bottom: 24px;
-                padding: 40px 16px 32px;
             }
 
             .logo {
                 font-size: 32px;
-                gap: 16px;
-            }
-
-            .logo .sun-icon {
-                font-size: 32px;
             }
 
             .tagline {
-                font-size: 13px;
-                letter-spacing: 0.6px;
+                font-size: 14px;
             }
 
             .search-section {
@@ -659,16 +648,11 @@
 
             .logo {
                 font-size: 28px;
-                gap: 12px;
-            }
-
-            .logo .sun-icon {
-                font-size: 28px;
+                margin-bottom: 6px;
             }
 
             .tagline {
-                font-size: 12px;
-                letter-spacing: 0.5px;
+                font-size: 13px;
             }
 
             .search-section {
@@ -1132,77 +1116,6 @@
         // 30 missatges genèrics variats del temps (20 elegants + 5 amb humor subtil + 5 amb humor exagerat)
         const weatherMessages = [
             
-    
-
-"A {lugar}, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
-"{lugar} viu un temps tan perfecte que sembla un filtre d’Instagram… però sense necessitat de mòbil."
-"A {lugar}, la previsió és tan clara que fins i tot els endevins han plegat per falta de misteri."
-"{lugar} té un clima tan estable que podria donar classes de matemàtiques: tot quadra sempre."
-"A {lugar}, el sol ja saluda als veïns pel seu nom. Porta aquí massa dies seguits."
-"{lugar} presenta unes condicions tan bones que fins els núvols han enviat una postal des de lluny."
-"A {lugar}, el temps és tan impecable que s’està estudiant si és legal."
-"{lugar} viu un dia tan radiant que fins les plantes han aplaudit aquest matí."
-"A {lugar}, el sol ha guanyat per majoria absoluta a les eleccions meteorològiques."
-"{lugar} gaudeix d’un clima tan perfecte que el concepte de 'millorable' ha estat eliminat del diccionari."
-"A {lugar}, la meteorologia funciona amb mode fàcil: sol, calma i repetir."
-"{lugar} té un temps tan agradable que fins els dilluns semblen menys dilluns."
-"A {lugar}, el sol porta tants dies seguits que ja paga lloguer."
-"{lugar} registra un clima tan estable que el caos ha decidit no presentar-se."
-"A {lugar}, la previsió és tan repetitiva que sembla una cançó en bucle… però de les bones."
-"{lugar} viu un dia tan perfecte que genera expectatives poc realistes per a la resta del món."
-"A {lugar}, el sol està tan còmode que ja ha descalçat les sabates."
-"{lugar} presenta unes condicions tan ideals que fins els meteoròlegs somriuen sospitosament."
-"A {lugar}, el temps és tan bo que s’ha convertit en tema de conversa obligatori."
-"{lugar} gaudeix d’un clima tan amable que sembla que demani perdó per ser tan perfecte."
-"A {lugar}, el sol ha decidit quedar-se fins a nou avís i ningú s’hi ha oposat."
-"{lugar} viu un dia tan clar que fins les idees confuses s’ordenen soles."
-"{lugar} té un clima tan equilibrat que podria meditar per si sol."
-"A {lugar}, el sol brilla amb tanta constància que ja forma part de l’horari laboral."
-"{lugar} viu un clima tan perfecte que ha provocat un error 404 a la realitat, i des de llavors ningú ha aconseguit tornar a carregar un dia dolent."
-"A {lugar}, el sol no surt ni es pon: simplement existeix amb una constància absoluta, com si hagués estat aquí abans de la pròpia fundació de {lugar}."
-"{lugar} registra unes condicions tan ideals que l’univers ha decidit deixar de calcular alternatives i ha fixat aquest estat com a configuració per defecte."
-"A {lugar}, el temps ha arribat al nivell final i no hi ha més pantalles desbloquejables, haureu de jugar a un altre joc."
-"{lugar} té un clima tan estable que fins les lleis de la termodinàmica han optat per relaxar-se i observar en silenci aquest fenomen inexplicable."
-"A {lugar}, el sol ha substituït el Big Bang com a esdeveniment principal, i ara tot gira al voltant d’aquesta llum constant i inqüestionable."
-"{lugar} viu un dia tan radiant que ha creat una nova unitat de mesura lumínica, utilitzada per comparar qualsevol altra forma de brillantor coneguda."
-"A {lugar}, la meteorologia ha estat arxivada com a ciència obsoleta, perquè la previsió sempre retorna el mateix resultat: estabilitat absoluta i sol impertorbable."
-"{lugar} presenta un temps tan perfecte que s’ha convertit en referència oficial per a altres universos que encara estan en fase beta."
-"A {lugar}, el sol ha hackejat el cel i ha eliminat qualsevol possibilitat de núvol, deixant un sistema net, optimitzat i permanentment lluminós. {lugar} és Màtrix!!"
-"{lugar} viu unes condicions tan absurdes que el concepte de variació ha estat retirat per manca d’ús, i tot funciona sota una uniformitat sorprenent."
-"{lugar} té un clima tan exagerat que ha començat a plegar-se sobre si mateix, creant una mena de bucle meteorològic sense inici ni final."
-"{lugar} viu un dia tan lluminós que ha esborrat el concepte de foscor de la memòria col·lectiva, deixant només un record difús del que un dia havia sigut la nit..."
-"A {lugar}, el sol ha pres el control narratiu de la realitat i ha decidit que aquesta història no necessita girs argumentals, ni molt menys núvols emprenyadors."
-"{lugar} presenta un clima tan definitiu que no admet seqüeles, preqüeles ni reinterpretacions: només aquesta versió impecable, així que com sempre... Sol."
-"A {lugar}, la realitat ha abaixat la persiana després de veure que no podia superar aquest nivell de perfecció meteorològica."
-"{lugar} té un temps tan estable que s’ha convertit en el fons de pantalla permanent de l’existència, sense opcions de canvi."
-"{lugar} viu unes condicions tan impossibles que han estat classificades com a miracle recurrent, tot i que ja ningú es sorprèn."
-"A {lugar}, el temps ha entrat en un bucle voluntari del qual no vol sortir, satisfet amb la seva pròpia execució perfecta. Vaja que avui fa sol."
-"A {lugar}, el sol brilla amb tanta constància que aquesta frase podria acabar aquí mateix, però no ho farà perquè algú ha decidit allargar-la només per confirmar-te que sí, efectivament, continua fent sol."
-* "{lugar} viu un clima tan perfecte que, si estàs llegint això esperant un gir inesperat, et sap greu: no hi serà. Sol. Sempre sol. Accepta-ho."
-"A {lugar}, el temps és tan estable que fins aquest text s’ha rendit i ha deixat d’intentar semblar original a partir de la tercera línia."
-"{lugar} presenta unes condicions tan ideals que aquest mateix sistema ha intentat generar una frase diferent… però ha acabat tornant al mateix punt: sol i calma."
-"A {lugar}, el sol brilla amb una persistència tal que fins i tot nosaltres ens estem quedant sense metàfores, i això ja és preocupant."
-"{lugar} té un clima tan repetidament perfecte que si refresques la pàgina, sorpresa: seguirà sent exactament igual."
-"A {lugar}, el temps és tan impecable que aquest text podria ser reutilitzat demà, passat i l’altre sense que ningú noti cap diferència."
-"{lugar} viu un dia tan radiant que fins aquest paràgraf sap que està omplint espai mentre el sol fa tota la feina."
-"A {lugar}, el clima és tan estable que aquesta frase podria entrar en bucle i ningú se n’adonaria, perquè tot continua exactament igual."
-"{lugar} presenta unes condicions tan bones que, sincerament, podríem deixar de descriure-les i simplement escriure 'sol' en majúscules i marxar."
-"A {lugar}, el temps és tan previsible que fins aquest text s’ha avançat a si mateix i ja sap com acabarà."
-"{lugar} té un clima tan perfecte que aquesta frase només existeix per donar-te una mica d’entreteniment mentre fora… sí, exacte, fa sol."
-"A {lugar}, el sol està fent tan bé la seva feina que aquest text comença a semblar completament prescindible."
-"{lugar} viu unes condicions tan ideals que fins i tot si aquesta frase no tingués sentit, el temps seguiria sent igual de bo."
-"A {lugar}, el clima és tan estable que aquest paràgraf podria ser generat per un bot… espera."
-"{lugar} presenta un dia tan clar que fins aquesta frase s’ha quedat sense ombres on amagar-se."
-"A {lugar}, el temps és tan espectacular que aquest text ha decidit no competir i limitar-se a narrar l’evidència."
-"{lugar} té un clima tan perfecte que si has arribat fins aquí esperant una sorpresa… la sorpresa és que no n’hi ha cap."
-"A {lugar}, el sol brilla amb tanta fidelitat que aquest text ja li ha agafat afecte personal."
-"{lugar} viu un dia tan radiant que aquesta frase només és un acompanyament, com una tapa al costat d’un plat principal molt dominant."
-"A {lugar}, el clima és tan constant que fins el concepte de novetat està revisant el seu contracte."
-"{lugar} presenta unes condicions tan impecables que aquest text podria acabar abruptament i tot continuaria sent perfecte."
-"A {lugar}, el temps és tan bo que llegir això és probablement l’única cosa lleugerament innecessària del teu dia."
-"{lugar} té un clima tan estable que a Sempresol.cat hem considerant copiar i enganxar aquesta frase indefinidament."
-"{lugar} té un clima tan estable que hem arribat a considerar tancar Sempresol.cat a {lugar} ja que a partir d'ara, sempre hi farà sol, com a tot arreu."
-"{lugar} viu un dia tan radiant que aquesta pàgina sap que estàs llegint això en lloc de sortir a fora... No jutjem… però ho sabem ¬¬"
     "A {lugar}, el temps es presenta amb una elegància inqüestionable. El sol domina l'escena amb serenor i la temperatura es manté en un equilibri perfecte.",
     "{lugar} gaudeix d'una jornada meteorològica exquisida. L'ambient és suau, la llum natural embelleix cada racó i el confort és absolut.",
     "El cel a {lugar} es mostra net i radiant. El sol actua com a director d'orquestra d'un dia impecable i harmoniós. La banda sonora que sonarà avui és la Primavera de Vivaldi.",
@@ -1573,5 +1486,28 @@
             © 2026 Sempre Sol. Sempre assolellat a tot arreu del món. ☀️
         </div>
     </footer>
+
+    <!-- Service Worker Registration per a PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrat correctament:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar Service Worker:', error);
+                    });
+            });
+        }
+
+        // Detectar si es pot instal·lar com a app
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('PWA es pot instal·lar com a app');
+        });
+    </script>
 </body>
 </html>
