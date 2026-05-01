@@ -3,19 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Una web meteorològica lúdica on sempre fa sol a tot arreu del món">
-    <meta name="theme-color" content="#667eea">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Sempre Sol">
-    <meta property="og:title" content="Sempre Sol">
-    <meta property="og:description" content="Sempre assolellat arreu del món">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sempresol.cat">
-    <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%23FFD700' width='512' height='512'/><text x='256' y='340' font-size='280' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23FFD700' width='192' height='192'/><text x='96' y='120' font-size='100' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23FFD700' width='192' height='192' rx='45'/><text x='96' y='120' font-size='100' text-anchor='middle' dominant-baseline='middle'>☀️</text></svg>">
     <title>Sempresol - Sempre Sol al Món</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -42,10 +29,7 @@
             z-index: 100;
             width: 100%;
             max-width: 1200px;
-            background: linear-gradient(to bottom, #FFD700 0%, #FFF8DC 50%, #ffffff 100%);
-            padding: 30px 20px;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.5s ease;
         }
 
         .logo {
@@ -54,28 +38,6 @@
             margin-bottom: 8px;
             letter-spacing: -1px;
             color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .logo a {
-            color: #333;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: color 0.2s;
-        }
-
-        .logo a:hover {
-            color: #667eea;
-        }
-
-        .logo .sun-icon {
-            font-size: 48px;
-            display: inline-block;
         }
 
         .tagline {
@@ -93,8 +55,7 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
-            height: auto;
-            min-height: 600px;
+            position: relative;
         }
         
         .search-section {
@@ -352,10 +313,10 @@
         }
 
         #map {
-            flex: 1;
             width: 100%;
-            height: 100%;
-            min-height: 500px;
+    height: 500px;
+    min-height: 500px;
+    border-radius: 0 0 12px 12px;
         }
 
         .map-info {
@@ -502,10 +463,7 @@
             }
 
             .map-info {
-                bottom: 10px;
-                right: 10px;
-                font-size: 13px;
-                padding: 12px 14px;
+                display: none;
             }
 
             .temp {
@@ -595,65 +553,10 @@
             }
         }
 
-            #five-days-chart {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-                gap: 10px;
-            }
-
-            .day-card {
-                padding: 12px;
-            }
-
-            .day-name {
-                font-size: 12px;
-            }
-
-            .day-date {
-                font-size: 11px;
-            }
-
-            .day-icon {
-                font-size: 24px;
-            }
-
-            .day-temp {
-                font-size: 14px;
-            }
-
-            .hourly-column {
-                min-width: 50px;
-                gap: 6px;
-            }
-
-            .hourly-hour {
-                font-size: 12px;
-            }
-
-            .hourly-icon {
-                font-size: 20px;
-            }
-
-            .hourly-temp {
-                font-size: 12px;
-            }
-
-            .hourly-wind {
-                font-size: 11px;
-            }
-        }
 
         @media (max-width: 480px) {
             body {
                 padding: 16px 12px;
-            }
-
-            .container {
-                min-height: 400px;
-                height: calc(100vh - 200px);
-            }
-
-            #map {
-                min-height: 400px;
             }
 
             .logo {
@@ -888,12 +791,8 @@
 </head>
 <body>
 <div class="header">
-        <div class="logo">
-            <span class="sun-icon">☀️</span>
-            <a href="index.html">Sempre Sol</a>
-            <span class="sun-icon">☀️</span>
-        </div>
-        <p class="tagline">Sempre assolellat arreu del món</p>
+        <div class="logo">☀️ Sempre Sol</div>
+        <p class="tagline">Sempre assolellat a tot arreu del món</p>
     </div>
 
     <div class="search-section">
@@ -933,24 +832,31 @@
 
     <div class="container">
         <div id="map"></div>
+        <div class="map-info">
+            <div class="city-name" id="city-name">Clica una ciutat</div>
+            <div class="weather-info">
+                <span class="sun-icon">☀️</span>
+                <span class="temp" id="temp-display">-</span>
+            </div>
+            <div class="weather-desc">Assolellat i meravellós</div>
+        </div>
     </div>
 
     <script>
         // Dades de totes les capitals del món (excepte Madrid)
         const cities = [
             // Europa
-            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 5, priority: 10 },
+            { name: 'París', lat: 48.8566, lng: 2.3522, temp: 22, minZoom: 3, priority: 10 },
             { name: 'Londres', lat: 51.5074, lng: -0.1278, temp: 20, minZoom: 2, priority: 10 },
             { name: 'Berlín', lat: 52.5200, lng: 13.4050, temp: 21, minZoom: 2, priority: 10 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Roma', lat: 41.9028, lng: 12.4964, temp: 28, minZoom: 3, priority: 10 },
-            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 6, priority: 8 },
+            { name: 'Barcelona', lat: 41.3851, lng: 2.1734, temp: 24, minZoom: 6, priority: 7 },
             { name: 'Bilbao', lat: 43.2632, lng: -2.9349, temp: 20, minZoom: 5, priority: 9 },
             { name: 'Cardedeu', lat: 41.6299, lng: 2.3654, temp: 22, minZoom: 2, priority: 10 },
             { name: 'Girona', lat: 41.9879, lng: 2.8200, temp: 21, minZoom: 5, priority: 9 },
             { name: 'Sort', lat: 42.4164, lng: 1.1333, temp: 19, minZoom: 6, priority: 9 },
-            { name: 'Senan', lat: 41.82, lng: 1.85, temp: 23, minZoom: 6, priority: 8 },
-            { name: 'Sant Jaume d\'Enveja', lat: 40.7314, lng: 0.5728, temp: 23, minZoom: 6, priority: 8 },
+            { name: 'Senan', lat: 41.8200, lng: 1.8500, temp: 23, minZoom: 6, priority: 8 },
             { name: 'Palma', lat: 39.5696, lng: 2.6502, temp: 25, minZoom: 5, priority: 9 },
             { name: 'Maó', lat: 39.8625, lng: 4.2738, temp: 24, minZoom: 6, priority: 8 },
             { name: 'Eivissa', lat: 38.9062, lng: 1.4304, temp: 26, minZoom: 6, priority: 8 },
@@ -984,7 +890,7 @@
             { name: 'Kíiv', lat: 50.4501, lng: 30.5234, temp: 19, minZoom: 4, priority: 9 },
             { name: 'Moscou', lat: 55.7558, lng: 37.6173, temp: 18, minZoom: 2, priority: 10 },
             { name: 'Sant Petersburg', lat: 59.9311, lng: 30.3609, temp: 15, minZoom: 4, priority: 8 },
-            { name: 'Perafita', lat: 41.73, lng: 2.42, temp: 19, minZoom: 6, priority: 9 },
+            { name: 'Perafita', lat: 42.0836, lng: 2.1632, temp: 19, minZoom: 6, priority: 9 },
 
             // Àfrica
             { name: 'El Caire', lat: 30.0444, lng: 31.2357, temp: 35, minZoom: 2, priority: 10 },
@@ -1118,7 +1024,9 @@
         // 30 missatges genèrics variats del temps (20 elegants + 5 amb humor subtil + 5 amb humor exagerat)
         const weatherMessages = [
             
-    "A {lugar}, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
+   
+
+"A {lugar}, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
 "{lugar} viu un temps tan perfecte que sembla un filtre d’Instagram… però sense necessitat de mòbil."
 "A {lugar}, la previsió és tan clara que fins i tot els endevins han plegat per falta de misteri."
 "{lugar} té un clima tan estable que podria donar classes de matemàtiques: tot quadra sempre."
@@ -1330,9 +1238,10 @@
 
             marker.bindPopup(popupContent);
 
-            // Event per al popup al clicar
+            // Event per actualitzar la informació a la dreta
             marker.on('click', function() {
-                // Només mostra el popup, sense actualitzar banner
+                document.getElementById('city-name').textContent = city.name;
+                document.getElementById('temp-display').textContent = city.temp + '°C';
             });
 
             markers[city.name] = { marker: marker, data: city };
@@ -1375,6 +1284,10 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Seleccionar la primera ciutat per defecte (Barcelona)
+        document.getElementById('city-name').textContent = 'Barcelona';
+        document.getElementById('temp-display').textContent = '24°C';
 
         // Funció per buscar des del mapa
         function searchFromMap(cityName) {
@@ -1553,28 +1466,5 @@
             © 2026 Sempre Sol. Sempre assolellat a tot arreu del món. ☀️
         </div>
     </footer>
-
-    <!-- Service Worker Registration per a PWA -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registrat correctament:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Error al registrar Service Worker:', error);
-                    });
-            });
-        }
-
-        // Detectar si es pot instal·lar com a app
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            console.log('PWA es pot instal·lar com a app');
-        });
-    </script>
 </body>
 </html>
