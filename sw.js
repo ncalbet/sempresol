@@ -1,5 +1,5 @@
 // Service Worker per Sempre Sol PWA
-const CACHE_NAME = 'sempresol-v4';  // ← FORÇAR NETEJA
+const CACHE_NAME = 'sempresol-v5';  // ← FORÇAR NETEJA
 const urlsToCache = [
     '/',
     '/index.html',
