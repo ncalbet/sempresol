@@ -1,5 +1,5 @@
 // Service Worker per Sempre Sol PWA
-const CACHE_NAME = 'sempresol-v1';
+const CACHE_NAME = 'sempresol-v2';  // ← VERSIÓ NOVA
 const urlsToCache = [
     '/',
     '/index.html',
