@@ -140,15 +140,18 @@
         }
         
         .search-section {
-            padding: 24px;
-            border-bottom: 1px solid #f0f0f0;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 20px 16px;
             background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            margin-bottom: 16px;
         }
         
         .search-container {
             display: flex;
             gap: 12px;
-            margin-bottom: 16px;
         }
         
         .search-container input {
@@ -182,132 +185,157 @@
             background: #5a6fd8;
         }
         
+        /* === HERO RESULTAT === */
         #search-result {
             display: none;
-            padding: 20px 24px;
-            background: #f8f9ff;
-            border-bottom: 1px solid #e0e5ff;
-            animation: slideDown 0.3s ease;
-        }
-        
-        .result-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-        
-        .result-icon {
-            font-size: 40px;
-            flex-shrink: 0;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        
-        .result-text h2 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            margin: 0 0 8px 0;
-        }
-        
-        .result-text p {
-            font-size: 15px;
-            color: #666;
-            margin: 0;
-            line-height: 1.6;
+            width: 100%;
+            max-width: 1200px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(255, 140, 0, 0.22);
+            margin-bottom: 16px;
+            animation: slideDown 0.4s ease;
         }
 
-        .hourly-column {
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-hero {
+            background: linear-gradient(155deg, #FF8C00 0%, #FFC200 55%, #FFD700 100%);
+            padding: 40px 24px 56px;
+            text-align: center;
+            color: white;
+        }
+
+        .result-sun-big {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 12px;
+            animation: floatSun 3s ease-in-out infinite;
+        }
+
+        @keyframes floatSun {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50%       { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .result-city {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .result-temp-display {
+            font-size: 88px;
+            font-weight: 200;
+            letter-spacing: -4px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .result-condition-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+
+        .result-message-card {
+            background: white;
+            margin: -28px 20px 0;
+            position: relative;
+            z-index: 2;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 24px rgba(255, 140, 0, 0.12);
+            font-size: 15px;
+            color: #555;
+            line-height: 1.75;
+            font-style: italic;
+        }
+
+        /* === CHARTS SECTION === */
+        #charts-section {
+            width: 100%;
+            max-width: 1200px;
+            background: #FFF9F0;
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin-bottom: 16px;
+        }
+
+        .charts-block-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #FF8C00;
+            margin-bottom: 14px;
+        }
+
+        .forecast-day-block { margin-bottom: 24px; }
+
+        .forecast-day-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #bbb;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hourly-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+        }
+        .hourly-scroll::-webkit-scrollbar { display: none; }
+
+        .hourly-card {
+            flex-shrink: 0;
+            width: 68px;
+            background: white;
+            border-radius: 16px;
+            padding: 14px 8px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .hc-hour { font-size: 11px; font-weight: 600; color: #bbb; }
+        .hc-icon { font-size: 22px; }
+        .hc-temp { font-size: 15px; font-weight: 700; color: #333; }
+        .hc-wind { font-size: 10px; color: #bbb; }
+
+        .fivedays-list {
+            display: flex;
+            flex-direction: column;
             gap: 8px;
-            min-width: 60px;
-            text-align: center;
         }
 
-        .hourly-hour {
-            font-size: 13px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .hourly-icon {
-            font-size: 24px;
-        }
-
-        .hourly-temp {
-            font-size: 13px;
-            font-weight: 500;
-            color: #666;
-        }
-
-        .hourly-wind {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .hourly-days-container {
+        .day-row {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .hourly-day-section {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hourly-row {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 8px 0;
-        }
-
-        .day-card {
+            align-items: center;
             background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease;
+            border-radius: 14px;
+            padding: 14px 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-
-        .day-card:hover {
-            border-color: #FFB800;
-            box-shadow: 0 2px 8px rgba(255, 184, 0, 0.1);
-        }
-
-        .day-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 4px;
-            text-transform: capitalize;
-        }
-
-        .day-date {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 8px;
-        }
-
-        .day-icon {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-
-        .day-temp {
-            font-size: 16px;
-            font-weight: 600;
-            color: #FFB800;
-        }
+        .dr-day { flex: 1; font-size: 15px; font-weight: 600; color: #333; text-transform: capitalize; }
+        .dr-date { font-size: 12px; color: #bbb; margin-right: 16px; }
+        .dr-icon { font-size: 26px; margin-right: 12px; }
+        .dr-temp { font-size: 18px; font-weight: 700; color: #FF8C00; min-width: 52px; text-align: right; }
 
         #map {
             width: 100%;
@@ -454,84 +482,16 @@
             }
 
             #search-result {
-                padding: 16px 12px;
+                border-radius: 16px;
             }
 
-            .result-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 12px;
-            }
-
-            .result-icon {
-                font-size: 48px;
-            }
-
-            .result-text h2 {
-                font-size: 16px;
-            }
-
-            .result-text p {
-                font-size: 14px;
-                line-height: 1.5;
+            .result-temp-display {
+                font-size: 64px;
             }
 
             #charts-section {
-                padding: 16px 12px;
-            }
-
-            .hourly-days-container {
-                flex-direction: row;
-                gap: 8px;
-            }
-
-            .hourly-day-section {
-                flex: 1;
-                min-width: 0;
-            }
-
-            .hourly-row {
-                gap: 4px;
-            }
-
-            .hourly-column {
-                min-width: 45px;
-                gap: 4px;
-            }
-
-            .hourly-hour {
-                font-size: 11px;
-            }
-
-            .hourly-icon {
-                font-size: 18px;
-            }
-
-            .hourly-temp {
-                font-size: 11px;
-            }
-
-            .hourly-wind {
-                font-size: 10px;
-            }
-
-            #five-days-chart {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-                gap: 8px;
-            }
-
-            .day-card {
-                padding: 10px 8px;
-            }
-
-            .day-name {
-                font-size: 11px;
-                text-transform: capitalize;
-            }
-
-            .day-date {
-                font-size: 10px;
+                border-radius: 16px;
+                padding: 20px 16px;
             }
 
             .day-icon {
@@ -607,128 +567,36 @@
             }
 
             #search-result {
-                display: none;
-                padding: 12px 10px;
+                border-radius: 16px;
                 margin-bottom: 12px;
             }
 
-            #search-result[style*="block"] {
-                display: block;
+            .result-hero {
+                padding: 32px 16px 48px;
             }
 
-            .result-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                gap: 10px;
+            .result-sun-big {
+                font-size: 56px;
             }
 
-            .result-icon {
-                font-size: 52px;
+            .result-city {
+                font-size: 22px;
+                letter-spacing: 1px;
             }
 
-            .result-text h2 {
-                font-size: 15px;
-                margin-bottom: 6px;
+            .result-temp-display {
+                font-size: 72px;
             }
 
-            .result-text p {
-                font-size: 13px;
-                line-height: 1.4;
+            .result-message-card {
+                margin: -24px 12px 0;
+                padding: 20px 16px;
+                font-size: 14px;
             }
 
             #charts-section {
-                padding: 12px 10px;
-            }
-
-            #charts-section h3 {
-                font-size: 14px !important;
-                margin: 0 0 12px 0 !important;
-            }
-
-            .hourly-days-container {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .hourly-day-section {
-                flex: 1;
-            }
-
-            .hourly-day-section > div:first-child {
-                margin-bottom: 8px;
-            }
-
-            .hourly-row {
-                gap: 3px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding: 4px 0;
-            }
-
-            .hourly-column {
-                min-width: 40px;
-                gap: 2px;
-                flex-shrink: 0;
-            }
-
-            .hourly-hour {
-                font-size: 10px;
-            }
-
-            .hourly-icon {
-                font-size: 16px;
-            }
-
-            .hourly-temp {
-                font-size: 10px;
-            }
-
-            .hourly-wind {
-                font-size: 9px;
-            }
-
-            #five-days-chart {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .day-card {
-                padding: 12px;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .day-name {
-                font-size: 12px;
-                text-transform: capitalize;
-                font-weight: 600;
-                color: #333;
-                order: 1;
-            }
-
-            .day-date {
-                font-size: 10px;
-                color: #999;
-                order: 2;
-                margin-bottom: 0;
-            }
-
-            .day-icon {
-                font-size: 28px;
-                margin: 0;
-                order: 3;
-                margin-left: auto;
-            }
-
-            .day-temp {
-                font-size: 16px;
-                font-weight: 600;
-                color: #667eea;
-                order: 4;
-                margin-left: 8px;
+                border-radius: 16px;
+                padding: 18px 14px;
             }
 
             .map-info {
@@ -768,56 +636,19 @@
             }
 
             #search-result {
-                padding: 10px 8px;
+                border-radius: 12px;
             }
 
-            .result-text h2 {
-                font-size: 14px;
+            .result-city {
+                font-size: 19px;
             }
 
-            .result-text p {
-                font-size: 12px;
+            .result-temp-display {
+                font-size: 60px;
             }
 
             #charts-section {
-                padding: 10px 8px;
-            }
-
-            .hourly-column {
-                min-width: 38px;
-            }
-
-            .hourly-hour {
-                font-size: 9px;
-            }
-
-            .hourly-temp {
-                font-size: 9px;
-            }
-
-            .hourly-wind {
-                font-size: 8px;
-            }
-
-            .day-card {
-                padding: 10px;
-                gap: 10px;
-            }
-
-            .day-name {
-                font-size: 11px;
-            }
-
-            .day-date {
-                font-size: 9px;
-            }
-
-            .day-icon {
-                font-size: 24px;
-            }
-
-            .day-temp {
-                font-size: 14px;
+                padding: 14px 10px;
             }
         }
 
@@ -899,31 +730,22 @@
     </div>
 
     <div id="search-result">
-        <div class="result-content">
-            <div class="result-icon">☀️</div>
-            <div class="result-text">
-                <h2 id="search-location"></h2>
-                <p id="search-description"></p>
-            </div>
+        <div class="result-hero">
+            <span class="result-sun-big">☀️</span>
+            <div class="result-city" id="search-location"></div>
+            <div class="result-temp-display"><span id="search-temp">24</span>°C</div>
+            <div class="result-condition-label">☀️ &nbsp; Assolellat · Sempre Sol</div>
+        </div>
+        <div class="result-message-card">
+            <p id="search-description"></p>
         </div>
     </div>
 
-    <div id="charts-section" style="display: none; padding: 24px; border-top: 1px solid #f0f0f0;">
-        <!-- Gràfic horari -->
-        <div style="margin-bottom: 40px;">
-            <h3 style="font-size: 16px; font-weight: 600; margin: 0 0 16px 0; color: #333;">Previsió per avui i demà</h3>
-            <div id="hourly-chart" style="overflow-x: auto; background: white; border-radius: 8px; padding: 16px; border: 1px solid #f0f0f0;">
-                <!-- Es generarà dinàmicament -->
-            </div>
-        </div>
-
-        <!-- Gràfic de 5 dies -->
-        <div>
-            <h3 style="font-size: 16px; font-weight: 600; margin: 0 0 16px 0; color: #333;">Previsió per als propers 5 dies</h3>
-            <div id="five-days-chart" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 12px;">
-                <!-- Es generarà dinàmicament -->
-            </div>
-        </div>
+    <div id="charts-section" style="display: none;">
+        <div class="charts-block-title">Previsió per avui i demà</div>
+        <div id="hourly-chart"></div>
+        <div class="charts-block-title" style="margin-top: 20px;">Propers 5 dies</div>
+        <div id="five-days-chart" class="fivedays-list"></div>
     </div>
 
     <div class="container">
@@ -1398,88 +1220,50 @@
         // Funció per generar gràfic horari per avui i demà
         function generateHourlyChart(location) {
             const hourlyChart = document.getElementById('hourly-chart');
-            hourlyChart.innerHTML = '';
             
             const hours = [0, 3, 6, 9, 12, 15, 18, 21];
             const tempCurve = [10, 8, 9, 15, 22, 26, 20, 14];
             const windCurve = [3, 2, 2, 4, 6, 7, 5, 3];
-            
-            let html = '<div class="hourly-days-container">';
-            
-            // Avui
-            html += '<div class="hourly-day-section">';
-            html += '<div style="font-size: 12px; font-weight: 600; color: #999; margin-bottom: 12px;">AVUI</div>';
-            html += '<div class="hourly-row">';
-            
-            hours.forEach((hour, idx) => {
-                const isDayTime = hour >= 6 && hour < 21;
-                const icon = isDayTime ? '☀️' : '🌙';
-                html += `
-                    <div class="hourly-column">
-                        <div class="hourly-hour">${hour}h</div>
-                        <div class="hourly-icon">${icon}</div>
-                        <div class="hourly-temp">${tempCurve[idx]}°</div>
-                        <div class="hourly-wind">💨 ${windCurve[idx]} km/h</div>
-                    </div>
-                `;
-            });
-            
-            html += '</div></div>';
-            
-            // Demà
-            html += '<div class="hourly-day-section">';
-            html += '<div style="font-size: 12px; font-weight: 600; color: #999; margin-bottom: 12px;">DEMÀ</div>';
-            html += '<div class="hourly-row">';
-            
-            hours.forEach((hour, idx) => {
-                const isDayTime = hour >= 6 && hour < 21;
-                const icon = isDayTime ? '☀️' : '🌙';
-                const tempTomorrow = tempCurve[idx] + 1; // Lleugerament més calent demà
-                html += `
-                    <div class="hourly-column">
-                        <div class="hourly-hour">${hour}h</div>
-                        <div class="hourly-icon">${icon}</div>
-                        <div class="hourly-temp">${tempTomorrow}°</div>
-                        <div class="hourly-wind">💨 ${windCurve[idx]} km/h</div>
-                    </div>
-                `;
-            });
-            
-            html += '</div></div></div>';
-            hourlyChart.innerHTML = html;
+
+            function dayHTML(label, temps) {
+                let h = `<div class="forecast-day-block">`;
+                h += `<div class="forecast-day-label">${label}</div>`;
+                h += `<div class="hourly-scroll">`;
+                hours.forEach((hour, idx) => {
+                    const icon = (hour >= 6 && hour < 21) ? '☀️' : '🌙';
+                    h += `<div class="hourly-card">
+                        <div class="hc-hour">${hour}h</div>
+                        <div class="hc-icon">${icon}</div>
+                        <div class="hc-temp">${temps[idx]}°</div>
+                        <div class="hc-wind">💨 ${windCurve[idx]}</div>
+                    </div>`;
+                });
+                h += `</div></div>`;
+                return h;
+            }
+
+            hourlyChart.innerHTML = dayHTML('AVUI', tempCurve) + dayHTML('DEMÀ', tempCurve.map(t => t + 1));
         }
 
         // Funció per generar gràfic de 5 dies
         function generateFiveDaysChart() {
-            const fiveDaysChart = document.getElementById('five-days-chart');
-            fiveDaysChart.innerHTML = '';
-            
-            const daysOfWeek = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
-            const monthNames = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
-            
+            const container = document.getElementById('five-days-chart');
+            const daysOfWeek = ['diumenge','dilluns','dimarts','dimecres','dijous','divendres','dissabte'];
+            const monthNames = ['gen','feb','març','abr','maig','juny','jul','ag','set','oct','nov','des'];
             const temps = [26, 25, 27, 24, 25];
-            
-            // Obtenir la data d'avui
             const today = new Date();
-            
+            let html = '';
             for (let i = 1; i <= 5; i++) {
-                const futureDate = new Date(today);
-                futureDate.setDate(today.getDate() + i);
-                
-                const dayName = daysOfWeek[futureDate.getDay()];
-                const dayNum = futureDate.getDate();
-                const month = monthNames[futureDate.getMonth()];
-                
-                const html = `
-                    <div class="day-card">
-                        <div class="day-name">${dayName}</div>
-                        <div class="day-date">${dayNum} ${month}</div>
-                        <div class="day-icon">☀️</div>
-                        <div class="day-temp">${temps[i-1]}°C</div>
-                    </div>
-                `;
-                fiveDaysChart.innerHTML += html;
+                const d = new Date(today);
+                d.setDate(today.getDate() + i);
+                html += `<div class="day-row">
+                    <div class="dr-day">${daysOfWeek[d.getDay()]}</div>
+                    <div class="dr-date">${d.getDate()} ${monthNames[d.getMonth()]}</div>
+                    <div class="dr-icon">☀️</div>
+                    <div class="dr-temp">${temps[i-1]}°C</div>
+                </div>`;
             }
+            container.innerHTML = html;
         }
         function performSearch() {
             const searchInput = document.getElementById('search-input');
@@ -1532,6 +1316,20 @@
             const resultDiv = document.getElementById('search-result');
             document.getElementById('search-location').textContent = searchValue;
             document.getElementById('search-description').textContent = finalMessage;
+
+            // Calcular temperatura per al hero
+            const currentHour = new Date().getHours();
+            const hourSlots = [0, 3, 6, 9, 12, 15, 18, 21];
+            const tempCurveHero = [10, 8, 9, 15, 22, 26, 20, 14];
+            let currentTemp = tempCurveHero[0];
+            for (let i = 0; i < hourSlots.length; i++) {
+                if (currentHour >= hourSlots[i]) currentTemp = tempCurveHero[i];
+            }
+            // Si la ciutat és a la nostra llista, usar la seva temperatura
+            const matchedCity = cities.find(c => c.name.toLowerCase() === searchValue.toLowerCase());
+            if (matchedCity) currentTemp = matchedCity.temp;
+            document.getElementById('search-temp').textContent = currentTemp;
+
             resultDiv.style.display = 'block';
             
             // Mostrar gràfics
