@@ -710,6 +710,68 @@
                 font-size: 10px;
             }
         }
+
+        .share-bar {
+            display: flex;
+            gap: 10px;
+            padding: 16px 20px 20px;
+            background: white;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .share-btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .share-btn:active {
+            transform: scale(0.96);
+        }
+
+        .share-wa {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+        }
+
+        .share-wa:hover { background: #20ba59; }
+
+        .share-native {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 14px rgba(102, 126, 234, 0.35);
+        }
+
+        .share-native:hover { background: #5a6fd8; }
+
+        .share-img {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            box-shadow: 0 4px 14px rgba(220, 39, 67, 0.3);
+        }
+
+        .share-img:hover { opacity: 0.9; }
+
+        @media (max-width: 480px) {
+            .share-bar { gap: 8px; padding: 12px 16px 16px; }
+            .share-btn { padding: 9px 16px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -739,7 +801,24 @@
         <div class="result-message-card">
             <p id="search-description"></p>
         </div>
+        <div class="share-bar">
+            <button class="share-btn share-wa" id="share-whatsapp" title="Compartir per WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.859L.057 23.428a.75.75 0 0 0 .922.922l5.569-1.476A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.853 0-3.587-.5-5.084-1.375l-.36-.214-3.742.991.99-3.742-.215-.362A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                WhatsApp
+            </button>
+            <button class="share-btn share-native" id="share-native" title="Compartir">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Compartir
+            </button>
+            <button class="share-btn share-img" id="share-image" title="Descarregar targeta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Targeta
+            </button>
+        </div>
     </div>
+
+    <!-- Canvas ocult per generar la targeta d'imatge -->
+    <canvas id="share-canvas" style="display:none;" width="1080" height="1080"></canvas>
 
     <div id="charts-section" style="display: none;">
         <div class="charts-block-title">Previsió per avui i demà</div>
@@ -1347,6 +1426,105 @@
             if (event.key === 'Enter') {
                 performSearch();
             }
+        });
+
+        // Deep link: ?lloc=NomCiutat
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const lloc = params.get('lloc');
+            if (lloc) {
+                document.getElementById('search-input').value = lloc;
+                performSearch();
+            }
+        })();
+
+        // Construeix la URL de compartir per a la ubicació actual
+        function buildShareUrl(city) {
+            const base = 'https://sempresol.cat';
+            return `${base}?lloc=${encodeURIComponent(city)}`;
+        }
+
+        // WhatsApp
+        document.getElementById('share-whatsapp').addEventListener('click', function() {
+            const city = document.getElementById('search-location').textContent;
+            const temp = document.getElementById('search-temp').textContent;
+            const url = buildShareUrl(city);
+            const text = `☀️ A ${city} fa sol i ${temp}°C!\nMira la previsió a Sempre Sol 👉 ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        });
+
+        // Compartir natiu (Web Share API)
+        document.getElementById('share-native').addEventListener('click', async function() {
+            const city = document.getElementById('search-location').textContent;
+            const temp = document.getElementById('search-temp').textContent;
+            const url = buildShareUrl(city);
+            const shareData = {
+                title: `☀️ ${city} — Sempre Sol`,
+                text: `A ${city} fa sol i ${temp}°C! Mira la previsió completa:`,
+                url: url
+            };
+            if (navigator.share) {
+                try { await navigator.share(shareData); } catch(e) {}
+            } else {
+                navigator.clipboard.writeText(url).then(() => alert('Enllaç copiat!'));
+            }
+        });
+
+        // Descarregar targeta d'imatge (canvas)
+        document.getElementById('share-image').addEventListener('click', function() {
+            const city = document.getElementById('search-location').textContent;
+            const temp = document.getElementById('search-temp').textContent;
+            const canvas = document.getElementById('share-canvas');
+            const ctx = canvas.getContext('2d');
+            const W = 1080, H = 1080;
+
+            // Fons degradat taronja
+            const grad = ctx.createLinearGradient(0, 0, W, H);
+            grad.addColorStop(0, '#FF8C00');
+            grad.addColorStop(0.55, '#FFC200');
+            grad.addColorStop(1, '#FFD700');
+            ctx.fillStyle = grad;
+            ctx.roundRect(0, 0, W, H, 80);
+            ctx.fill();
+
+            // Sol emoji gran
+            ctx.font = '220px serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('☀️', W / 2, 340);
+
+            // Nom de la ciutat
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 80px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText(city.toUpperCase(), W / 2, 470);
+
+            // Temperatura
+            ctx.font = '200px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText(`${temp}°C`, W / 2, 700);
+
+            // Etiqueta
+            ctx.font = '40px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.globalAlpha = 0.85;
+            ctx.fillText('☀️  ASSOLELLAT · SEMPRE SOL', W / 2, 790);
+            ctx.globalAlpha = 1;
+
+            // Franja inferior blanca
+            ctx.fillStyle = 'white';
+            ctx.roundRect(60, 840, W - 120, 160, 40);
+            ctx.fill();
+
+            ctx.fillStyle = '#FF8C00';
+            ctx.font = 'bold 46px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText('sempresol.cat', W / 2, 935);
+
+            ctx.fillStyle = '#aaa';
+            ctx.font = '34px -apple-system, BlinkMacSystemFont, sans-serif';
+            ctx.fillText('Sempre assolellat arreu del món', W / 2, 980);
+
+            // Descarregar
+            const a = document.createElement('a');
+            a.download = `sempresol-${city.toLowerCase().replace(/\s+/g, '-')}.png`;
+            a.href = canvas.toDataURL('image/png');
+            a.click();
         });
 
         if ('serviceWorker' in navigator) {
