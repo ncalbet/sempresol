@@ -760,6 +760,50 @@
             box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
         }
 
+        #geo-btn {
+            padding: 0 14px;
+            background: #FFF8DC;
+            color: #FF8C00;
+            border: 1.5px solid #FFD700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        #geo-btn:hover { background: #FFD700; }
+        #geo-btn.loading { opacity: 0.6; pointer-events: none; }
+
+        /* Skeleton de càrrega */
+        @keyframes shimmer {
+            0% { background-position: -600px 0; }
+            100% { background-position: 600px 0; }
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 600px 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 8px;
+        }
+
+        #search-result.loading-state .result-hero {
+            background: linear-gradient(90deg, #ffb347 25%, #ffd080 50%, #ffb347 75%);
+            background-size: 600px 100%;
+            animation: shimmer 1.4s infinite;
+        }
+
+        #search-result.loading-state .result-sun-big,
+        #search-result.loading-state .result-city,
+        #search-result.loading-state .result-temp-display,
+        #search-result.loading-state .result-condition-label,
+        #search-result.loading-state #search-description {
+            opacity: 0;
+        }
+
         .share-wa:hover { background: #20ba59; }
 
         .share-native {
@@ -790,6 +834,9 @@
         <div class="search-container">
             <input type="text" id="search-input" placeholder="Busca qualsevol indret..." />
             <button id="search-btn">Buscar</button>
+            <button id="geo-btn" title="Detectar la meva ubicació">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 4"/></svg>
+            </button>
         </div>
     </div>
 
@@ -1012,7 +1059,7 @@
         const map = L.map('map').setView([30, 10], 2);
         
         // Usar provider alternativ sense problemes de CORS
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
             maxZoom: 19,
             subdomains: 'abcd'
@@ -1404,16 +1451,57 @@
             if (matchedCity) currentTemp = matchedCity.temp;
             document.getElementById('search-temp').textContent = currentTemp;
 
+            // Skeleton: mostrar result primer sense contingut, luego fade-in
+            resultDiv.classList.add('loading-state');
             resultDiv.style.display = 'block';
-            
-            // Mostrar gràfics
-            generateHourlyChart(searchValue);
-            generateFiveDaysChart();
-            document.getElementById('charts-section').style.display = 'block';
-            
-            // Scroll a dins del resultat
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            setTimeout(() => {
+                resultDiv.classList.remove('loading-state');
+                generateHourlyChart(searchValue);
+                generateFiveDaysChart();
+                document.getElementById('charts-section').style.display = 'block';
+            }, 400);
         }
+
+        // Geolocalització
+        document.getElementById('geo-btn').addEventListener('click', function() {
+            if (!navigator.geolocation) {
+                alert('El teu navegador no suporta la geolocalització.');
+                return;
+            }
+            const btn = this;
+            btn.classList.add('loading');
+            navigator.geolocation.getCurrentPosition(
+                async function(pos) {
+                    try {
+                        const { latitude: lat, longitude: lon } = pos.coords;
+                        const res = await fetch(
+                            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=ca`,
+                            { headers: { 'User-Agent': 'sempresol.cat' } }
+                        );
+                        const data = await res.json();
+                        const addr = data.address;
+                        const city = addr.city || addr.town || addr.village || addr.municipality || addr.county || 'la teva ubicació';
+                        document.getElementById('search-input').value = city;
+                        performSearch();
+                    } catch(e) {
+                        alert('No s\'ha pogut determinar la teva ubicació. Torna-ho a intentar.');
+                    } finally {
+                        btn.classList.remove('loading');
+                    }
+                },
+                function(err) {
+                    btn.classList.remove('loading');
+                    if (err.code === err.PERMISSION_DENIED) {
+                        alert('Has denegat l\'accés a la ubicació. Pots activar-lo a la configuració del navegador.');
+                    } else {
+                        alert('No s\'ha pogut obtenir la ubicació. Torna-ho a intentar.');
+                    }
+                },
+                { timeout: 10000 }
+            );
+        });
 
         // Event listeners per al buscador
         document.getElementById('search-btn').addEventListener('click', performSearch);
