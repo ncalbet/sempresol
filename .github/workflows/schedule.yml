@@ -18,6 +18,9 @@ jobs:
     name: Genera imatges i programa posts
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     permissions:
       contents: write   # Necessari per fer commit de les imatges generades
 
