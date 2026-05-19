@@ -29,7 +29,8 @@ from buffer_client   import BufferClient
 # ── Configuració ──────────────────────────────────────────────────────────────
 
 START_DATE   = datetime(2026, 5, 1, tzinfo=timezone.utc)   # Data d'inici del projecte
-POST_HOUR    = 10                                            # Hora de publicació (UTC)
+POST_HOUR    = 5                                             # Hora de publicació (UTC) → 7:30 CEST
+POST_MINUTE  = 30
 DAYS_AHEAD   = int(os.environ.get("DAYS_AHEAD", 5))
 
 # Final texts per regió — inclouen el lema, l'atribució i els hashtags
@@ -157,7 +158,7 @@ def process_day(client: BufferClient, profile_id: str, target_date: datetime):
         print(f"   URL imatge: {img_url}")
 
     # ── Hora de publicació ─────────────────────────────────────────────────
-    scheduled     = target_date.replace(hour=POST_HOUR, minute=0, second=0)
+    scheduled     = target_date.replace(hour=POST_HOUR, minute=POST_MINUTE, second=0)
     scheduled_iso = scheduled.strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # ── Publica a Buffer ───────────────────────────────────────────────────
