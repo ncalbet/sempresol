@@ -116,10 +116,11 @@ def build_caption(full_message: str, town: str, regio: str) -> str:
 
 def github_raw_url(image_filename: str) -> str | None:
     """URL pública raw de GitHub per a la imatge (si el repo és públic)."""
-    repo   = os.environ.get("GITHUB_REPOSITORY")
-    branch = os.environ.get("GITHUB_REF_NAME", "main")
+    repo    = os.environ.get("GITHUB_REPOSITORY")
+    branch  = os.environ.get("GITHUB_REF_NAME", "main")
+    subpath = os.environ.get("IMAGES_SUBPATH", "images")
     if repo:
-        return f"https://raw.githubusercontent.com/{repo}/{branch}/images/{image_filename}"
+        return f"https://raw.githubusercontent.com/{repo}/{branch}/{subpath}/{image_filename}"
     return None
 
 
