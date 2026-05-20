@@ -59,5 +59,7 @@ class BufferClient:
             f"{BUFFER_API_BASE}/updates/create.json",
             data=payload,
         )
+        if not r.ok:
+            print(f"   Resposta Buffer ({r.status_code}): {r.text[:500]}")
         r.raise_for_status()
         return r.json()
