@@ -44,9 +44,9 @@ class BufferClient:
         scheduled_at: str | None = None,
     ) -> dict:
         payload: dict = {
+            "access_token":  self.api_key,
             "profile_ids[]": profile_id,
             "text":          text,
-            "now":           "false",
         }
 
         if scheduled_at:
