@@ -25,6 +25,7 @@ import sys
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 from generate_image import create_post_image
 from instagram_client import InstagramClient
@@ -113,7 +114,10 @@ def github_raw_url(image_filename: str) -> str | None:
     branch = os.environ.get("GITHUB_REF_NAME", "main")
     subpath = os.environ.get("IMAGES_SUBPATH", "images")
     if repo:
-        return f"https://raw.githubusercontent.com/{repo}/{branch}/{subpath}/{image_filename}"
+        # El nom pot contenir accents (ex. "Catí"); cal percent-encode perquè
+        # el descarregador d'Instagram pugui recuperar la imatge (error 9004 si no).
+        safe_name = quote(image_filename)
+        return f"https://raw.githubusercontent.com/{repo}/{branch}/{subpath}/{safe_name}"
     return None
 
 
