@@ -1,28 +1,20 @@
-name: SempreSol – Programa posts Instagram
+name: SempreSol – Publica post diari a Instagram
 
 on:
-  # Executa cada 5 dies a les 07:00 UTC
+  # Cada dia a les 05:30 UTC → 07:30 CEST
   schedule:
-    - cron: "0 7 */5 * *"
+    - cron: "30 5 * * *"
 
-  # Permet executar manualment des de GitHub Actions > Run workflow
+  # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:
-    inputs:
-      days_ahead:
-        description: "Quants dies programar (per defecte 5)"
-        required: false
-        default: "5"
 
 jobs:
   post:
-    name: Genera imatges i programa posts
+    name: Genera imatge i publica a Instagram
     runs-on: ubuntu-latest
 
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
     permissions:
-      contents: write   # Necessari per fer commit de les imatges generades
+      contents: write   # per fer commit de la imatge generada
 
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────────────
@@ -46,24 +38,44 @@ jobs:
         working-directory: sempresol-instagram
         run: pip install -r requirements.txt
 
-      # ── 5. Executa el bot ─────────────────────────────────────────────────
-      - name: Executa post.py
+      # ── 5. Genera la imatge del dia ──────────────────────────────────────
+      - name: Genera imatge del dia
         working-directory: sempresol-instagram
         env:
-          BUFFER_API_KEY:    ${{ secrets.BUFFER_API_KEY }}
-          BUFFER_PROFILE_ID: ${{ secrets.BUFFER_PROFILE_ID }}
-          DAYS_AHEAD:        ${{ github.event.inputs.days_ahead || '5' }}
+          MODE: generate
+        run: python post.py
+
+      # ── 6. Commit + push de la imatge (perquè la URL raw sigui pública) ───
+      - name: Desa imatge al repositori
+        run: |
+          git config user.name  "SempreSol Bot"
+          git config user.email "bot@sempresol.cat"
+          git add sempresol-instagram/images/
+          git diff --cached --quiet || git commit -m "🌞 Imatge $(date +'%Y-%m-%d')"
+          git push
+
+      # ── 7. Publica a Instagram + renova el token ─────────────────────────
+      - name: Publica a Instagram
+        working-directory: sempresol-instagram
+        env:
+          MODE: publish
+          IG_ACCESS_TOKEN:   ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID:        ${{ secrets.IG_USER_ID }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF_NAME:   ${{ github.ref_name }}
           IMAGES_SUBPATH:    sempresol-instagram/images
         run: python post.py
 
-      # ── 6. Commit de les imatges generades ───────────────────────────────
-      - name: Desa imatges al repositori
+      # ── 8. Desa el token renovat al secret (auto-renovació) ──────────────
+      - name: Renova el secret IG_ACCESS_TOKEN
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git config user.name  "SempreSol Bot"
-          git config user.email "bot@sempresol.cat"
-          git add sempresol-instagram/images/
-          # Només fa commit si hi ha canvis
-          git diff --cached --quiet || git commit -m "🌞 Imatges programades $(date +'%Y-%m-%d')"
-          git push
+          if [ -f sempresol-instagram/new_token.txt ]; then
+            gh secret set IG_ACCESS_TOKEN < sempresol-instagram/new_token.txt
+            rm -f sempresol-instagram/new_token.txt
+            echo "Secret IG_ACCESS_TOKEN actualitzat."
+          else
+            echo "Cap token nou per actualitzar (normal si el token té menys de 24h)."
+          fi
