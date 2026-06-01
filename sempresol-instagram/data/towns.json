@@ -1,5 +1,9 @@
 [
   {
+    "nom": "Cardedeu",
+    "regio": "cat"
+  },
+  {
     "nom": "Tàrbena",
     "regio": "val"
   },
@@ -202,10 +206,6 @@
   {
     "nom": "Villalonga",
     "regio": "val"
-  },
-  {
-    "nom": "Cardedeu",
-    "regio": "cat"
   },
   {
     "nom": "Quesa",

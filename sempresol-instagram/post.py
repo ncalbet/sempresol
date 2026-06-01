@@ -33,7 +33,7 @@ from instagram_client import InstagramClient
 
 # ── Configuració ──────────────────────────────────────────────────────────────
 
-START_DATE = datetime(2026, 5, 1, tzinfo=timezone.utc)   # Data d'inici del projecte
+START_DATE = datetime(2026, 6, 1, tzinfo=timezone.utc)   # Llançament oficial: dia 0 = Cardedeu (1r de towns.json)
 
 FINAL_TEXTS = {
     "cat": (
