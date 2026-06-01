@@ -8,8 +8,9 @@ Combina:
   data/local_jokes.json→ bromes lligades a un poble concret (tenen prioritat)
 
 El resultat (schedule.csv) és la FONT DE VERITAT que llegeix post.py.
-Es pot editar a mà; torna a executar aquest script només si vols regenerar-lo
-o allargar-lo (p. ex. canvis a towns.json/messages.json).
+És INCREMENTAL: les files que ja existeixen a schedule.csv es conserven tal
+qual (amb les teves edicions manuals incloses) i només s'afegeixen dies nous
+al final. Mai sobreescriu ni escurça el que ja hi ha.
 
 Ús:
   python generate_schedule.py [dies]
@@ -43,26 +44,58 @@ def generic_message(idx: int, regio: str, town: str) -> str:
     return pool[idx % len(pool)].replace("{lugar}", town)
 
 
-def main():
-    horizon = int(sys.argv[1]) if len(sys.argv) > 1 else len(TOWNS)
-    local_seen: dict[str, int] = {}
+def load_existing() -> dict[str, dict]:
+    """Llegeix schedule.csv si ja existeix (per conservar edicions manuals)."""
+    out = DATA / "schedule.csv"
+    if not out.exists():
+        return {}
+    with open(out, encoding="utf-8", newline="") as f:
+        return {row["data"]: row for row in csv.DictReader(f)}
 
+
+def main():
+    requested = int(sys.argv[1]) if len(sys.argv) > 1 else len(TOWNS)
+    existing = load_existing()
+
+    # Cobrim com a mínim el que demanen i tot el que ja hi ha (mai escurçar).
+    horizon = requested
+    if existing:
+        first = START_DATE.date()
+        last_existing = max(
+            datetime.strptime(d, "%Y-%m-%d").date() for d in existing
+        )
+        horizon = max(horizon, (last_existing - first).days + 1)
+
+    local_seen: dict[str, int] = {}
     rows = []
+    n_kept = 0
+    n_new = 0
     for idx in range(horizon):
         date = (START_DATE + timedelta(days=idx)).strftime("%Y-%m-%d")
         town_obj = TOWNS[idx % len(TOWNS)]
         town = town_obj["nom"]
         regio = town_obj["regio"]
 
-        if town in LOCAL_JOKES:
-            jokes = LOCAL_JOKES[town]
+        # Avancem el comptador de bromes locals sempre (preservades o no),
+        # perquè la selecció determinista no es desincronitzi.
+        is_local = town in LOCAL_JOKES
+        if is_local:
             k = local_seen.get(town, 0)
-            text = jokes[k % len(jokes)].replace("{lugar}", town)
             local_seen[town] = k + 1
+
+        if date in existing:
+            rows.append(existing[date])
+            n_kept += 1
+            continue
+
+        if is_local:
+            jokes = LOCAL_JOKES[town]
+            text = jokes[k % len(jokes)].replace("{lugar}", town)
         else:
             text = generic_message(idx, regio, town)
 
         rows.append({"data": date, "poble": town, "regio": regio, "text": text})
+        n_new += 1
 
     out = DATA / "schedule.csv"
     with open(out, "w", encoding="utf-8", newline="") as f:
@@ -70,9 +103,8 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
-    n_local = sum(local_seen.values())
-    print(f"schedule.csv generat: {len(rows)} dies ({rows[0]['data']} - {rows[-1]['data']})")
-    print(f"  bromes locals col·locades: {n_local} ({', '.join(sorted(local_seen))})")
+    print(f"schedule.csv: {len(rows)} dies ({rows[0]['data']} - {rows[-1]['data']})")
+    print(f"  conservades: {n_kept} | noves: {n_new}")
 
 
 if __name__ == "__main__":
