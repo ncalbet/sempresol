@@ -15,11 +15,12 @@ Entorn (GitHub Secrets / Actions):
   IMAGES_SUBPATH     — subcarpeta de les imatges al repo
 
 Dades:
-  data/towns.json    → [{"nom": "Cardedeu", "regio": "cat"}, ...]
-  data/messages.json → {"cat": [...], "bal": [...], "val": [...], "aran": [...]}
+  data/schedule.csv  → programació editable: data,poble,regio,text (una fila/dia)
+                       Es genera amb generate_schedule.py a partir de towns.json,
+                       messages.json i local_jokes.json. És la FONT DE VERITAT.
 """
 
-import json
+import csv
 import os
 import sys
 import unicodedata
@@ -32,8 +33,6 @@ from instagram_client import InstagramClient
 
 
 # ── Configuració ──────────────────────────────────────────────────────────────
-
-START_DATE = datetime(2026, 6, 1, tzinfo=timezone.utc)   # Llançament oficial: dia 0 = Cardedeu (1r de towns.json)
 
 FINAL_TEXTS = {
     "cat": (
@@ -74,27 +73,11 @@ IMG.mkdir(exist_ok=True)
 
 # ── Dades ─────────────────────────────────────────────────────────────────────
 
-with open(DATA / "towns.json", encoding="utf-8") as f:
-    TOWNS: list[dict] = json.load(f)
-
-with open(DATA / "messages.json", encoding="utf-8") as f:
-    MESSAGES: dict[str, list[str]] = json.load(f)
+with open(DATA / "schedule.csv", encoding="utf-8", newline="") as f:
+    SCHEDULE: dict[str, dict] = {row["data"]: row for row in csv.DictReader(f)}
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-
-def day_index(date: datetime) -> int:
-    return (date.replace(tzinfo=timezone.utc) - START_DATE).days
-
-
-def get_town(idx: int) -> dict:
-    return TOWNS[idx % len(TOWNS)]
-
-
-def get_message(idx: int, regio: str) -> str:
-    msgs = MESSAGES.get(regio, MESSAGES["cat"])
-    return msgs[idx % len(msgs)]
-
 
 def normalize_hashtag(town: str) -> str:
     nfd = unicodedata.normalize("NFD", town.lower())
@@ -122,15 +105,17 @@ def github_raw_url(image_filename: str) -> str | None:
 
 
 def post_for_today() -> dict:
-    """Calcula tot el que cal per al post d'avui (determinista a partir de la data)."""
-    today = datetime.now(tz=timezone.utc)
-    idx = day_index(today)
-    town_obj = get_town(idx)
-    town = town_obj["nom"]
-    regio = town_obj["regio"]
-    message = get_message(idx, regio)
+    """Llegeix de schedule.csv tot el que cal per al post d'avui."""
+    date_str = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+    row = SCHEDULE.get(date_str)
+    if row is None:
+        print(f"   ERROR: no hi ha cap fila a schedule.csv per a {date_str}.")
+        print("   Allarga la programació: python generate_schedule.py <dies>")
+        sys.exit(1)
+    town = row["poble"]
+    regio = row["regio"]
+    message = row["text"]
     caption = build_caption(message, town, regio)
-    date_str = today.strftime("%Y-%m-%d")
     image_name = f"{date_str}_{town.replace(' ', '_')}.png"
     return {
         "date_str": date_str,
