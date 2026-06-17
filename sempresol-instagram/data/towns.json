@@ -4,15 +4,11 @@
     "regio": "cat"
   },
   {
-    "nom": "Tàrbena",
-    "regio": "val"
-  },
-  {
     "nom": "Maldà",
     "regio": "cat"
   },
   {
-    "nom": "Bellreguard",
+    "nom": "Tàrbena",
     "regio": "val"
   },
   {
@@ -20,7 +16,11 @@
     "regio": "cat"
   },
   {
-    "nom": "Polinyà de Xúquer",
+    "nom": "Granollers",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bellreguard",
     "regio": "val"
   },
   {
@@ -28,35 +28,15 @@
     "regio": "bal"
   },
   {
-    "nom": "Granollers",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bolbaite",
-    "regio": "val"
-  },
-  {
-    "nom": "Torre Endoménech",
-    "regio": "val"
-  },
-  {
     "nom": "Savallà del Comtat",
     "regio": "cat"
-  },
-  {
-    "nom": "Cox",
-    "regio": "val"
-  },
-  {
-    "nom": "Aubèrt",
-    "regio": "aran"
   },
   {
     "nom": "Castellnou",
     "regio": "cat"
   },
   {
-    "nom": "Azuébar",
+    "nom": "Polinyà de Xúquer",
     "regio": "val"
   },
   {
@@ -64,19 +44,11 @@
     "regio": "cat"
   },
   {
-    "nom": "Xàtiva",
-    "regio": "val"
-  },
-  {
-    "nom": "Callosa de Segura",
-    "regio": "val"
-  },
-  {
     "nom": "L'Espluga Calba",
     "regio": "cat"
   },
   {
-    "nom": "Benillup",
+    "nom": "Bolbaite",
     "regio": "val"
   },
   {
@@ -88,19 +60,11 @@
     "regio": "cat"
   },
   {
-    "nom": "la Salzadella",
-    "regio": "val"
-  },
-  {
     "nom": "Canovelles",
     "regio": "cat"
   },
   {
-    "nom": "Navajas",
-    "regio": "val"
-  },
-  {
-    "nom": "Quart de Poblet",
+    "nom": "Torre Endoménech",
     "regio": "val"
   },
   {
@@ -108,43 +72,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Aras de los Olmos",
-    "regio": "val"
+    "nom": "Aubèrt",
+    "regio": "aran"
   },
   {
     "nom": "Olesa de Montserrat",
     "regio": "cat"
   },
   {
-    "nom": "Bunyol",
-    "regio": "val"
-  },
-  {
     "nom": "Vallgorguina",
     "regio": "cat"
-  },
-  {
-    "nom": "Catí",
-    "regio": "val"
-  },
-  {
-    "nom": "Maria de la Salut",
-    "regio": "bal"
-  },
-  {
-    "nom": "Fuentes de Ayódar",
-    "regio": "val"
   },
   {
     "nom": "Begur",
     "regio": "cat"
   },
   {
-    "nom": "Garòs",
-    "regio": "aran"
-  },
-  {
-    "nom": "Petrer",
+    "nom": "Cox",
     "regio": "val"
   },
   {
@@ -152,35 +96,39 @@
     "regio": "cat"
   },
   {
-    "nom": "Titaguas",
-    "regio": "val"
-  },
-  {
     "nom": "Cardona",
     "regio": "cat"
   },
   {
-    "nom": "Traiguera",
+    "nom": "Azuébar",
     "regio": "val"
   },
   {
-    "nom": "l'Alcora",
-    "regio": "val"
+    "nom": "Maria de la Salut",
+    "regio": "bal"
   },
   {
     "nom": "Agramunt",
     "regio": "cat"
   },
   {
-    "nom": "Cofrents",
-    "regio": "val"
-  },
-  {
     "nom": "Bigues i Riells",
     "regio": "cat"
   },
   {
-    "nom": "Tibi",
+    "nom": "Xàtiva",
+    "regio": "val"
+  },
+  {
+    "nom": "Pals",
+    "regio": "cat"
+  },
+  {
+    "nom": "Nulles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Callosa de Segura",
     "regio": "val"
   },
   {
@@ -188,55 +136,15 @@
     "regio": "bal"
   },
   {
-    "nom": "Pals",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bicorp",
-    "regio": "val"
-  },
-  {
-    "nom": "Alginet",
-    "regio": "val"
-  },
-  {
-    "nom": "Nulles",
-    "regio": "cat"
-  },
-  {
-    "nom": "Villalonga",
-    "regio": "val"
-  },
-  {
-    "nom": "Quesa",
-    "regio": "val"
-  },
-  {
     "nom": "Torrent",
     "regio": "cat"
-  },
-  {
-    "nom": "Pedralba",
-    "regio": "val"
-  },
-  {
-    "nom": "Bocairent",
-    "regio": "val"
   },
   {
     "nom": "Llardecans",
     "regio": "cat"
   },
   {
-    "nom": "Betren",
-    "regio": "aran"
-  },
-  {
-    "nom": "Binissalem",
-    "regio": "bal"
-  },
-  {
-    "nom": "l'Alcúdia",
+    "nom": "Benillup",
     "regio": "val"
   },
   {
@@ -244,35 +152,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Llanera de Ranes",
-    "regio": "val"
+    "nom": "Garòs",
+    "regio": "aran"
   },
   {
     "nom": "Vilaplana",
     "regio": "cat"
   },
   {
-    "nom": "Cocentaina",
-    "regio": "val"
-  },
-  {
-    "nom": "Millena",
-    "regio": "val"
-  },
-  {
     "nom": "Puigverd de Lleida",
     "regio": "cat"
-  },
-  {
-    "nom": "Ontinyent",
-    "regio": "val"
   },
   {
     "nom": "Sant Carles de la Ràpita",
     "regio": "cat"
   },
   {
-    "nom": "Benifairó de les Valls",
+    "nom": "la Salzadella",
     "regio": "val"
   },
   {
@@ -280,43 +176,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Benimodo",
-    "regio": "val"
-  },
-  {
-    "nom": "Ses Salines",
-    "regio": "bal"
-  },
-  {
-    "nom": "Rafelbunyol",
-    "regio": "val"
-  },
-  {
     "nom": "Sudanell",
     "regio": "cat"
   },
   {
-    "nom": "Orpesa del Mar",
+    "nom": "Navajas",
     "regio": "val"
+  },
+  {
+    "nom": "Binissalem",
+    "regio": "bal"
   },
   {
     "nom": "Rocafort de Queralt",
     "regio": "cat"
   },
   {
-    "nom": "Favara",
-    "regio": "val"
-  },
-  {
     "nom": "Bellver de Cerdanya",
     "regio": "cat"
   },
   {
-    "nom": "Ademuz",
-    "regio": "val"
-  },
-  {
-    "nom": "l'Orxa",
+    "nom": "Quart de Poblet",
     "regio": "val"
   },
   {
@@ -324,43 +204,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Begós",
-    "regio": "aran"
-  },
-  {
-    "nom": "Benirredrà",
-    "regio": "val"
-  },
-  {
     "nom": "Ger",
     "regio": "cat"
   },
   {
-    "nom": "Ferreries",
-    "regio": "bal"
+    "nom": "Aras de los Olmos",
+    "regio": "val"
   },
   {
-    "nom": "Rotglà i Corberà",
-    "regio": "val"
+    "nom": "Ses Salines",
+    "regio": "bal"
   },
   {
     "nom": "Calonge i Sant Antoni",
     "regio": "cat"
   },
   {
-    "nom": "Llombai",
-    "regio": "val"
-  },
-  {
     "nom": "Cadaqués",
     "regio": "cat"
   },
   {
-    "nom": "Banyeres de Mariola",
-    "regio": "val"
-  },
-  {
-    "nom": "Figueroles",
+    "nom": "Bunyol",
     "regio": "val"
   },
   {
@@ -368,39 +232,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Espadilla",
-    "regio": "val"
+    "nom": "Betren",
+    "regio": "aran"
   },
   {
     "nom": "Alcarràs",
     "regio": "cat"
   },
   {
-    "nom": "Rafelcofer",
-    "regio": "val"
-  },
-  {
     "nom": "Berga",
     "regio": "cat"
-  },
-  {
-    "nom": "Gaibiel",
-    "regio": "val"
-  },
-  {
-    "nom": "Montuïri",
-    "regio": "bal"
-  },
-  {
-    "nom": "Castelló de Rugat",
-    "regio": "val"
   },
   {
     "nom": "Serra de Daró",
     "regio": "cat"
   },
   {
-    "nom": "l'Alqueria d'Asnar",
+    "nom": "Catí",
     "regio": "val"
   },
   {
@@ -408,43 +256,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Beniarbeig",
-    "regio": "val"
-  },
-  {
-    "nom": "Gessa",
-    "regio": "aran"
-  },
-  {
     "nom": "Mollerussa",
     "regio": "cat"
   },
   {
-    "nom": "Massanassa",
+    "nom": "Fuentes de Ayódar",
     "regio": "val"
   },
   {
-    "nom": "Almussafes",
-    "regio": "val"
+    "nom": "Ferreries",
+    "regio": "bal"
   },
   {
     "nom": "L'Esquirol",
     "regio": "cat"
   },
   {
-    "nom": "Caudete de las Fuentes",
-    "regio": "val"
-  },
-  {
     "nom": "Valls",
     "regio": "cat"
   },
   {
-    "nom": "Deià",
-    "regio": "bal"
-  },
-  {
-    "nom": "Almassora",
+    "nom": "Petrer",
     "regio": "val"
   },
   {
@@ -452,83 +284,51 @@
     "regio": "cat"
   },
   {
-    "nom": "Godella",
-    "regio": "val"
-  },
-  {
-    "nom": "Guardamar del Segura",
-    "regio": "val"
-  },
-  {
     "nom": "Balenyà",
     "regio": "cat"
   },
   {
-    "nom": "Terrateig",
+    "nom": "Titaguas",
     "regio": "val"
+  },
+  {
+    "nom": "Montuïri",
+    "regio": "bal"
   },
   {
     "nom": "Alpens",
     "regio": "cat"
   },
   {
-    "nom": "Beniardà",
-    "regio": "val"
-  },
-  {
     "nom": "Montblanc",
     "regio": "cat"
   },
   {
-    "nom": "Oliva",
+    "nom": "Traiguera",
     "regio": "val"
-  },
-  {
-    "nom": "Casinos",
-    "regio": "val"
-  },
-  {
-    "nom": "Son Servera",
-    "regio": "bal"
   },
   {
     "nom": "Vic",
     "regio": "cat"
   },
   {
-    "nom": "Cortes de Arenoso",
-    "regio": "val"
+    "nom": "Begós",
+    "regio": "aran"
   },
   {
     "nom": "Santpedor",
     "regio": "cat"
   },
   {
-    "nom": "Otos",
-    "regio": "val"
-  },
-  {
-    "nom": "Montgarri",
-    "regio": "aran"
-  },
-  {
     "nom": "Terrassa",
     "regio": "cat"
-  },
-  {
-    "nom": "Cullera",
-    "regio": "val"
-  },
-  {
-    "nom": "San Miguel de Salinas",
-    "regio": "val"
   },
   {
     "nom": "Llanars",
     "regio": "cat"
   },
   {
-    "nom": "Aigües",
+    "nom": "l'Alcora",
     "regio": "val"
   },
   {
@@ -536,39 +336,27 @@
     "regio": "cat"
   },
   {
-    "nom": "San Fulgencio",
-    "regio": "val"
-  },
-  {
-    "nom": "Bunyola",
-    "regio": "bal"
-  },
-  {
     "nom": "Almatret",
     "regio": "cat"
   },
   {
-    "nom": "Sierra Engarcerán",
+    "nom": "Cofrents",
     "regio": "val"
   },
   {
-    "nom": "Tavernes de la Valldigna",
-    "regio": "val"
+    "nom": "Deià",
+    "regio": "bal"
   },
   {
     "nom": "Castell-Platja d'Aro",
     "regio": "cat"
   },
   {
-    "nom": "Eslida",
-    "regio": "val"
-  },
-  {
     "nom": "Móra la Nova",
     "regio": "cat"
   },
   {
-    "nom": "Llíria",
+    "nom": "Tibi",
     "regio": "val"
   },
   {
@@ -576,23 +364,15 @@
     "regio": "cat"
   },
   {
-    "nom": "la Llosa",
-    "regio": "val"
-  },
-  {
-    "nom": "Sot de Ferrer",
-    "regio": "val"
-  },
-  {
     "nom": "La Torre de l'Espanyol",
     "regio": "cat"
   },
   {
-    "nom": "Vallat",
+    "nom": "Bicorp",
     "regio": "val"
   },
   {
-    "nom": "Palma",
+    "nom": "Son Servera",
     "regio": "bal"
   },
   {
@@ -600,23 +380,11 @@
     "regio": "cat"
   },
   {
-    "nom": "Pònt d'Arròs",
-    "regio": "aran"
-  },
-  {
-    "nom": "Quatretonda",
-    "regio": "val"
-  },
-  {
     "nom": "Ventolà",
     "regio": "cat"
   },
   {
-    "nom": "Castellfort",
-    "regio": "val"
-  },
-  {
-    "nom": "Rocafort",
+    "nom": "Alginet",
     "regio": "val"
   },
   {
@@ -624,39 +392,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Alfauir",
-    "regio": "val"
+    "nom": "Gessa",
+    "regio": "aran"
   },
   {
     "nom": "Vallclara",
     "regio": "cat"
   },
   {
-    "nom": "Ribesalbes",
-    "regio": "val"
-  },
-  {
     "nom": "Sant Fruitós de Bages",
     "regio": "cat"
-  },
-  {
-    "nom": "Torrevieja",
-    "regio": "val"
-  },
-  {
-    "nom": "Marratxí",
-    "regio": "bal"
-  },
-  {
-    "nom": "Benigembla",
-    "regio": "val"
   },
   {
     "nom": "La Roca del Vallès",
     "regio": "cat"
   },
   {
-    "nom": "Moncofa",
+    "nom": "Villalonga",
     "regio": "val"
   },
   {
@@ -664,83 +416,55 @@
     "regio": "cat"
   },
   {
-    "nom": "el Campello",
-    "regio": "val"
-  },
-  {
     "nom": "Sant Vicenç de Torelló",
     "regio": "cat"
   },
   {
-    "nom": "Manuel",
+    "nom": "Quesa",
     "regio": "val"
   },
   {
-    "nom": "Palmera",
-    "regio": "val"
+    "nom": "Bunyola",
+    "regio": "bal"
   },
   {
     "nom": "Conesa",
     "regio": "cat"
   },
   {
-    "nom": "Aielo de Rugat",
-    "regio": "val"
-  },
-  {
-    "nom": "Arties",
-    "regio": "aran"
-  },
-  {
     "nom": "Torelló",
     "regio": "cat"
   },
   {
-    "nom": "Tollos",
+    "nom": "Pedralba",
     "regio": "val"
-  },
-  {
-    "nom": "Felanitx",
-    "regio": "bal"
   },
   {
     "nom": "Vall-llobrega",
     "regio": "cat"
   },
   {
-    "nom": "Cervera del Maestre",
-    "regio": "val"
-  },
-  {
-    "nom": "Santa Magdalena de Pulpis",
-    "regio": "val"
-  },
-  {
     "nom": "Vilallonga de Ter",
     "regio": "cat"
   },
   {
-    "nom": "Silla",
+    "nom": "Bocairent",
     "regio": "val"
+  },
+  {
+    "nom": "Palma",
+    "regio": "bal"
   },
   {
     "nom": "Platja d'Aro",
     "regio": "cat"
   },
   {
-    "nom": "Moncada",
-    "regio": "val"
-  },
-  {
     "nom": "Fulleda",
     "regio": "cat"
   },
   {
-    "nom": "Llocnou de Sant Jeroni",
-    "regio": "val"
-  },
-  {
-    "nom": "Bugarra",
+    "nom": "l'Alcúdia",
     "regio": "val"
   },
   {
@@ -748,83 +472,51 @@
     "regio": "cat"
   },
   {
-    "nom": "Esporles",
-    "regio": "bal"
-  },
-  {
-    "nom": "Villahermosa del Río",
-    "regio": "val"
+    "nom": "Montgarri",
+    "regio": "aran"
   },
   {
     "nom": "El Cogul",
     "regio": "cat"
   },
   {
-    "nom": "Soneja",
-    "regio": "val"
-  },
-  {
     "nom": "Cruïlles, Monells i Sant Sadurní de l'Heura",
     "regio": "cat"
-  },
-  {
-    "nom": "Tavernes Blanques",
-    "regio": "val"
-  },
-  {
-    "nom": "Belgida",
-    "regio": "val"
   },
   {
     "nom": "Sant Pau de Segúries",
     "regio": "cat"
   },
   {
-    "nom": "Ayódar",
+    "nom": "Llanera de Ranes",
     "regio": "val"
-  },
-  {
-    "nom": "Mont",
-    "regio": "aran"
   },
   {
     "nom": "Segura de Gaià",
     "regio": "cat"
   },
   {
-    "nom": "Puebla de Arenoso",
-    "regio": "val"
-  },
-  {
     "nom": "Guiamets",
     "regio": "cat"
   },
   {
-    "nom": "Benimeli",
+    "nom": "Cocentaina",
     "regio": "val"
   },
   {
-    "nom": "Ciutadella de Menorca",
+    "nom": "Marratxí",
     "regio": "bal"
-  },
-  {
-    "nom": "Petrés",
-    "regio": "val"
   },
   {
     "nom": "Alforja",
     "regio": "cat"
   },
   {
-    "nom": "Almàssera",
-    "regio": "val"
-  },
-  {
     "nom": "Santa Coloma de Queralt",
     "regio": "cat"
   },
   {
-    "nom": "Portell de Morella",
+    "nom": "Millena",
     "regio": "val"
   },
   {
@@ -832,43 +524,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Tuéjar",
-    "regio": "val"
-  },
-  {
-    "nom": "Benifaió",
-    "regio": "val"
-  },
-  {
     "nom": "Fontanals de Cerdanya",
     "regio": "cat"
   },
   {
-    "nom": "Arañuel",
+    "nom": "Ontinyent",
     "regio": "val"
+  },
+  {
+    "nom": "Felanitx",
+    "regio": "bal"
   },
   {
     "nom": "Creixell",
     "regio": "cat"
   },
   {
-    "nom": "Lloret de Vistalegre",
-    "regio": "bal"
-  },
-  {
-    "nom": "Pilar de la Horadada",
-    "regio": "val"
-  },
-  {
     "nom": "Les Borges del Camp",
     "regio": "cat"
   },
   {
-    "nom": "Castell de Castells",
-    "regio": "val"
-  },
-  {
-    "nom": "Losa del Obispo",
+    "nom": "Benifairó de les Valls",
     "regio": "val"
   },
   {
@@ -876,43 +552,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Salardú",
+    "nom": "Pònt d'Arròs",
     "regio": "aran"
-  },
-  {
-    "nom": "Alacant",
-    "regio": "val"
   },
   {
     "nom": "Das",
     "regio": "cat"
   },
   {
-    "nom": "Sant Jordi",
-    "regio": "val"
-  },
-  {
     "nom": "Segur de Calafell",
     "regio": "cat"
-  },
-  {
-    "nom": "Vilar de Canes",
-    "regio": "val"
-  },
-  {
-    "nom": "Segorbe",
-    "regio": "val"
   },
   {
     "nom": "Altafulla",
     "regio": "cat"
   },
   {
-    "nom": "Selva",
-    "regio": "bal"
-  },
-  {
-    "nom": "Argelita",
+    "nom": "Benimodo",
     "regio": "val"
   },
   {
@@ -920,35 +576,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Bufali",
-    "regio": "val"
-  },
-  {
     "nom": "Salou",
     "regio": "cat"
   },
   {
-    "nom": "Culla",
+    "nom": "Rafelbunyol",
     "regio": "val"
   },
   {
-    "nom": "Piles",
-    "regio": "val"
+    "nom": "Esporles",
+    "regio": "bal"
   },
   {
     "nom": "Peratallada",
     "regio": "cat"
   },
   {
-    "nom": "Senija",
-    "regio": "val"
-  },
-  {
     "nom": "Banyeres del Penedès",
     "regio": "cat"
   },
   {
-    "nom": "Gavarda",
+    "nom": "Orpesa del Mar",
     "regio": "val"
   },
   {
@@ -956,47 +604,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Santanyí",
-    "regio": "bal"
-  },
-  {
-    "nom": "Sueca",
-    "regio": "val"
-  },
-  {
-    "nom": "Picanya",
-    "regio": "val"
-  },
-  {
     "nom": "Bagà",
     "regio": "cat"
   },
   {
-    "nom": "Vielha",
-    "regio": "aran"
+    "nom": "Favara",
+    "regio": "val"
   },
   {
-    "nom": "Beniganim",
-    "regio": "val"
+    "nom": "Ciutadella de Menorca",
+    "regio": "bal"
   },
   {
     "nom": "Bonastre",
     "regio": "cat"
   },
   {
-    "nom": "Vinaròs",
-    "regio": "val"
-  },
-  {
     "nom": "Borredà",
     "regio": "cat"
   },
   {
-    "nom": "Vallibona",
-    "regio": "val"
-  },
-  {
-    "nom": "Alcublas",
+    "nom": "Ademuz",
     "regio": "val"
   },
   {
@@ -1004,39 +632,23 @@
     "regio": "cat"
   },
   {
-    "nom": "les Useres",
-    "regio": "val"
-  },
-  {
-    "nom": "Eivissa",
-    "regio": "bal"
+    "nom": "Arties",
+    "regio": "aran"
   },
   {
     "nom": "Taradell",
     "regio": "cat"
   },
   {
-    "nom": "Moixent",
-    "regio": "val"
-  },
-  {
     "nom": "Sant Antoni de Vilamajor",
     "regio": "cat"
-  },
-  {
-    "nom": "Agost",
-    "regio": "val"
   },
   {
     "nom": "Albatàrrec",
     "regio": "cat"
   },
   {
-    "nom": "Ondara",
-    "regio": "val"
-  },
-  {
-    "nom": "Montesa",
+    "nom": "l'Orxa",
     "regio": "val"
   },
   {
@@ -1044,43 +656,27 @@
     "regio": "cat"
   },
   {
-    "nom": "la Vilavella",
-    "regio": "val"
-  },
-  {
     "nom": "Torredembarra",
     "regio": "cat"
   },
   {
-    "nom": "Quart de les Valls",
+    "nom": "Benirredrà",
     "regio": "val"
   },
   {
-    "nom": "Estellencs",
+    "nom": "Lloret de Vistalegre",
     "regio": "bal"
-  },
-  {
-    "nom": "Tredòs",
-    "regio": "aran"
   },
   {
     "nom": "Borgonyà",
     "regio": "cat"
   },
   {
-    "nom": "Villamalur",
-    "regio": "val"
-  },
-  {
-    "nom": "Guadasequies",
-    "regio": "val"
-  },
-  {
     "nom": "Amposta",
     "regio": "cat"
   },
   {
-    "nom": "Chella",
+    "nom": "Rotglà i Corberà",
     "regio": "val"
   },
   {
@@ -1088,39 +684,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Manises",
-    "regio": "val"
-  },
-  {
     "nom": "Sant Feliu de Buixalleu",
     "regio": "cat"
   },
   {
-    "nom": "Paterna",
+    "nom": "Llombai",
     "regio": "val"
   },
   {
-    "nom": "Aldaia",
-    "regio": "val"
+    "nom": "Selva",
+    "regio": "bal"
   },
   {
     "nom": "Sunyer",
     "regio": "cat"
   },
   {
-    "nom": "l'Ènova",
-    "regio": "val"
-  },
-  {
-    "nom": "Inca",
-    "regio": "bal"
-  },
-  {
     "nom": "Calonge",
     "regio": "cat"
   },
   {
-    "nom": "Chulilla",
+    "nom": "Banyeres de Mariola",
     "regio": "val"
   },
   {
@@ -1128,47 +712,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Agres",
-    "regio": "val"
-  },
-  {
-    "nom": "Quartell",
-    "regio": "val"
+    "nom": "Mont",
+    "regio": "aran"
   },
   {
     "nom": "Sant Pere de Torelló",
     "regio": "cat"
   },
   {
-    "nom": "Planes",
-    "regio": "val"
-  },
-  {
     "nom": "Mataró",
     "regio": "cat"
-  },
-  {
-    "nom": "Orihuela",
-    "regio": "val"
-  },
-  {
-    "nom": "Unha",
-    "regio": "aran"
   },
   {
     "nom": "Tagamanent",
     "regio": "cat"
   },
   {
-    "nom": "Massamagrell",
-    "regio": "val"
-  },
-  {
-    "nom": "Campanet",
-    "regio": "bal"
-  },
-  {
-    "nom": "el Verger",
+    "nom": "Figueroles",
     "regio": "val"
   },
   {
@@ -1176,35 +736,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Llutxent",
-    "regio": "val"
-  },
-  {
     "nom": "Manresa",
     "regio": "cat"
   },
   {
-    "nom": "Granja de Rocamora",
+    "nom": "Espadilla",
     "regio": "val"
+  },
+  {
+    "nom": "Santanyí",
+    "regio": "bal"
   },
   {
     "nom": "Riba-roja d'Ebre",
     "regio": "cat"
   },
   {
-    "nom": "Albalat de la Ribera",
-    "regio": "val"
-  },
-  {
-    "nom": "Benlloch",
-    "regio": "val"
-  },
-  {
     "nom": "Hospitalet de l'Infant",
     "regio": "cat"
   },
   {
-    "nom": "Gandia",
+    "nom": "Rafelcofer",
     "regio": "val"
   },
   {
@@ -1212,51 +764,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Alborache",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Joan",
-    "regio": "bal"
-  },
-  {
     "nom": "Preixana",
     "regio": "cat"
   },
   {
-    "nom": "Estubeny",
+    "nom": "Gaibiel",
     "regio": "val"
   },
   {
-    "nom": "Turís",
-    "regio": "val"
+    "nom": "Eivissa",
+    "regio": "bal"
   },
   {
     "nom": "Prats de Lluçanès",
     "regio": "cat"
   },
   {
-    "nom": "Monòver",
-    "regio": "val"
-  },
-  {
-    "nom": "Daya Vieja",
-    "regio": "val"
-  },
-  {
-    "nom": "Benós",
-    "regio": "aran"
-  },
-  {
     "nom": "Guimerà",
     "regio": "cat"
   },
   {
-    "nom": "la Vall d'Alcalà",
-    "regio": "val"
-  },
-  {
-    "nom": "Quatretondeta",
+    "nom": "Castelló de Rugat",
     "regio": "val"
   },
   {
@@ -1264,39 +792,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Santa Margalida",
-    "regio": "bal"
-  },
-  {
-    "nom": "Chiva",
-    "regio": "val"
+    "nom": "Salardú",
+    "regio": "aran"
   },
   {
     "nom": "Cantonigròs",
     "regio": "cat"
   },
   {
-    "nom": "la Vila Joiosa",
-    "regio": "val"
-  },
-  {
     "nom": "Oristà",
     "regio": "cat"
-  },
-  {
-    "nom": "Llocnou de la Corona",
-    "regio": "val"
-  },
-  {
-    "nom": "Castellnovo",
-    "regio": "val"
   },
   {
     "nom": "L'Aldea",
     "regio": "cat"
   },
   {
-    "nom": "Llaurí",
+    "nom": "l'Alqueria d'Asnar",
     "regio": "val"
   },
   {
@@ -1304,51 +816,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Xert",
-    "regio": "val"
-  },
-  {
     "nom": "Espinavell",
     "regio": "cat"
   },
   {
-    "nom": "Fuenterrobles",
+    "nom": "Beniarbeig",
     "regio": "val"
   },
   {
-    "nom": "Vilafranca de Bonany",
+    "nom": "Estellencs",
     "regio": "bal"
-  },
-  {
-    "nom": "Castell de Cabres",
-    "regio": "val"
-  },
-  {
-    "nom": "Venta del Moro",
-    "regio": "val"
   },
   {
     "nom": "La Febró",
     "regio": "cat"
   },
   {
-    "nom": "Betlan",
-    "regio": "aran"
-  },
-  {
-    "nom": "Carlet",
-    "regio": "val"
-  },
-  {
     "nom": "Camprodon",
     "regio": "cat"
   },
   {
-    "nom": "Relleu",
-    "regio": "val"
-  },
-  {
-    "nom": "Castalla",
+    "nom": "Massanassa",
     "regio": "val"
   },
   {
@@ -1356,39 +844,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Zorita del Maestrazgo",
-    "regio": "val"
-  },
-  {
     "nom": "Orís",
     "regio": "cat"
   },
   {
-    "nom": "Santa Eulària des Riu",
-    "regio": "bal"
+    "nom": "Almussafes",
+    "regio": "val"
   },
   {
-    "nom": "Pego",
-    "regio": "val"
+    "nom": "Inca",
+    "regio": "bal"
   },
   {
     "nom": "La Bisbal d'Empordà",
     "regio": "cat"
   },
   {
-    "nom": "Vall d'Alba",
-    "regio": "val"
-  },
-  {
-    "nom": "Murla",
-    "regio": "val"
-  },
-  {
     "nom": "Quart",
     "regio": "cat"
   },
   {
-    "nom": "Novelé",
+    "nom": "Caudete de las Fuentes",
     "regio": "val"
   },
   {
@@ -1396,43 +872,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Cheste",
-    "regio": "val"
+    "nom": "Vielha",
+    "regio": "aran"
   },
   {
     "nom": "Campllong",
     "regio": "cat"
   },
   {
-    "nom": "el Pinós",
-    "regio": "val"
-  },
-  {
-    "nom": "Jérica",
-    "regio": "val"
-  },
-  {
     "nom": "Torres de Segre",
     "regio": "cat"
-  },
-  {
-    "nom": "Sant Llorenç des Cardassar",
-    "regio": "bal"
-  },
-  {
-    "nom": "Xilxes",
-    "regio": "val"
-  },
-  {
-    "nom": "Escunhau",
-    "regio": "aran"
   },
   {
     "nom": "La Seu d'Urgell",
     "regio": "cat"
   },
   {
-    "nom": "Salem",
+    "nom": "Almassora",
     "regio": "val"
   },
   {
@@ -1440,15 +896,2035 @@
     "regio": "cat"
   },
   {
+    "nom": "Flix",
+    "regio": "cat"
+  },
+  {
+    "nom": "Godella",
+    "regio": "val"
+  },
+  {
+    "nom": "Campanet",
+    "regio": "bal"
+  },
+  {
+    "nom": "Deltebre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ogassa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Guardamar del Segura",
+    "regio": "val"
+  },
+  {
+    "nom": "Roses",
+    "regio": "cat"
+  },
+  {
+    "nom": "El Molar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Terrateig",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Joan",
+    "regio": "bal"
+  },
+  {
+    "nom": "Palamós",
+    "regio": "cat"
+  },
+  {
+    "nom": "Palafrugell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Beniardà",
+    "regio": "val"
+  },
+  {
+    "nom": "Ginestar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tredòs",
+    "regio": "aran"
+  },
+  {
+    "nom": "Vilanova de Sau",
+    "regio": "cat"
+  },
+  {
+    "nom": "Guardiola de Berguedà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Martorell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Oliva",
+    "regio": "val"
+  },
+  {
+    "nom": "Les Masies de Voltregà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Lliçà d'Amunt",
+    "regio": "cat"
+  },
+  {
+    "nom": "Casinos",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Margalida",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sabadell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Breda",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cortes de Arenoso",
+    "regio": "val"
+  },
+  {
+    "nom": "Calafell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Seròs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Otos",
+    "regio": "val"
+  },
+  {
+    "nom": "Vilafranca de Bonany",
+    "regio": "bal"
+  },
+  {
+    "nom": "Savallà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Miami Platja",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cullera",
+    "regio": "val"
+  },
+  {
+    "nom": "Gualba",
+    "regio": "cat"
+  },
+  {
+    "nom": "Unha",
+    "regio": "aran"
+  },
+  {
+    "nom": "Rodonyà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sau",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ponts",
+    "regio": "cat"
+  },
+  {
+    "nom": "San Miguel de Salinas",
+    "regio": "val"
+  },
+  {
+    "nom": "Ascó",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aiguafreda",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aigües",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Eulària des Riu",
+    "regio": "bal"
+  },
+  {
+    "nom": "Lliçà de Vall",
+    "regio": "cat"
+  },
+  {
+    "nom": "Esparreguera",
+    "regio": "cat"
+  },
+  {
+    "nom": "San Fulgencio",
+    "regio": "val"
+  },
+  {
+    "nom": "Gurb",
+    "regio": "cat"
+  },
+  {
+    "nom": "Falset",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sierra Engarcerán",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Llorenç des Cardassar",
+    "regio": "bal"
+  },
+  {
+    "nom": "La Vilella Baixa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Balaguer",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tavernes de la Valldigna",
+    "regio": "val"
+  },
+  {
+    "nom": "La Vilella Alta",
+    "regio": "cat"
+  },
+  {
+    "nom": "Benós",
+    "regio": "aran"
+  },
+  {
+    "nom": "Rajadell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Barcelona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vidreres",
+    "regio": "cat"
+  },
+  {
+    "nom": "Eslida",
+    "regio": "val"
+  },
+  {
+    "nom": "Folgueroles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ripoll",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llíria",
+    "regio": "val"
+  },
+  {
+    "nom": "Lloseta",
+    "regio": "bal"
+  },
+  {
+    "nom": "Montserrat",
+    "regio": "cat"
+  },
+  {
+    "nom": "Santa Eugènia de Berga",
+    "regio": "cat"
+  },
+  {
+    "nom": "la Llosa",
+    "regio": "val"
+  },
+  {
+    "nom": "Hostalric",
+    "regio": "cat"
+  },
+  {
+    "nom": "L'Estany",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sot de Ferrer",
+    "regio": "val"
+  },
+  {
+    "nom": "Maó",
+    "regio": "bal"
+  },
+  {
+    "nom": "Viladrau",
+    "regio": "cat"
+  },
+  {
+    "nom": "Setcases",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vallat",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Maria de Palautordera",
+    "regio": "cat"
+  },
+  {
+    "nom": "Betlan",
+    "regio": "aran"
+  },
+  {
+    "nom": "Tortosa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Malla",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tarragona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Quatretonda",
+    "regio": "val"
+  },
+  {
+    "nom": "L'Ametlla de Mar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castellnou de Bages",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castellfort",
+    "regio": "val"
+  },
+  {
+    "nom": "Ariany",
+    "regio": "bal"
+  },
+  {
+    "nom": "Fontanilles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cassà de la Selva",
+    "regio": "cat"
+  },
+  {
+    "nom": "Rocafort",
+    "regio": "val"
+  },
+  {
+    "nom": "Manlleu",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Pere de Vilamajor",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alfauir",
+    "regio": "val"
+  },
+  {
+    "nom": "Porreres",
+    "regio": "bal"
+  },
+  {
+    "nom": "Riudellots de la Selva",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Palma d'Ebre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ribesalbes",
+    "regio": "val"
+  },
+  {
+    "nom": "L'Espluga de Francolí",
+    "regio": "cat"
+  },
+  {
+    "nom": "Escunhau",
+    "regio": "aran"
+  },
+  {
+    "nom": "Forallac",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llagostera",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sarroca de Lleida",
+    "regio": "cat"
+  },
+  {
+    "nom": "Torrevieja",
+    "regio": "val"
+  },
+  {
+    "nom": "Gironella",
+    "regio": "cat"
+  },
+  {
+    "nom": "Gandesa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Benigembla",
+    "regio": "val"
+  },
+  {
+    "nom": "Fornalutx",
+    "regio": "bal"
+  },
+  {
+    "nom": "Tregurà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Mont-ras",
+    "regio": "cat"
+  },
+  {
+    "nom": "Moncofa",
+    "regio": "val"
+  },
+  {
+    "nom": "Lloret de Mar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Porrera",
+    "regio": "cat"
+  },
+  {
+    "nom": "el Campello",
+    "regio": "val"
+  },
+  {
+    "nom": "Alaior",
+    "regio": "bal"
+  },
+  {
+    "nom": "Torroja del Priorat",
+    "regio": "cat"
+  },
+  {
+    "nom": "Fonollosa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Manuel",
+    "regio": "val"
+  },
+  {
+    "nom": "Les Franqueses del Vallès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Pontaut",
+    "regio": "aran"
+  },
+  {
+    "nom": "Bellvei",
+    "regio": "cat"
+  },
+  {
+    "nom": "Espinelves",
+    "regio": "cat"
+  },
+  {
+    "nom": "Artés",
+    "regio": "cat"
+  },
+  {
+    "nom": "Palmera",
+    "regio": "val"
+  },
+  {
+    "nom": "Prenafeta",
+    "regio": "cat"
+  },
+  {
+    "nom": "Garcia",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aielo de Rugat",
+    "regio": "val"
+  },
+  {
+    "nom": "Calvià",
+    "regio": "bal"
+  },
+  {
+    "nom": "Seva",
+    "regio": "cat"
+  },
+  {
+    "nom": "Gaià",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tollos",
+    "regio": "val"
+  },
+  {
+    "nom": "Montroig del Camp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Rasquera",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cervera del Maestre",
+    "regio": "val"
+  },
+  {
+    "nom": "Alaró",
+    "regio": "bal"
+  },
+  {
+    "nom": "Toses",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tossa de Mar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Santa Magdalena de Pulpis",
+    "regio": "val"
+  },
+  {
+    "nom": "Navàs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Casau",
+    "regio": "aran"
+  },
+  {
+    "nom": "Maçanet de la Selva",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cornudella de Montsant",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Bordeta",
+    "regio": "cat"
+  },
+  {
+    "nom": "Silla",
+    "regio": "val"
+  },
+  {
+    "nom": "Beget",
+    "regio": "cat"
+  },
+  {
+    "nom": "Poboleda",
+    "regio": "cat"
+  },
+  {
+    "nom": "Moncada",
+    "regio": "val"
+  },
+  {
+    "nom": "Escorca",
+    "regio": "bal"
+  },
+  {
+    "nom": "Montoliu de Lleida",
+    "regio": "cat"
+  },
+  {
+    "nom": "Regencós",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llocnou de Sant Jeroni",
+    "regio": "val"
+  },
+  {
+    "nom": "Parlavà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Centelles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bugarra",
+    "regio": "val"
+  },
+  {
+    "nom": "Mancor de la Vall",
+    "regio": "bal"
+  },
+  {
+    "nom": "Benissanet",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Villahermosa del Río",
+    "regio": "val"
+  },
+  {
+    "nom": "Núria",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilamòs",
+    "regio": "aran"
+  },
+  {
+    "nom": "Avià",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sarral",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilafranca del Penedès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Soneja",
+    "regio": "val"
+  },
+  {
+    "nom": "Les Masies de Roda",
+    "regio": "cat"
+  },
+  {
+    "nom": "Reus",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tavernes Blanques",
+    "regio": "val"
+  },
+  {
+    "nom": "Es Migjorn Gran",
+    "regio": "bal"
+  },
+  {
+    "nom": "Estany",
+    "regio": "cat"
+  },
+  {
+    "nom": "Isòvol",
+    "regio": "cat"
+  },
+  {
+    "nom": "Belgida",
+    "regio": "val"
+  },
+  {
+    "nom": "Olot",
+    "regio": "cat"
+  },
+  {
+    "nom": "Calldetenes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ayódar",
+    "regio": "val"
+  },
+  {
+    "nom": "Llucmajor",
+    "regio": "bal"
+  },
+  {
+    "nom": "Calders",
+    "regio": "cat"
+  },
+  {
+    "nom": "Anglès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Puebla de Arenoso",
+    "regio": "val"
+  },
+  {
+    "nom": "La Portella",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bagergue",
+    "regio": "aran"
+  },
+  {
+    "nom": "Bolvir",
+    "regio": "cat"
+  },
+  {
+    "nom": "Fornells de la Selva",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ultramort",
+    "regio": "cat"
+  },
+  {
+    "nom": "Benimeli",
+    "regio": "val"
+  },
+  {
+    "nom": "Artesa de Lleida",
+    "regio": "cat"
+  },
+  {
+    "nom": "Rupit i Pruit",
+    "regio": "cat"
+  },
+  {
+    "nom": "Petrés",
+    "regio": "val"
+  },
+  {
+    "nom": "Es Mercadal",
+    "regio": "bal"
+  },
+  {
+    "nom": "Casserres",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aiguamúrcia",
+    "regio": "cat"
+  },
+  {
+    "nom": "Almàssera",
+    "regio": "val"
+  },
+  {
+    "nom": "Ulldemolins",
+    "regio": "cat"
+  },
+  {
+    "nom": "Puigcerdà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Portell de Morella",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Eugènia",
+    "regio": "bal"
+  },
+  {
+    "nom": "Pardines",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tamarit",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tuéjar",
+    "regio": "val"
+  },
+  {
+    "nom": "Solsona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Montcorbau",
+    "regio": "aran"
+  },
+  {
+    "nom": "Riudoms",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vimbodí i Poblet",
+    "regio": "cat"
+  },
+  {
+    "nom": "Belianes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Benifaió",
+    "regio": "val"
+  },
+  {
+    "nom": "Perafita",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cunit",
+    "regio": "cat"
+  },
+  {
+    "nom": "Arañuel",
+    "regio": "val"
+  },
+  {
+    "nom": "Campos",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sant Hilari Sacalm",
+    "regio": "cat"
+  },
+  {
+    "nom": "Corçà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Pilar de la Horadada",
+    "regio": "val"
+  },
+  {
+    "nom": "Rocabruna",
+    "regio": "cat"
+  },
+  {
+    "nom": "Oliana",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castell de Castells",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Josep de sa Talaia",
+    "regio": "bal"
+  },
+  {
+    "nom": "Surroca i Ogassa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Móra d'Ebre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Losa del Obispo",
+    "regio": "val"
+  },
+  {
+    "nom": "Arbolí",
+    "regio": "cat"
+  },
+  {
+    "nom": "Arres de Jos",
+    "regio": "aran"
+  },
+  {
+    "nom": "Cambrils",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cervera",
+    "regio": "cat"
+  },
+  {
+    "nom": "Santes Creus",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alacant",
+    "regio": "val"
+  },
+  {
+    "nom": "Rocafort de Vallbona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vinebre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Jordi",
+    "regio": "val"
+  },
+  {
+    "nom": "Valldemossa",
+    "regio": "bal"
+  },
+  {
+    "nom": "Tona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Saldes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilar de Canes",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Cristina d'Aro",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sussanna",
+    "regio": "cat"
+  },
+  {
+    "nom": "Segorbe",
+    "regio": "val"
+  },
+  {
+    "nom": "Sencelles",
+    "regio": "bal"
+  },
+  {
+    "nom": "La Selva del Camp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castelldans",
+    "regio": "cat"
+  },
+  {
+    "nom": "Argelita",
+    "regio": "val"
+  },
+  {
+    "nom": "Nalec",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilac",
+    "regio": "aran"
+  },
+  {
+    "nom": "Artesa de Segre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Muntanyola",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ribes de Freser",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bufali",
+    "regio": "val"
+  },
+  {
+    "nom": "Meranges",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Granja d'Escarp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Culla",
+    "regio": "val"
+  },
+  {
+    "nom": "Muro",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sant Sadurní d'Anoia",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ridaura",
+    "regio": "cat"
+  },
+  {
+    "nom": "Piles",
+    "regio": "val"
+  },
+  {
+    "nom": "Aitona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Planoles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Senija",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Antoni de Portmany",
+    "regio": "bal"
+  },
+  {
+    "nom": "El Vendrell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Lleida",
+    "regio": "cat"
+  },
+  {
+    "nom": "Gavarda",
+    "regio": "val"
+  },
+  {
+    "nom": "El Perelló",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bossòst",
+    "regio": "aran"
+  },
+  {
+    "nom": "Sant Esteve de Palautordera",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llorac",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aguilar de Segarra",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sueca",
+    "regio": "val"
+  },
+  {
+    "nom": "Urús",
+    "regio": "cat"
+  },
+  {
+    "nom": "Forès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Picanya",
+    "regio": "val"
+  },
+  {
+    "nom": "Capdepera",
+    "regio": "bal"
+  },
+  {
+    "nom": "Gualta",
+    "regio": "cat"
+  },
+  {
+    "nom": "Figueres",
+    "regio": "cat"
+  },
+  {
+    "nom": "Beniganim",
+    "regio": "val"
+  },
+  {
+    "nom": "Sils",
+    "regio": "cat"
+  },
+  {
+    "nom": "Margalef",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vinaròs",
+    "regio": "val"
+  },
+  {
+    "nom": "Es Castell",
+    "regio": "bal"
+  },
+  {
+    "nom": "Solivella",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tàrrega",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vallibona",
+    "regio": "val"
+  },
+  {
+    "nom": "Blanes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Es Bòrdes",
+    "regio": "aran"
+  },
+  {
+    "nom": "Molló",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tremp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Organyà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alcublas",
+    "regio": "val"
+  },
+  {
+    "nom": "Lluçà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Prades",
+    "regio": "cat"
+  },
+  {
+    "nom": "les Useres",
+    "regio": "val"
+  },
+  {
+    "nom": "Alcúdia",
+    "regio": "bal"
+  },
+  {
+    "nom": "Gratallops",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vandellòs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Moixent",
+    "regio": "val"
+  },
+  {
+    "nom": "Sitges",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llívia",
+    "regio": "cat"
+  },
+  {
+    "nom": "Agost",
+    "regio": "val"
+  },
+  {
+    "nom": "Algaida",
+    "regio": "bal"
+  },
+  {
+    "nom": "Cardedeu",
+    "regio": "cat"
+  },
+  {
+    "nom": "Maldà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ondara",
+    "regio": "val"
+  },
+  {
+    "nom": "Monistrol de Calders",
+    "regio": "cat"
+  },
+  {
+    "nom": "Arró",
+    "regio": "aran"
+  },
+  {
+    "nom": "Granollers",
+    "regio": "cat"
+  },
+  {
+    "nom": "Savallà del Comtat",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castellnou",
+    "regio": "cat"
+  },
+  {
+    "nom": "Montesa",
+    "regio": "val"
+  },
+  {
+    "nom": "Fogars de Montclús",
+    "regio": "cat"
+  },
+  {
+    "nom": "L'Espluga Calba",
+    "regio": "cat"
+  },
+  {
+    "nom": "la Vilavella",
+    "regio": "val"
+  },
+  {
+    "nom": "Manacor",
+    "regio": "bal"
+  },
+  {
+    "nom": "Massalcoreig",
+    "regio": "cat"
+  },
+  {
+    "nom": "Canovelles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Quart de les Valls",
+    "regio": "val"
+  },
+  {
+    "nom": "Tavèrnoles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Olesa de Montserrat",
+    "regio": "cat"
+  },
+  {
+    "nom": "Villamalur",
+    "regio": "val"
+  },
+  {
+    "nom": "Puigpunyent",
+    "regio": "bal"
+  },
+  {
+    "nom": "Vallgorguina",
+    "regio": "cat"
+  },
+  {
+    "nom": "Begur",
+    "regio": "cat"
+  },
+  {
+    "nom": "Guadasequies",
+    "regio": "val"
+  },
+  {
+    "nom": "Vilanova de Prades",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vila",
+    "regio": "aran"
+  },
+  {
+    "nom": "Cardona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Agramunt",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bigues i Riells",
+    "regio": "cat"
+  },
+  {
+    "nom": "Chella",
+    "regio": "val"
+  },
+  {
+    "nom": "Pals",
+    "regio": "cat"
+  },
+  {
+    "nom": "Nulles",
+    "regio": "cat"
+  },
+  {
+    "nom": "Manises",
+    "regio": "val"
+  },
+  {
+    "nom": "Artà",
+    "regio": "bal"
+  },
+  {
+    "nom": "Torrent",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llardecans",
+    "regio": "cat"
+  },
+  {
+    "nom": "Paterna",
+    "regio": "val"
+  },
+  {
+    "nom": "Arbúcies",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilaplana",
+    "regio": "cat"
+  },
+  {
+    "nom": "Aldaia",
+    "regio": "val"
+  },
+  {
+    "nom": "Petra",
+    "regio": "bal"
+  },
+  {
+    "nom": "Puigverd de Lleida",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Carles de la Ràpita",
+    "regio": "cat"
+  },
+  {
+    "nom": "l'Ènova",
+    "regio": "val"
+  },
+  {
+    "nom": "Girona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Joan de Toran",
+    "regio": "aran"
+  },
+  {
+    "nom": "Sudanell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Rocafort de Queralt",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bellver de Cerdanya",
+    "regio": "cat"
+  },
+  {
+    "nom": "Chulilla",
+    "regio": "val"
+  },
+  {
+    "nom": "Roda de Berà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ger",
+    "regio": "cat"
+  },
+  {
+    "nom": "Agres",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Lluís",
+    "regio": "bal"
+  },
+  {
+    "nom": "Calonge i Sant Antoni",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cadaqués",
+    "regio": "cat"
+  },
+  {
+    "nom": "Quartell",
+    "regio": "val"
+  },
+  {
+    "nom": "Riudarenes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alcarràs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Planes",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Maria del Camí",
+    "regio": "bal"
+  },
+  {
+    "nom": "Berga",
+    "regio": "cat"
+  },
+  {
+    "nom": "Serra de Daró",
+    "regio": "cat"
+  },
+  {
+    "nom": "Orihuela",
+    "regio": "val"
+  },
+  {
+    "nom": "Vulpellac",
+    "regio": "cat"
+  },
+  {
+    "nom": "Gausac",
+    "regio": "aran"
+  },
+  {
+    "nom": "Mollerussa",
+    "regio": "cat"
+  },
+  {
+    "nom": "L'Esquirol",
+    "regio": "cat"
+  },
+  {
+    "nom": "Valls",
+    "regio": "cat"
+  },
+  {
+    "nom": "Massamagrell",
+    "regio": "val"
+  },
+  {
+    "nom": "Masllorenç",
+    "regio": "cat"
+  },
+  {
+    "nom": "Balenyà",
+    "regio": "cat"
+  },
+  {
+    "nom": "el Verger",
+    "regio": "val"
+  },
+  {
+    "nom": "Banyalbufar",
+    "regio": "bal"
+  },
+  {
+    "nom": "Alpens",
+    "regio": "cat"
+  },
+  {
+    "nom": "Montblanc",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llutxent",
+    "regio": "val"
+  },
+  {
+    "nom": "Vic",
+    "regio": "cat"
+  },
+  {
+    "nom": "Santpedor",
+    "regio": "cat"
+  },
+  {
+    "nom": "Granja de Rocamora",
+    "regio": "val"
+  },
+  {
+    "nom": "Sineu",
+    "regio": "bal"
+  },
+  {
+    "nom": "Terrassa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llanars",
+    "regio": "cat"
+  },
+  {
+    "nom": "Albalat de la Ribera",
+    "regio": "val"
+  },
+  {
+    "nom": "Igualada",
+    "regio": "cat"
+  },
+  {
+    "nom": "Arròs",
+    "regio": "aran"
+  },
+  {
+    "nom": "Almatret",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castell-Platja d'Aro",
+    "regio": "cat"
+  },
+  {
+    "nom": "Móra la Nova",
+    "regio": "cat"
+  },
+  {
+    "nom": "Benlloch",
+    "regio": "val"
+  },
+  {
+    "nom": "Santa Coloma de Farners",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Torre de l'Espanyol",
+    "regio": "cat"
+  },
+  {
+    "nom": "Gandia",
+    "regio": "val"
+  },
+  {
+    "nom": "Búger",
+    "regio": "bal"
+  },
+  {
+    "nom": "Miravet",
+    "regio": "cat"
+  },
+  {
+    "nom": "Ventolà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alborache",
+    "regio": "val"
+  },
+  {
+    "nom": "Segura",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vallclara",
+    "regio": "cat"
+  },
+  {
+    "nom": "Estubeny",
+    "regio": "val"
+  },
+  {
+    "nom": "Formentera",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sant Fruitós de Bages",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Roca del Vallès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Turís",
+    "regio": "val"
+  },
+  {
+    "nom": "Bellmunt del Priorat",
+    "regio": "cat"
+  },
+  {
+    "nom": "Les",
+    "regio": "aran"
+  },
+  {
+    "nom": "Sant Vicenç de Torelló",
+    "regio": "cat"
+  },
+  {
+    "nom": "Conesa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Torelló",
+    "regio": "cat"
+  },
+  {
+    "nom": "Monòver",
+    "regio": "val"
+  },
+  {
+    "nom": "Vall-llobrega",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilallonga de Ter",
+    "regio": "cat"
+  },
+  {
+    "nom": "Daya Vieja",
+    "regio": "val"
+  },
+  {
+    "nom": "Costitx",
+    "regio": "bal"
+  },
+  {
+    "nom": "Platja d'Aro",
+    "regio": "cat"
+  },
+  {
+    "nom": "Fulleda",
+    "regio": "cat"
+  },
+  {
+    "nom": "la Vall d'Alcalà",
+    "regio": "val"
+  },
+  {
+    "nom": "Talltendre",
+    "regio": "cat"
+  },
+  {
+    "nom": "El Cogul",
+    "regio": "cat"
+  },
+  {
+    "nom": "Quatretondeta",
+    "regio": "val"
+  },
+  {
+    "nom": "Pollença",
+    "regio": "bal"
+  },
+  {
+    "nom": "Cruïlles, Monells i Sant Sadurní de l'Heura",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Pau de Segúries",
+    "regio": "cat"
+  },
+  {
+    "nom": "Chiva",
+    "regio": "val"
+  },
+  {
+    "nom": "Segura de Gaià",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bausen",
+    "regio": "aran"
+  },
+  {
+    "nom": "Guiamets",
+    "regio": "cat"
+  },
+  {
+    "nom": "Alforja",
+    "regio": "cat"
+  },
+  {
+    "nom": "Santa Coloma de Queralt",
+    "regio": "cat"
+  },
+  {
+    "nom": "la Vila Joiosa",
+    "regio": "val"
+  },
+  {
+    "nom": "Badalona",
+    "regio": "cat"
+  },
+  {
+    "nom": "Fontanals de Cerdanya",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llocnou de la Corona",
+    "regio": "val"
+  },
+  {
+    "nom": "Andratx",
+    "regio": "bal"
+  },
+  {
+    "nom": "Creixell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Les Borges del Camp",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castellnovo",
+    "regio": "val"
+  },
+  {
+    "nom": "Soses",
+    "regio": "cat"
+  },
+  {
+    "nom": "Das",
+    "regio": "cat"
+  },
+  {
+    "nom": "Llaurí",
+    "regio": "val"
+  },
+  {
+    "nom": "Consell",
+    "regio": "bal"
+  },
+  {
+    "nom": "Segur de Calafell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Altafulla",
+    "regio": "cat"
+  },
+  {
+    "nom": "Xert",
+    "regio": "val"
+  },
+  {
+    "nom": "Roda de Ter",
+    "regio": "cat"
+  },
+  {
+    "nom": "Canejan",
+    "regio": "aran"
+  },
+  {
+    "nom": "Salou",
+    "regio": "cat"
+  },
+  {
+    "nom": "Peratallada",
+    "regio": "cat"
+  },
+  {
+    "nom": "Banyeres del Penedès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Fuenterrobles",
+    "regio": "val"
+  },
+  {
+    "nom": "Marçà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Bagà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castell de Cabres",
+    "regio": "val"
+  },
+  {
+    "nom": "Sant Joan de Labritja",
+    "regio": "bal"
+  },
+  {
+    "nom": "Bonastre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Borredà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Venta del Moro",
+    "regio": "val"
+  },
+  {
+    "nom": "Caldes de Malavella",
+    "regio": "cat"
+  },
+  {
+    "nom": "Taradell",
+    "regio": "cat"
+  },
+  {
+    "nom": "Carlet",
+    "regio": "val"
+  },
+  {
+    "nom": "Sóller",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sant Antoni de Vilamajor",
+    "regio": "cat"
+  },
+  {
+    "nom": "Albatàrrec",
+    "regio": "cat"
+  },
+  {
+    "nom": "Relleu",
+    "regio": "val"
+  },
+  {
+    "nom": "Gósol",
+    "regio": "cat"
+  },
+  {
+    "nom": "Casarilh",
+    "regio": "aran"
+  },
+  {
+    "nom": "Torredembarra",
+    "regio": "cat"
+  },
+  {
+    "nom": "Borgonyà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Amposta",
+    "regio": "cat"
+  },
+  {
+    "nom": "Castalla",
+    "regio": "val"
+  },
+  {
+    "nom": "Súria",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Feliu de Buixalleu",
+    "regio": "cat"
+  },
+  {
+    "nom": "Zorita del Maestrazgo",
+    "regio": "val"
+  },
+  {
+    "nom": "Maria de la Salut",
+    "regio": "bal"
+  },
+  {
+    "nom": "Sunyer",
+    "regio": "cat"
+  },
+  {
+    "nom": "Calonge",
+    "regio": "cat"
+  },
+  {
+    "nom": "Pego",
+    "regio": "val"
+  },
+  {
+    "nom": "La Torre de Fontaubella",
+    "regio": "cat"
+  },
+  {
+    "nom": "Sant Pere de Torelló",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vall d'Alba",
+    "regio": "val"
+  },
+  {
+    "nom": "Llubí",
+    "regio": "bal"
+  },
+  {
+    "nom": "Mataró",
+    "regio": "cat"
+  },
+  {
+    "nom": "Tagamanent",
+    "regio": "cat"
+  },
+  {
+    "nom": "Murla",
+    "regio": "val"
+  },
+  {
+    "nom": "L'Arboç",
+    "regio": "cat"
+  },
+  {
+    "nom": "Era Bordeta",
+    "regio": "aran"
+  },
+  {
+    "nom": "Manresa",
+    "regio": "cat"
+  },
+  {
+    "nom": "Riba-roja d'Ebre",
+    "regio": "cat"
+  },
+  {
+    "nom": "Hospitalet de l'Infant",
+    "regio": "cat"
+  },
+  {
+    "nom": "Novelé",
+    "regio": "val"
+  },
+  {
+    "nom": "Moià",
+    "regio": "cat"
+  },
+  {
+    "nom": "Preixana",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cheste",
+    "regio": "val"
+  },
+  {
+    "nom": "Binissalem",
+    "regio": "bal"
+  },
+  {
+    "nom": "Prats de Lluçanès",
+    "regio": "cat"
+  },
+  {
+    "nom": "Guimerà",
+    "regio": "cat"
+  },
+  {
+    "nom": "el Pinós",
+    "regio": "val"
+  },
+  {
+    "nom": "Sort",
+    "regio": "cat"
+  },
+  {
+    "nom": "Cantonigròs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Jérica",
+    "regio": "val"
+  },
+  {
+    "nom": "Ses Salines",
+    "regio": "bal"
+  },
+  {
+    "nom": "Oristà",
+    "regio": "cat"
+  },
+  {
+    "nom": "L'Aldea",
+    "regio": "cat"
+  },
+  {
+    "nom": "Xilxes",
+    "regio": "val"
+  },
+  {
+    "nom": "Queralbs",
+    "regio": "cat"
+  },
+  {
+    "nom": "Arres de Sus",
+    "regio": "aran"
+  },
+  {
+    "nom": "Espinavell",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Febró",
+    "regio": "cat"
+  },
+  {
+    "nom": "Camprodon",
+    "regio": "cat"
+  },
+  {
+    "nom": "Salem",
+    "regio": "val"
+  },
+  {
+    "nom": "Maials",
+    "regio": "cat"
+  },
+  {
+    "nom": "Orís",
+    "regio": "cat"
+  },
+  {
     "nom": "la Pobla de Benifassà",
     "regio": "val"
+  },
+  {
+    "nom": "Ferreries",
+    "regio": "bal"
+  },
+  {
+    "nom": "La Bisbal d'Empordà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Quart",
+    "regio": "cat"
   },
   {
     "nom": "Benferri",
     "regio": "val"
   },
   {
-    "nom": "Flix",
+    "nom": "El Brull",
+    "regio": "cat"
+  },
+  {
+    "nom": "Campllong",
     "regio": "cat"
   },
   {
@@ -1456,7 +2932,15 @@
     "regio": "val"
   },
   {
-    "nom": "Deltebre",
+    "nom": "Montuïri",
+    "regio": "bal"
+  },
+  {
+    "nom": "Torres de Segre",
+    "regio": "cat"
+  },
+  {
+    "nom": "La Seu d'Urgell",
     "regio": "cat"
   },
   {
@@ -1464,8 +2948,20 @@
     "regio": "val"
   },
   {
-    "nom": "Lloseta",
-    "regio": "bal"
+    "nom": "Capçanes",
+    "regio": "cat"
+  },
+  {
+    "nom": "Baquèira",
+    "regio": "aran"
+  },
+  {
+    "nom": "Flix",
+    "regio": "cat"
+  },
+  {
+    "nom": "Deltebre",
+    "regio": "cat"
   },
   {
     "nom": "Ogassa",
@@ -1476,11 +2972,27 @@
     "regio": "val"
   },
   {
+    "nom": "Roses",
+    "regio": "cat"
+  },
+  {
+    "nom": "El Molar",
+    "regio": "cat"
+  },
+  {
     "nom": "Meliana",
     "regio": "val"
   },
   {
-    "nom": "Roses",
+    "nom": "Deià",
+    "regio": "bal"
+  },
+  {
+    "nom": "Palamós",
+    "regio": "cat"
+  },
+  {
+    "nom": "Palafrugell",
     "regio": "cat"
   },
   {
@@ -1488,7 +3000,11 @@
     "regio": "val"
   },
   {
-    "nom": "El Molar",
+    "nom": "Ginestar",
+    "regio": "cat"
+  },
+  {
+    "nom": "Vilanova de Sau",
     "regio": "cat"
   },
   {
@@ -1496,7 +3012,15 @@
     "regio": "val"
   },
   {
-    "nom": "Palamós",
+    "nom": "Son Servera",
+    "regio": "bal"
+  },
+  {
+    "nom": "Guardiola de Berguedà",
+    "regio": "cat"
+  },
+  {
+    "nom": "Martorell",
     "regio": "cat"
   },
   {
@@ -1504,103 +3028,27 @@
     "regio": "val"
   },
   {
-    "nom": "Xirivella",
-    "regio": "val"
-  },
-  {
-    "nom": "Palafrugell",
-    "regio": "cat"
-  },
-  {
-    "nom": "Pontaut",
-    "regio": "aran"
-  },
-  {
-    "nom": "Palanques",
-    "regio": "val"
-  },
-  {
-    "nom": "Maó",
-    "regio": "bal"
-  },
-  {
-    "nom": "Ginestar",
-    "regio": "cat"
-  },
-  {
-    "nom": "Almiserà",
-    "regio": "val"
-  },
-  {
-    "nom": "Vilanova de Sau",
-    "regio": "cat"
-  },
-  {
-    "nom": "Gestalgar",
-    "regio": "val"
-  },
-  {
-    "nom": "la Torre d'En Besora",
-    "regio": "val"
-  },
-  {
-    "nom": "Guardiola de Berguedà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Artana",
-    "regio": "val"
-  },
-  {
-    "nom": "Martorell",
-    "regio": "cat"
-  },
-  {
-    "nom": "Palma de Gandia",
-    "regio": "val"
-  },
-  {
     "nom": "Les Masies de Voltregà",
     "regio": "cat"
   },
   {
-    "nom": "Algorfa",
-    "regio": "val"
-  },
-  {
-    "nom": "Ariany",
-    "regio": "bal"
-  },
-  {
-    "nom": "Sant Joan d'Alacant",
-    "regio": "val"
+    "nom": "Aubèrt",
+    "regio": "aran"
   },
   {
     "nom": "Lliçà d'Amunt",
     "regio": "cat"
   },
   {
-    "nom": "Alcalalí",
-    "regio": "val"
-  },
-  {
     "nom": "Sabadell",
     "regio": "cat"
-  },
-  {
-    "nom": "Benissa",
-    "regio": "val"
   },
   {
     "nom": "Breda",
     "regio": "cat"
   },
   {
-    "nom": "Benicàssim",
-    "regio": "val"
-  },
-  {
-    "nom": "Beniarrés",
+    "nom": "Xirivella",
     "regio": "val"
   },
   {
@@ -1608,47 +3056,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Casau",
-    "regio": "aran"
-  },
-  {
-    "nom": "Torres Torres",
-    "regio": "val"
-  },
-  {
-    "nom": "Guadassuar",
-    "regio": "val"
-  },
-  {
-    "nom": "Porreres",
-    "regio": "bal"
-  },
-  {
     "nom": "Seròs",
     "regio": "cat"
   },
   {
-    "nom": "Finestrat",
+    "nom": "Palanques",
     "regio": "val"
   },
   {
-    "nom": "Barx",
-    "regio": "val"
+    "nom": "Bunyola",
+    "regio": "bal"
   },
   {
     "nom": "Savallà",
     "regio": "cat"
   },
   {
-    "nom": "Sedaví",
-    "regio": "val"
-  },
-  {
     "nom": "Miami Platja",
     "regio": "cat"
   },
   {
-    "nom": "Sollana",
+    "nom": "Almiserà",
     "regio": "val"
   },
   {
@@ -1656,39 +3084,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Torrechiva",
-    "regio": "val"
-  },
-  {
-    "nom": "Almoradí",
-    "regio": "val"
-  },
-  {
     "nom": "Rodonyà",
     "regio": "cat"
   },
   {
-    "nom": "Fornalutx",
-    "regio": "bal"
+    "nom": "Gestalgar",
+    "regio": "val"
   },
   {
-    "nom": "la Pobla Llarga",
-    "regio": "val"
+    "nom": "Palma",
+    "regio": "bal"
   },
   {
     "nom": "Sau",
     "regio": "cat"
   },
   {
-    "nom": "Formentera del Segura",
-    "regio": "val"
-  },
-  {
     "nom": "Ponts",
     "regio": "cat"
   },
   {
-    "nom": "Caudiel",
+    "nom": "la Torre d'En Besora",
     "regio": "val"
   },
   {
@@ -1696,47 +3112,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Vilamòs",
+    "nom": "Garòs",
     "regio": "aran"
-  },
-  {
-    "nom": "Albalat dels Tarongers",
-    "regio": "val"
-  },
-  {
-    "nom": "Almoines",
-    "regio": "val"
   },
   {
     "nom": "Aiguafreda",
     "regio": "cat"
   },
   {
-    "nom": "Vallada",
-    "regio": "val"
-  },
-  {
     "nom": "Lliçà de Vall",
     "regio": "cat"
-  },
-  {
-    "nom": "Vila-real",
-    "regio": "val"
-  },
-  {
-    "nom": "Alaior",
-    "regio": "bal"
   },
   {
     "nom": "Esparreguera",
     "regio": "cat"
   },
   {
-    "nom": "Benasau",
-    "regio": "val"
-  },
-  {
-    "nom": "Catadau",
+    "nom": "Artana",
     "regio": "val"
   },
   {
@@ -1744,39 +3136,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Viver",
-    "regio": "val"
-  },
-  {
     "nom": "Falset",
     "regio": "cat"
   },
   {
-    "nom": "Muro d'Alcoi",
+    "nom": "Palma de Gandia",
     "regio": "val"
+  },
+  {
+    "nom": "Marratxí",
+    "regio": "bal"
   },
   {
     "nom": "La Vilella Baixa",
     "regio": "cat"
   },
   {
-    "nom": "Cortes de Pallàs",
-    "regio": "val"
-  },
-  {
-    "nom": "Cañada",
-    "regio": "val"
-  },
-  {
     "nom": "Balaguer",
     "regio": "cat"
   },
   {
-    "nom": "Calvià",
-    "regio": "bal"
-  },
-  {
-    "nom": "Jacarilla",
+    "nom": "Algorfa",
     "regio": "val"
   },
   {
@@ -1784,39 +3164,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Bolulla",
-    "regio": "val"
-  },
-  {
-    "nom": "Bagergue",
-    "regio": "aran"
-  },
-  {
     "nom": "Rajadell",
     "regio": "cat"
   },
   {
-    "nom": "Fondó dels Frares",
+    "nom": "Sant Joan d'Alacant",
     "regio": "val"
   },
   {
-    "nom": "Benimantell",
-    "regio": "val"
+    "nom": "Felanitx",
+    "regio": "bal"
   },
   {
     "nom": "Barcelona",
     "regio": "cat"
   },
   {
-    "nom": "Rafelguaraf",
-    "regio": "val"
-  },
-  {
     "nom": "Vidreres",
     "regio": "cat"
   },
   {
-    "nom": "Elx",
+    "nom": "Alcalalí",
     "regio": "val"
   },
   {
@@ -1824,43 +3192,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Benimuslem",
-    "regio": "val"
-  },
-  {
-    "nom": "Alaró",
-    "regio": "bal"
-  },
-  {
-    "nom": "Massalavés",
-    "regio": "val"
+    "nom": "Betren",
+    "regio": "aran"
   },
   {
     "nom": "Ripoll",
     "regio": "cat"
   },
   {
-    "nom": "Benilloba",
-    "regio": "val"
-  },
-  {
     "nom": "Montserrat",
     "regio": "cat"
-  },
-  {
-    "nom": "Rossell",
-    "regio": "val"
   },
   {
     "nom": "Santa Eugènia de Berga",
     "regio": "cat"
   },
   {
-    "nom": "Forcall",
-    "regio": "val"
-  },
-  {
-    "nom": "la Vall de Gallinera",
+    "nom": "Benissa",
     "regio": "val"
   },
   {
@@ -1868,43 +3216,27 @@
     "regio": "cat"
   },
   {
-    "nom": "l'Alcúdia de Crespins",
-    "regio": "val"
-  },
-  {
     "nom": "L'Estany",
     "regio": "cat"
   },
   {
-    "nom": "Escorca",
-    "regio": "bal"
-  },
-  {
-    "nom": "Carrícola",
+    "nom": "Benicàssim",
     "regio": "val"
   },
   {
-    "nom": "Montcorbau",
-    "regio": "aran"
+    "nom": "Esporles",
+    "regio": "bal"
   },
   {
     "nom": "Viladrau",
     "regio": "cat"
   },
   {
-    "nom": "Rojales",
-    "regio": "val"
-  },
-  {
-    "nom": "Alcocer de Planes",
-    "regio": "val"
-  },
-  {
     "nom": "Setcases",
     "regio": "cat"
   },
   {
-    "nom": "Fortaleny",
+    "nom": "Beniarrés",
     "regio": "val"
   },
   {
@@ -1912,39 +3244,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Serra",
-    "regio": "val"
-  },
-  {
     "nom": "Tortosa",
     "regio": "cat"
   },
   {
-    "nom": "Polop",
+    "nom": "Torres Torres",
     "regio": "val"
   },
   {
-    "nom": "Benicarló",
-    "regio": "val"
+    "nom": "Ciutadella de Menorca",
+    "regio": "bal"
   },
   {
     "nom": "Malla",
     "regio": "cat"
   },
   {
-    "nom": "Mancor de la Vall",
-    "regio": "bal"
-  },
-  {
-    "nom": "Guardamar de la Safor",
-    "regio": "val"
-  },
-  {
     "nom": "Tarragona",
     "regio": "cat"
   },
   {
-    "nom": "Alfafar",
+    "nom": "Guadassuar",
     "regio": "val"
   },
   {
@@ -1952,47 +3272,23 @@
     "regio": "cat"
   },
   {
-    "nom": "Enguera",
-    "regio": "val"
-  },
-  {
-    "nom": "Borriana",
-    "regio": "val"
+    "nom": "Begós",
+    "regio": "aran"
   },
   {
     "nom": "Castellnou de Bages",
     "regio": "cat"
   },
   {
-    "nom": "Betxí",
-    "regio": "val"
-  },
-  {
     "nom": "Fontanilles",
     "regio": "cat"
-  },
-  {
-    "nom": "Arres de Jos",
-    "regio": "aran"
-  },
-  {
-    "nom": "Paiporta",
-    "regio": "val"
-  },
-  {
-    "nom": "Es Migjorn Gran",
-    "regio": "bal"
   },
   {
     "nom": "Cassà de la Selva",
     "regio": "cat"
   },
   {
-    "nom": "Bellús",
-    "regio": "val"
-  },
-  {
-    "nom": "Massalfassar",
+    "nom": "Finestrat",
     "regio": "val"
   },
   {
@@ -2000,43 +3296,27 @@
     "regio": "cat"
   },
   {
-    "nom": "la Pobla de Farnals",
-    "regio": "val"
-  },
-  {
     "nom": "Sant Pere de Vilamajor",
     "regio": "cat"
   },
   {
-    "nom": "Benafer",
+    "nom": "Barx",
     "regio": "val"
   },
   {
-    "nom": "Pina de Montalgrao",
-    "regio": "val"
-  },
-  {
-    "nom": "Bétera",
-    "regio": "val"
+    "nom": "Lloret de Vistalegre",
+    "regio": "bal"
   },
   {
     "nom": "Riudellots de la Selva",
     "regio": "cat"
   },
   {
-    "nom": "Pedreguer",
-    "regio": "val"
-  },
-  {
-    "nom": "Llucmajor",
-    "regio": "bal"
-  },
-  {
     "nom": "La Palma d'Ebre",
     "regio": "cat"
   },
   {
-    "nom": "Segart",
+    "nom": "Sedaví",
     "regio": "val"
   },
   {
@@ -2044,47 +3324,27 @@
     "regio": "cat"
   },
   {
-    "nom": "Atzeneta del Maestrat",
-    "regio": "val"
-  },
-  {
-    "nom": "Picassent",
-    "regio": "val"
-  },
-  {
     "nom": "Forallac",
     "regio": "cat"
   },
   {
-    "nom": "Burjassot",
+    "nom": "Sollana",
     "regio": "val"
   },
   {
-    "nom": "Vilac",
-    "regio": "aran"
+    "nom": "Selva",
+    "regio": "bal"
   },
   {
     "nom": "Llagostera",
     "regio": "cat"
   },
   {
-    "nom": "Albocàsser",
-    "regio": "val"
-  },
-  {
     "nom": "Sarroca de Lleida",
     "regio": "cat"
   },
   {
-    "nom": "Todolella",
-    "regio": "val"
-  },
-  {
-    "nom": "Es Mercadal",
-    "regio": "bal"
-  },
-  {
-    "nom": "Faura",
+    "nom": "Torrechiva",
     "regio": "val"
   },
   {
@@ -2092,1271 +3352,11 @@
     "regio": "cat"
   },
   {
-    "nom": "Torrent",
-    "regio": "val"
+    "nom": "Gessa",
+    "regio": "aran"
   },
   {
     "nom": "Gandesa",
     "regio": "cat"
-  },
-  {
-    "nom": "el Ràfol d'Almúnia",
-    "regio": "val"
-  },
-  {
-    "nom": "Tregurà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Riba-roja de Túria",
-    "regio": "val"
-  },
-  {
-    "nom": "Beniflà",
-    "regio": "val"
-  },
-  {
-    "nom": "Mont-ras",
-    "regio": "cat"
-  },
-  {
-    "nom": "Morella",
-    "regio": "val"
-  },
-  {
-    "nom": "Lloret de Mar",
-    "regio": "cat"
-  },
-  {
-    "nom": "Puçol",
-    "regio": "val"
-  },
-  {
-    "nom": "Santa Eugènia",
-    "regio": "bal"
-  },
-  {
-    "nom": "Porrera",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Vall d'Uixó",
-    "regio": "val"
-  },
-  {
-    "nom": "la Pobla del Duc",
-    "regio": "val"
-  },
-  {
-    "nom": "Torroja del Priorat",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bossòst",
-    "regio": "aran"
-  },
-  {
-    "nom": "Vinalesa",
-    "regio": "val"
-  },
-  {
-    "nom": "Fonollosa",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alcalà de Xivert",
-    "regio": "val"
-  },
-  {
-    "nom": "Les Franqueses del Vallès",
-    "regio": "cat"
-  },
-  {
-    "nom": "Callosa d'En Sarrià",
-    "regio": "val"
-  },
-  {
-    "nom": "Teresa",
-    "regio": "val"
-  },
-  {
-    "nom": "Bellvei",
-    "regio": "cat"
-  },
-  {
-    "nom": "Campos",
-    "regio": "bal"
-  },
-  {
-    "nom": "Marines",
-    "regio": "val"
-  },
-  {
-    "nom": "Espinelves",
-    "regio": "cat"
-  },
-  {
-    "nom": "Famorca",
-    "regio": "val"
-  },
-  {
-    "nom": "Artés",
-    "regio": "cat"
-  },
-  {
-    "nom": "Villena",
-    "regio": "val"
-  },
-  {
-    "nom": "Orba",
-    "regio": "val"
-  },
-  {
-    "nom": "Prenafeta",
-    "regio": "cat"
-  },
-  {
-    "nom": "Benimarfull",
-    "regio": "val"
-  },
-  {
-    "nom": "Garcia",
-    "regio": "cat"
-  },
-  {
-    "nom": "Gaianes",
-    "regio": "val"
-  },
-  {
-    "nom": "Seva",
-    "regio": "cat"
-  },
-  {
-    "nom": "Onda",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Josep de sa Talaia",
-    "regio": "bal"
-  },
-  {
-    "nom": "Almenara",
-    "regio": "val"
-  },
-  {
-    "nom": "Gaià",
-    "regio": "cat"
-  },
-  {
-    "nom": "Es Bòrdes",
-    "regio": "aran"
-  },
-  {
-    "nom": "Sinarcas",
-    "regio": "val"
-  },
-  {
-    "nom": "Montroig del Camp",
-    "regio": "cat"
-  },
-  {
-    "nom": "Algemesí",
-    "regio": "val"
-  },
-  {
-    "nom": "Rasquera",
-    "regio": "cat"
-  },
-  {
-    "nom": "Riola",
-    "regio": "val"
-  },
-  {
-    "nom": "l'Olleria",
-    "regio": "val"
-  },
-  {
-    "nom": "Fontanars dels Alforins",
-    "regio": "val"
-  },
-  {
-    "nom": "Toses",
-    "regio": "cat"
-  },
-  {
-    "nom": "Valldemossa",
-    "regio": "bal"
-  },
-  {
-    "nom": "Foios",
-    "regio": "val"
-  },
-  {
-    "nom": "Tossa de Mar",
-    "regio": "cat"
-  },
-  {
-    "nom": "Cinctorres",
-    "regio": "val"
-  },
-  {
-    "nom": "la Nucia",
-    "regio": "val"
-  },
-  {
-    "nom": "Navàs",
-    "regio": "cat"
-  },
-  {
-    "nom": "Onil",
-    "regio": "val"
-  },
-  {
-    "nom": "Maçanet de la Selva",
-    "regio": "cat"
-  },
-  {
-    "nom": "Suera",
-    "regio": "val"
-  },
-  {
-    "nom": "Cornudella de Montsant",
-    "regio": "cat"
-  },
-  {
-    "nom": "Nules",
-    "regio": "val"
-  },
-  {
-    "nom": "Canet lo Roig",
-    "regio": "val"
-  },
-  {
-    "nom": "La Bordeta",
-    "regio": "cat"
-  },
-  {
-    "nom": "Arró",
-    "regio": "aran"
-  },
-  {
-    "nom": "Sencelles",
-    "regio": "bal"
-  },
-  {
-    "nom": "Geldo",
-    "regio": "val"
-  },
-  {
-    "nom": "Beget",
-    "regio": "cat"
-  },
-  {
-    "nom": "Pinet",
-    "regio": "val"
-  },
-  {
-    "nom": "Poboleda",
-    "regio": "cat"
-  },
-  {
-    "nom": "el Puig de Santa Maria",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Mateu",
-    "regio": "val"
-  },
-  {
-    "nom": "Montoliu de Lleida",
-    "regio": "cat"
-  },
-  {
-    "nom": "Aspe",
-    "regio": "val"
-  },
-  {
-    "nom": "Elda",
-    "regio": "val"
-  },
-  {
-    "nom": "Regencós",
-    "regio": "cat"
-  },
-  {
-    "nom": "Muro",
-    "regio": "bal"
-  },
-  {
-    "nom": "Godelleta",
-    "regio": "val"
-  },
-  {
-    "nom": "Parlavà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Utiel",
-    "regio": "val"
-  },
-  {
-    "nom": "Macastre",
-    "regio": "val"
-  },
-  {
-    "nom": "Centelles",
-    "regio": "cat"
-  },
-  {
-    "nom": "València",
-    "regio": "val"
-  },
-  {
-    "nom": "Benissanet",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alpuente",
-    "regio": "val"
-  },
-  {
-    "nom": "Vila",
-    "regio": "aran"
-  },
-  {
-    "nom": "Alp",
-    "regio": "cat"
-  },
-  {
-    "nom": "Sagunt",
-    "regio": "val"
-  },
-  {
-    "nom": "Redován",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Antoni de Portmany",
-    "regio": "bal"
-  },
-  {
-    "nom": "Núria",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alfarrasí",
-    "regio": "val"
-  },
-  {
-    "nom": "Avià",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Torre de les Maçanes",
-    "regio": "val"
-  },
-  {
-    "nom": "Sarral",
-    "regio": "cat"
-  },
-  {
-    "nom": "Ibi",
-    "regio": "val"
-  },
-  {
-    "nom": "Sarratella",
-    "regio": "val"
-  },
-  {
-    "nom": "Vilafranca del Penedès",
-    "regio": "cat"
-  },
-  {
-    "nom": "Montroy",
-    "regio": "val"
-  },
-  {
-    "nom": "Les Masies de Roda",
-    "regio": "cat"
-  },
-  {
-    "nom": "Gilet",
-    "regio": "val"
-  },
-  {
-    "nom": "Capdepera",
-    "regio": "bal"
-  },
-  {
-    "nom": "Reus",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Pobla de Vallbona",
-    "regio": "val"
-  },
-  {
-    "nom": "Alcoi",
-    "regio": "val"
-  },
-  {
-    "nom": "Estany",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alguenya",
-    "regio": "val"
-  },
-  {
-    "nom": "Isòvol",
-    "regio": "cat"
-  },
-  {
-    "nom": "Teresa de Cofrents",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Joan de Toran",
-    "regio": "aran"
-  },
-  {
-    "nom": "Olot",
-    "regio": "cat"
-  },
-  {
-    "nom": "Aielo de Malferit",
-    "regio": "val"
-  },
-  {
-    "nom": "Cirat",
-    "regio": "val"
-  },
-  {
-    "nom": "Calldetenes",
-    "regio": "cat"
-  },
-  {
-    "nom": "Anna",
-    "regio": "val"
-  },
-  {
-    "nom": "Es Castell",
-    "regio": "bal"
-  },
-  {
-    "nom": "la Granja de la Costera",
-    "regio": "val"
-  },
-  {
-    "nom": "Calders",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bonrepòs i Mirambell",
-    "regio": "val"
-  },
-  {
-    "nom": "Sanet i Negrals",
-    "regio": "val"
-  },
-  {
-    "nom": "Anglès",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alboraia",
-    "regio": "val"
-  },
-  {
-    "nom": "La Portella",
-    "regio": "cat"
-  },
-  {
-    "nom": "Castelló de la Plana",
-    "regio": "val"
-  },
-  {
-    "nom": "Bolvir",
-    "regio": "cat"
-  },
-  {
-    "nom": "Càrcer",
-    "regio": "val"
-  },
-  {
-    "nom": "Alcúdia",
-    "regio": "bal"
-  },
-  {
-    "nom": "Penàguila",
-    "regio": "val"
-  },
-  {
-    "nom": "Fornells de la Selva",
-    "regio": "cat"
-  },
-  {
-    "nom": "Sot de Chera",
-    "regio": "val"
-  },
-  {
-    "nom": "Ultramort",
-    "regio": "cat"
-  },
-  {
-    "nom": "Gausac",
-    "regio": "aran"
-  },
-  {
-    "nom": "Xàbia",
-    "regio": "val"
-  },
-  {
-    "nom": "Artesa de Lleida",
-    "regio": "cat"
-  },
-  {
-    "nom": "Antella",
-    "regio": "val"
-  },
-  {
-    "nom": "el Camp de Mirra",
-    "regio": "val"
-  },
-  {
-    "nom": "Rupit i Pruit",
-    "regio": "cat"
-  },
-  {
-    "nom": "Nàquera",
-    "regio": "val"
-  },
-  {
-    "nom": "Casserres",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bigastro",
-    "regio": "val"
-  },
-  {
-    "nom": "Algaida",
-    "regio": "bal"
-  },
-  {
-    "nom": "Aiguamúrcia",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Vall d'Ebo",
-    "regio": "val"
-  },
-  {
-    "nom": "Rótova",
-    "regio": "val"
-  },
-  {
-    "nom": "Ulldemolins",
-    "regio": "cat"
-  },
-  {
-    "nom": "Torreblanca",
-    "regio": "val"
-  },
-  {
-    "nom": "Puigcerdà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Busot",
-    "regio": "val"
-  },
-  {
-    "nom": "Pardines",
-    "regio": "cat"
-  },
-  {
-    "nom": "Zarra",
-    "regio": "val"
-  },
-  {
-    "nom": "les Coves de Vinromà",
-    "regio": "val"
-  },
-  {
-    "nom": "Tamarit",
-    "regio": "cat"
-  },
-  {
-    "nom": "Manacor",
-    "regio": "bal"
-  },
-  {
-    "nom": "Beneixama",
-    "regio": "val"
-  },
-  {
-    "nom": "Solsona",
-    "regio": "cat"
-  },
-  {
-    "nom": "Arròs",
-    "regio": "aran"
-  },
-  {
-    "nom": "Andilla",
-    "regio": "val"
-  },
-  {
-    "nom": "Riudoms",
-    "regio": "cat"
-  },
-  {
-    "nom": "Benimasot",
-    "regio": "val"
-  },
-  {
-    "nom": "Agullent",
-    "regio": "val"
-  },
-  {
-    "nom": "Vimbodí i Poblet",
-    "regio": "cat"
-  },
-  {
-    "nom": "Corbera",
-    "regio": "val"
-  },
-  {
-    "nom": "Belianes",
-    "regio": "cat"
-  },
-  {
-    "nom": "Estivella",
-    "regio": "val"
-  },
-  {
-    "nom": "Perafita",
-    "regio": "cat"
-  },
-  {
-    "nom": "Toga",
-    "regio": "val"
-  },
-  {
-    "nom": "Puigpunyent",
-    "regio": "bal"
-  },
-  {
-    "nom": "Dos Aguas",
-    "regio": "val"
-  },
-  {
-    "nom": "Cunit",
-    "regio": "cat"
-  },
-  {
-    "nom": "Almudaina",
-    "regio": "val"
-  },
-  {
-    "nom": "Montaverner",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Hilari Sacalm",
-    "regio": "cat"
-  },
-  {
-    "nom": "Mutxamel",
-    "regio": "val"
-  },
-  {
-    "nom": "Llíber",
-    "regio": "val"
-  },
-  {
-    "nom": "Corçà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Montán",
-    "regio": "val"
-  },
-  {
-    "nom": "Les",
-    "regio": "aran"
-  },
-  {
-    "nom": "Rocabruna",
-    "regio": "cat"
-  },
-  {
-    "nom": "Artà",
-    "regio": "bal"
-  },
-  {
-    "nom": "San Isidro",
-    "regio": "val"
-  },
-  {
-    "nom": "Oliana",
-    "regio": "cat"
-  },
-  {
-    "nom": "Fondó de les Neus",
-    "regio": "val"
-  },
-  {
-    "nom": "Benetússer",
-    "regio": "val"
-  },
-  {
-    "nom": "Surroca i Ogassa",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alberic",
-    "regio": "val"
-  },
-  {
-    "nom": "Benijófar",
-    "regio": "val"
-  },
-  {
-    "nom": "Móra d'Ebre",
-    "regio": "cat"
-  },
-  {
-    "nom": "Càlig",
-    "regio": "val"
-  },
-  {
-    "nom": "Costur",
-    "regio": "val"
-  },
-  {
-    "nom": "Arbolí",
-    "regio": "cat"
-  },
-  {
-    "nom": "Petra",
-    "regio": "bal"
-  },
-  {
-    "nom": "Daya Nueva",
-    "regio": "val"
-  },
-  {
-    "nom": "Cambrils",
-    "regio": "cat"
-  },
-  {
-    "nom": "Villanueva de Viver",
-    "regio": "val"
-  },
-  {
-    "nom": "Cervera",
-    "regio": "cat"
-  },
-  {
-    "nom": "Tous",
-    "regio": "val"
-  },
-  {
-    "nom": "Daimús",
-    "regio": "val"
-  },
-  {
-    "nom": "Santes Creus",
-    "regio": "cat"
-  },
-  {
-    "nom": "Bausen",
-    "regio": "aran"
-  },
-  {
-    "nom": "Albatera",
-    "regio": "val"
-  },
-  {
-    "nom": "Rocafort de Vallbona",
-    "regio": "cat"
-  },
-  {
-    "nom": "l'Alfàs del Pi",
-    "regio": "val"
-  },
-  {
-    "nom": "Vinebre",
-    "regio": "cat"
-  },
-  {
-    "nom": "Sant Lluís",
-    "regio": "bal"
-  },
-  {
-    "nom": "Benifairó de la Valldigna",
-    "regio": "val"
-  },
-  {
-    "nom": "Simat de la Valldigna",
-    "regio": "val"
-  },
-  {
-    "nom": "Fanzara",
-    "regio": "val"
-  },
-  {
-    "nom": "Tona",
-    "regio": "cat"
-  },
-  {
-    "nom": "Font d'En Carròs",
-    "regio": "val"
-  },
-  {
-    "nom": "Saldes",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Pobla Tornesa",
-    "regio": "val"
-  },
-  {
-    "nom": "Rugat",
-    "regio": "val"
-  },
-  {
-    "nom": "Santa Cristina d'Aro",
-    "regio": "cat"
-  },
-  {
-    "nom": "Museros",
-    "regio": "val"
-  },
-  {
-    "nom": "Santa Maria del Camí",
-    "regio": "bal"
-  },
-  {
-    "nom": "Sussanna",
-    "regio": "cat"
-  },
-  {
-    "nom": "Gorga",
-    "regio": "val"
-  },
-  {
-    "nom": "Cabanes",
-    "regio": "val"
-  },
-  {
-    "nom": "Alzira",
-    "regio": "val"
-  },
-  {
-    "nom": "La Selva del Camp",
-    "regio": "cat"
-  },
-  {
-    "nom": "Canejan",
-    "regio": "aran"
-  },
-  {
-    "nom": "Xeresa",
-    "regio": "val"
-  },
-  {
-    "nom": "Castelldans",
-    "regio": "cat"
-  },
-  {
-    "nom": "Chera",
-    "regio": "val"
-  },
-  {
-    "nom": "Nalec",
-    "regio": "cat"
-  },
-  {
-    "nom": "Cotes",
-    "regio": "val"
-  },
-  {
-    "nom": "Banyalbufar",
-    "regio": "bal"
-  },
-  {
-    "nom": "Llucena",
-    "regio": "val"
-  },
-  {
-    "nom": "Artesa de Segre",
-    "regio": "cat"
-  },
-  {
-    "nom": "Font de la Figuera",
-    "regio": "val"
-  },
-  {
-    "nom": "Muntanyola",
-    "regio": "cat"
-  },
-  {
-    "nom": "Santa Pola",
-    "regio": "val"
-  },
-  {
-    "nom": "Ribes de Freser",
-    "regio": "cat"
-  },
-  {
-    "nom": "Tormos",
-    "regio": "val"
-  },
-  {
-    "nom": "Catarroja",
-    "regio": "val"
-  },
-  {
-    "nom": "Meranges",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alaquàs",
-    "regio": "val"
-  },
-  {
-    "nom": "La Granja d'Escarp",
-    "regio": "cat"
-  },
-  {
-    "nom": "Tales",
-    "regio": "val"
-  },
-  {
-    "nom": "Sineu",
-    "regio": "bal"
-  },
-  {
-    "nom": "Parcent",
-    "regio": "val"
-  },
-  {
-    "nom": "Casarilh",
-    "regio": "aran"
-  },
-  {
-    "nom": "Sant Sadurní d'Anoia",
-    "regio": "cat"
-  },
-  {
-    "nom": "Cerdà",
-    "regio": "val"
-  },
-  {
-    "nom": "Sax",
-    "regio": "val"
-  },
-  {
-    "nom": "Ridaura",
-    "regio": "cat"
-  },
-  {
-    "nom": "Confrides",
-    "regio": "val"
-  },
-  {
-    "nom": "Aitona",
-    "regio": "cat"
-  },
-  {
-    "nom": "Tírig",
-    "regio": "val"
-  },
-  {
-    "nom": "Planoles",
-    "regio": "cat"
-  },
-  {
-    "nom": "Novelda",
-    "regio": "val"
-  },
-  {
-    "nom": "Búger",
-    "regio": "bal"
-  },
-  {
-    "nom": "Alfondeguilla",
-    "regio": "val"
-  },
-  {
-    "nom": "El Vendrell",
-    "regio": "cat"
-  },
-  {
-    "nom": "Barxeta",
-    "regio": "val"
-  },
-  {
-    "nom": "Lleida",
-    "regio": "cat"
-  },
-  {
-    "nom": "Vallanca",
-    "regio": "val"
-  },
-  {
-    "nom": "El Perelló",
-    "regio": "cat"
-  },
-  {
-    "nom": "Mislata",
-    "regio": "val"
-  },
-  {
-    "nom": "Albal",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Esteve de Palautordera",
-    "regio": "cat"
-  },
-  {
-    "nom": "Llocnou d'En Fenollet",
-    "regio": "val"
-  },
-  {
-    "nom": "Llorac",
-    "regio": "cat"
-  },
-  {
-    "nom": "Teulada",
-    "regio": "val"
-  },
-  {
-    "nom": "Formentera",
-    "regio": "bal"
-  },
-  {
-    "nom": "Era Bordeta",
-    "regio": "aran"
-  },
-  {
-    "nom": "Aguilar de Segarra",
-    "regio": "cat"
-  },
-  {
-    "nom": "Crevillent",
-    "regio": "val"
-  },
-  {
-    "nom": "Benejúzar",
-    "regio": "val"
-  },
-  {
-    "nom": "Urús",
-    "regio": "cat"
-  },
-  {
-    "nom": "Facheca",
-    "regio": "val"
-  },
-  {
-    "nom": "Forès",
-    "regio": "cat"
-  },
-  {
-    "nom": "Vistabella del Maestrat",
-    "regio": "val"
-  },
-  {
-    "nom": "Gualta",
-    "regio": "cat"
-  },
-  {
-    "nom": "Sumacàrcer",
-    "regio": "val"
-  },
-  {
-    "nom": "Bejís",
-    "regio": "val"
-  },
-  {
-    "nom": "Figueres",
-    "regio": "cat"
-  },
-  {
-    "nom": "Costitx",
-    "regio": "bal"
-  },
-  {
-    "nom": "Xeraco",
-    "regio": "val"
-  },
-  {
-    "nom": "Sils",
-    "regio": "cat"
-  },
-  {
-    "nom": "Potríes",
-    "regio": "val"
-  },
-  {
-    "nom": "Margalef",
-    "regio": "cat"
-  },
-  {
-    "nom": "Alcàntera de Xúquer",
-    "regio": "val"
-  },
-  {
-    "nom": "Albaida",
-    "regio": "val"
-  },
-  {
-    "nom": "Solivella",
-    "regio": "cat"
-  },
-  {
-    "nom": "la Jana",
-    "regio": "val"
-  },
-  {
-    "nom": "Tàrrega",
-    "regio": "cat"
-  },
-  {
-    "nom": "Benafigos",
-    "regio": "val"
-  },
-  {
-    "nom": "Arres de Sus",
-    "regio": "aran"
-  },
-  {
-    "nom": "Blanes",
-    "regio": "cat"
-  },
-  {
-    "nom": "Benassal",
-    "regio": "val"
-  },
-  {
-    "nom": "Pollença",
-    "regio": "bal"
-  },
-  {
-    "nom": "Loriguilla",
-    "regio": "val"
-  },
-  {
-    "nom": "Vallés",
-    "regio": "val"
-  },
-  {
-    "nom": "Fuente la Reina",
-    "regio": "val"
-  },
-  {
-    "nom": "Molló",
-    "regio": "cat"
-  },
-  {
-    "nom": "Sellent",
-    "regio": "val"
-  },
-  {
-    "nom": "la Vall de Laguar",
-    "regio": "val"
-  },
-  {
-    "nom": "Tremp",
-    "regio": "cat"
-  },
-  {
-    "nom": "el Poble Nou de Benitatxell",
-    "regio": "val"
-  },
-  {
-    "nom": "Andratx",
-    "regio": "bal"
-  },
-  {
-    "nom": "Montanejos",
-    "regio": "val"
-  },
-  {
-    "nom": "Organyà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Xaló",
-    "regio": "val"
-  },
-  {
-    "nom": "Sant Rafael del Riu",
-    "regio": "val"
-  },
-  {
-    "nom": "Lluçà",
-    "regio": "cat"
-  },
-  {
-    "nom": "Albalat dels Sorells",
-    "regio": "val"
-  },
-  {
-    "nom": "Prades",
-    "regio": "cat"
-  },
-  {
-    "nom": "Baquèira",
-    "regio": "aran"
-  },
-  {
-    "nom": "Alfarp",
-    "regio": "val"
-  },
-  {
-    "nom": "Gratallops",
-    "regio": "cat"
-  },
-  {
-    "nom": "Ayora",
-    "regio": "val"
-  },
-  {
-    "nom": "la Romana",
-    "regio": "val"
-  },
-  {
-    "nom": "Vandellòs",
-    "regio": "cat"
-  },
-  {
-    "nom": "Consell",
-    "regio": "bal"
-  },
-  {
-    "nom": "Barracas",
-    "regio": "val"
-  },
-  {
-    "nom": "Sitges",
-    "regio": "cat"
-  },
-  {
-    "nom": "Olocau del Rey",
-    "regio": "val"
-  },
-  {
-    "nom": "Llívia",
-    "regio": "cat"
-  },
-  {
-    "nom": "Altea",
-    "regio": "val"
   }
 ]
