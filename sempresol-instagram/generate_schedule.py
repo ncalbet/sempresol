@@ -1,6 +1,7 @@
 """
 generate_schedule.py
-Genera data/schedule.csv: la programació editable de posts (un dia per fila).
+Genera data/schedule.csv: la programació editable de posts (una fila per post;
+normalment un post per dia, però un dia pot tenir-ne més d'un).
 
 Combina:
   data/towns.json      → ordre i regió de cada poble (un poble per dia)
@@ -44,13 +45,20 @@ def generic_message(idx: int, regio: str, town: str) -> str:
     return pool[idx % len(pool)].replace("{lugar}", town)
 
 
-def load_existing() -> dict[str, dict]:
-    """Llegeix schedule.csv si ja existeix (per conservar edicions manuals)."""
+def load_existing() -> dict[str, list[dict]]:
+    """Llegeix schedule.csv si ja existeix (per conservar edicions manuals).
+
+    Una data pot tenir més d'una fila (posts extra); es conserven totes i en
+    el mateix ordre.
+    """
     out = DATA / "schedule.csv"
     if not out.exists():
         return {}
+    existing: dict[str, list[dict]] = {}
     with open(out, encoding="utf-8", newline="") as f:
-        return {row["data"]: row for row in csv.DictReader(f)}
+        for row in csv.DictReader(f):
+            existing.setdefault(row["data"], []).append(row)
+    return existing
 
 
 def main():
@@ -84,8 +92,8 @@ def main():
             local_seen[town] = k + 1
 
         if date in existing:
-            rows.append(existing[date])
-            n_kept += 1
+            rows.extend(existing[date])   # inclou els posts extra del dia
+            n_kept += len(existing[date])
             continue
 
         if is_local:
@@ -103,7 +111,8 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"schedule.csv: {len(rows)} dies ({rows[0]['data']} - {rows[-1]['data']})")
+    print(f"schedule.csv: {horizon} dies, {len(rows)} files "
+          f"({rows[0]['data']} - {rows[-1]['data']})")
     print(f"  conservades: {n_kept} | noves: {n_new}")
 
 

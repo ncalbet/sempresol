@@ -60,25 +60,65 @@ def reorder_towns():
     print(f"towns.json reescrit ({TOTAL} entrades).\n")
 
 
-def truncate_schedule():
-    """Manté només les files publicades (fins a ahir inclusive)."""
+def truncate_schedule() -> list[dict]:
+    """Manté només les files publicades (fins a ahir inclusive).
+
+    Retorna els posts EXTRA de dates futures (2a fila i següents d'un mateix
+    dia), que no es poden regenerar automàticament i es reinsereixen després.
+    """
     yesterday = (datetime.now(tz=timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
 
     if not SCHED_F.exists():
         print("schedule.csv no existeix, s'ometrà la truncació.")
-        return
+        return []
 
     with open(SCHED_F, encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
 
-    kept = [r for r in rows if r["data"] <= yesterday]
+    kept: list[dict] = []
+    extras: list[dict] = []
+    seen_future: set[str] = set()
+    for r in rows:
+        if r["data"] <= yesterday:
+            kept.append(r)
+        elif r["data"] in seen_future:
+            extras.append(r)      # post extra d'un dia futur: el salvem
+        else:
+            seen_future.add(r["data"])
+
     print(f"schedule.csv: es conserven {len(kept)} files (fins a {yesterday}).")
-    print(f"  S'eliminaran {len(rows) - len(kept)} files futures per regenerar.\n")
+    print(f"  S'eliminaran {len(rows) - len(kept) - len(extras)} files futures per regenerar.")
+    if extras:
+        print(f"  Es preserven {len(extras)} posts extra futurs.")
+    print()
 
     with open(SCHED_F, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=["data", "poble", "regio", "text"])
         writer.writeheader()
         writer.writerows(kept)
+
+    return extras
+
+
+def reinsert_extras(extras: list[dict]):
+    """Torna a col·locar els posts extra darrere del post diari de la seva data."""
+    if not extras:
+        return
+
+    with open(SCHED_F, encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+
+    # L'ordenació de Python és estable: per a una mateixa data, les files
+    # regenerades (rows) queden abans que els extra.
+    merged = rows + extras
+    merged.sort(key=lambda r: r["data"])
+
+    with open(SCHED_F, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["data", "poble", "regio", "text"])
+        writer.writeheader()
+        writer.writerows(merged)
+
+    print(f"Reinserits {len(extras)} posts extra.")
 
 
 def regenerate(days):
@@ -89,6 +129,7 @@ def regenerate(days):
 if __name__ == "__main__":
     days = int(sys.argv[1]) if len(sys.argv) > 1 else TOTAL
     reorder_towns()
-    truncate_schedule()
+    extras = truncate_schedule()
     regenerate(days)
+    reinsert_extras(extras)
     print("\nFet! Pots fer push al repositori GitHub.")
