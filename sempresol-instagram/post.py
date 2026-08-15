@@ -16,6 +16,8 @@ Entorn (GitHub Secrets / Actions):
   GITHUB_REF_NAME    — branca (injectat per Actions)
   IMAGES_SUBPATH     — subcarpeta de les imatges al repo
   SLOT               — quin post del dia (1 = el diari, 2 = el primer extra…)
+  TEMPLATE           — opcional: força la plantilla d'imatge (0-5). Si es deixa
+                       buit, es tria sola pel hash del nom de fitxer.
 
 Dades:
   data/schedule.csv  → programació editable: data,poble,regio,text
@@ -152,8 +154,14 @@ def post_for_today(slot: int = 1) -> dict | None:
 def run_generate(p: dict):
     print(f"[GENERA] {p['date_str']} - {p['town']} [{p['regio']}]")
     print(f"   Missatge: {p['message'][:60]}...")
+    # Normalment la plantilla es tria sola (hash del nom de fitxer); TEMPLATE
+    # permet forçar-ne una en execucions manuals.
+    template = os.environ.get("TEMPLATE", "").strip()
+    template_idx = int(template) if template else None
+    if template_idx is not None:
+        print(f"   Plantilla forçada: {template_idx}")
     print("   Generant imatge...")
-    create_post_image(p["town"], p["message"], p["image_path"])
+    create_post_image(p["town"], p["message"], p["image_path"], template_idx)
     print(f"   Imatge: {p['image_path']}")
 
 

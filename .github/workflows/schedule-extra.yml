@@ -20,6 +20,10 @@ on:
         description: "Quin post del dia publicar (2 = primer extra, 3 = segon extra…)"
         required: false
         default: "2"
+      template:
+        description: "Plantilla d'imatge (0-5). Buit = la tria automàtica de sempre"
+        required: false
+        default: ""
 
 concurrency:
   group: sempresol-post
@@ -73,6 +77,7 @@ jobs:
         working-directory: sempresol-instagram
         env:
           MODE: generate
+          TEMPLATE: ${{ github.event.inputs.template }}
         run: python post.py
 
       # ── 7. Commit + push de la imatge (perquè la URL raw sigui pública) ───
