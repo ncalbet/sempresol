@@ -89,6 +89,27 @@ python generate_image.py
 
 ## Personalització
 
+### Afegir un post extra un dia concret
+
+`data/schedule.csv` admet **més d'una fila per data**. La primera fila del dia és el
+post diari (07:30 CEST) i la segona és el post extra (14:30 CEST, workflow
+`schedule-extra.yml`). Només cal afegir la fila just a sota de la del dia:
+
+```csv
+2026-08-20,Berga,cat,"A {lugar}, el sol fa hores extra."     ← post diari
+2026-08-20,Gandia,val,"A {lugar}, ..."                        ← post EXTRA
+```
+
+- Si un dia no té segona fila, el workflow extra acaba sense publicar res.
+- La imatge de l'extra porta sufix: `2026-08-20_Gandia_2.png`.
+- Es poden afegir més files (3a, 4a…), però el cron només publica el slot 2.
+  Per als altres: **Actions > SempreSol – Post extra > Run workflow** i posa-hi
+  el número de slot.
+- `generate_schedule.py` i `rebalance_towns.py` conserven les files extra.
+
+Recorda editar el `schedule.csv` **de GitHub** (és la font de veritat) o fer
+`git pull` abans de tocar el local.
+
 ### Afegir nous missatges
 
 Edita `data/messages.json` i afegeix les teves frases. Usa `{lugar}` com a placeholder del poble:

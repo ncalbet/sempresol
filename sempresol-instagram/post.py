@@ -2,10 +2,12 @@
 post.py
 Script principal de SempreSol Instagram Bot (publicació directa via Instagram API).
 
-Dos modes (variable d'entorn MODE):
+Tres modes (variable d'entorn MODE):
   MODE=generate  → genera NOMÉS la imatge del dia a images/ (per fer-ne commit)
   MODE=publish   → publica la imatge del dia (ja penjada a GitHub) a Instagram
                    i escriu el token renovat a new_token.txt
+  MODE=check     → no fa res, només informa si avui hi ha post per a aquest SLOT
+                   (escriu has_post=true/false a $GITHUB_OUTPUT)
 
 Entorn (GitHub Secrets / Actions):
   IG_ACCESS_TOKEN    — token de llarga durada d'Instagram
@@ -13,11 +15,17 @@ Entorn (GitHub Secrets / Actions):
   GITHUB_REPOSITORY  — usuari/repo (injectat per Actions)
   GITHUB_REF_NAME    — branca (injectat per Actions)
   IMAGES_SUBPATH     — subcarpeta de les imatges al repo
+  SLOT               — quin post del dia (1 = el diari, 2 = el primer extra…)
 
 Dades:
-  data/schedule.csv  → programació editable: data,poble,regio,text (una fila/dia)
+  data/schedule.csv  → programació editable: data,poble,regio,text
                        Es genera amb generate_schedule.py a partir de towns.json,
                        messages.json i local_jokes.json. És la FONT DE VERITAT.
+
+                       Normalment hi ha UNA fila per dia. Per publicar un post
+                       EXTRA un dia concret, només cal afegir una segona fila amb
+                       la mateixa data (l'ordre dins del fitxer mana: la 1a fila
+                       és el post del matí, la 2a l'extra del migdia).
 """
 
 import csv
@@ -73,8 +81,12 @@ IMG.mkdir(exist_ok=True)
 
 # ── Dades ─────────────────────────────────────────────────────────────────────
 
+# Una data pot tenir més d'una fila (post diari + posts extra), per això el
+# valor és una llista i no una sola fila: així cap fila es perd pel camí.
+SCHEDULE: dict[str, list[dict]] = {}
 with open(DATA / "schedule.csv", encoding="utf-8", newline="") as f:
-    SCHEDULE: dict[str, dict] = {row["data"]: row for row in csv.DictReader(f)}
+    for _row in csv.DictReader(f):
+        SCHEDULE.setdefault(_row["data"], []).append(_row)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -104,21 +116,28 @@ def github_raw_url(image_filename: str) -> str | None:
     return None
 
 
-def post_for_today() -> dict:
-    """Llegeix de schedule.csv tot el que cal per al post d'avui."""
+def post_for_today(slot: int = 1) -> dict | None:
+    """Llegeix de schedule.csv el post d'avui per a aquest slot.
+
+    slot=1 és el post diari (1a fila del dia), slot=2 el primer extra, etc.
+    Retorna None si avui no hi ha cap fila per a aquest slot.
+    """
     date_str = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
-    row = SCHEDULE.get(date_str)
-    if row is None:
-        print(f"   ERROR: no hi ha cap fila a schedule.csv per a {date_str}.")
-        print("   Allarga la programació: python generate_schedule.py <dies>")
-        sys.exit(1)
+    rows = SCHEDULE.get(date_str, [])
+    if slot > len(rows):
+        return None
+    row = rows[slot - 1]
     town = row["poble"]
     regio = row["regio"]
     message = row["text"]
     caption = build_caption(message, town, regio)
-    image_name = f"{date_str}_{town.replace(' ', '_')}.png"
+    # El post diari manté el nom de sempre; els extra porten sufix per no
+    # trepitjar la imatge del matí si cau el mateix poble.
+    suffix = "" if slot == 1 else f"_{slot}"
+    image_name = f"{date_str}_{town.replace(' ', '_')}{suffix}.png"
     return {
         "date_str": date_str,
+        "slot": slot,
         "town": town,
         "regio": regio,
         "message": message,
@@ -157,13 +176,40 @@ def run_publish(p: dict):
         print("   Token renovat (escrit a new_token.txt).")
 
 
+def run_check(p: dict | None, date_str: str, slot: int):
+    """Informa (a Actions) si hi ha post per a aquest slot, sense fer res més."""
+    if p:
+        print(f"[CHECK] {date_str} slot {slot}: {p['town']} [{p['regio']}] ✓")
+    else:
+        print(f"[CHECK] {date_str} slot {slot}: cap fila programada.")
+    gh_output = os.environ.get("GITHUB_OUTPUT")
+    if gh_output:
+        with open(gh_output, "a", encoding="utf-8") as f:
+            f.write(f"has_post={'true' if p else 'false'}\n")
+
+
 def main():
     mode = os.environ.get("MODE", "generate").lower()
+    slot = int(os.environ.get("SLOT", "1"))
+    date_str = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
     print("=" * 60)
-    print(f"  SempreSol Instagram Bot — MODE={mode}")
+    print(f"  SempreSol Instagram Bot — MODE={mode} SLOT={slot}")
     print("=" * 60)
 
-    p = post_for_today()
+    p = post_for_today(slot)
+
+    if mode == "check":
+        run_check(p, date_str, slot)
+        return
+
+    if p is None:
+        if slot == 1:
+            print(f"   ERROR: no hi ha cap fila a schedule.csv per a {date_str}.")
+            print("   Allarga la programació: python generate_schedule.py <dies>")
+            sys.exit(1)
+        # Els posts extra són opcionals: si avui no n'hi ha, no és cap error.
+        print(f"   Avui ({date_str}) no hi ha post extra per al slot {slot}. Res a fer.")
+        return
 
     if mode == "publish":
         run_publish(p)

@@ -8,6 +8,11 @@ on:
   # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:
 
+# Evita que aquest workflow i el del post extra facin push alhora.
+concurrency:
+  group: sempresol-post
+  cancel-in-progress: false
+
 jobs:
   post:
     name: Genera imatge i publica a Instagram
