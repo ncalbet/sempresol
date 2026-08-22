@@ -92,7 +92,7 @@ python generate_image.py
 ### Afegir un post extra un dia concret
 
 `data/schedule.csv` admet **més d'una fila per data**. La primera fila del dia és el
-post diari (07:30 CEST) i la segona és el post extra (14:30 CEST, workflow
+post diari (07:30 CEST) i la segona és el post extra (13:00 CEST, workflow
 `schedule-extra.yml`). Només cal afegir la fila just a sota de la del dia:
 
 ```csv
