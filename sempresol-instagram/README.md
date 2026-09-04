@@ -1,6 +1,6 @@
 # ☀️ SempreSol Instagram Bot
 
-Bot que programa automàticament posts d'Instagram per a [sempresol.cat](https://sempresol.cat).
+Bot que publica automàticament a l'Instagram de [sempresol.cat](https://sempresol.cat).
 Publica **fins a tres posts al dia** — matí (07:30), migdia (12:50) i tarda
 (19:30), hora catalana — cadascun amb:
 
@@ -16,58 +16,60 @@ només si `data/schedule.csv` té 2a i 3a fila per a aquella data.
 ## Com funciona
 
 ```
-GitHub Actions (cada 5 dies)
+GitHub Actions (3 crons, hora catalana)
+  schedule.yml        07:30 → SLOT 1
+  schedule-extra.yml  12:50 → SLOT 2
+                      19:30 → SLOT 3
         │
         ▼
-  post.py llegeix:
-  • data/messages.json  → 203 missatges humorístics
-  • data/towns.json     → 290+ pobles catalans
+  post.py, en tres passades (variable MODE):
+  • MODE=check     hi ha fila per a aquest SLOT? (només als extra)
+  • MODE=generate  crea la imatge amb generate_image.py (Pillow)
+  • MODE=publish   la penja a Instagram i renova el token
         │
         ▼
-  generate_image.py
-  → Crea imatge 1080×1080 (Pillow)
+  La imatge es commiteja a images/ i es puja al repo:
+  Instagram se la descarrega per la URL raw de GitHub,
+  o sigui que ha de ser pública abans de publicar.
         │
         ▼
-  buffer_client.py
-  → Programa 5 posts a Buffer
-        │
-        ▼
-  Buffer publica 1 post per dia a Instagram ☀️
+  Instagram API (graph.instagram.com, Instagram Login) ☀️
 ```
+
+La programació surt sempre de **`data/schedule.csv`**, que és la **font de
+veritat**: `post.py` no improvisa res, només llegeix la fila que toca.
+
+El CSV es genera amb `generate_schedule.py` combinant:
+
+| Fitxer                 | Contingut                                                     |
+|------------------------|---------------------------------------------------------------|
+| `data/towns.json`      | 840 pobles amb la seva regió, en l'ordre de la rotació (un per dia) |
+| `data/messages.json`   | ~460 frases genèriques, per varietat dialectal (`cat`, `bal`, `val`, `aran`) |
+| `data/local_jokes.json`| Bromes lligades a un poble concret; tenen prioritat sobre les genèriques |
 
 ---
 
-## Configuració inicial
+## Configuració
 
-### 1. Fork / clona aquest repositori
+### Secrets del repositori
 
-Crea un repositori nou a GitHub (públic, per poder usar les URLs raw de les imatges).
+**Settings > Secrets and variables > Actions**
 
-### 2. Crea un compte Buffer
+| Secret            | Per a què serveix                                                  |
+|-------------------|--------------------------------------------------------------------|
+| `IG_ACCESS_TOKEN` | Token de llarga durada d'Instagram (Instagram Login)               |
+| `IG_USER_ID`      | ID del compte d'Instagram                                          |
+| `GH_PAT`          | Token personal de GitHub amb permís sobre secrets, per a l'auto-renovació |
 
-- Registra't a [buffer.com](https://buffer.com) (pla **Essentials ~5$/mes** per posts il·limitats)
-- Connecta el teu compte d'Instagram Business
-- Configura l'hora de publicació diària a Buffer (p.ex. 10:00 AM)
+El token d'Instagram caduca. Cada publicació el renova: `post.py` escriu el
+token nou a `new_token.txt` i l'últim pas del workflow el desa amb
+`gh secret set IG_ACCESS_TOKEN`, fent servir el `GH_PAT`. Si el token té menys
+de 24 h, Instagram no el renova i el pas ho diu al log; és normal.
 
-### 3. Obtén la clau API de Buffer
+### El repositori ha de ser públic
 
-- Buffer > Settings > **API** > Generate API Key
-- Copia l'ID del perfil Instagram: Buffer > Settings > Channels > copia l'ID
-
-### 4. Afegeix secrets a GitHub
-
-Al teu repositori: **Settings > Secrets and variables > Actions > New repository secret**
-
-| Secret              | Valor                                      |
-|---------------------|--------------------------------------------|
-| `BUFFER_API_KEY`    | La clau API que has generat a Buffer       |
-| `BUFFER_PROFILE_ID` | L'ID del perfil Instagram a Buffer         |
-
-### 5. Activa GitHub Actions
-
-- Ves a la pestanya **Actions** del teu repo
-- Activa els workflows si no estan activats
-- Prova manualment: **Actions > SempreSol > Run workflow**
+Instagram descarrega la imatge per la URL raw de GitHub. Si el repo fos privat,
+no la podria recuperar i la publicació fallaria.
 
 ---
 
@@ -76,19 +78,26 @@ Al teu repositori: **Settings > Secrets and variables > Actions > New repository
 ```bash
 pip install -r requirements.txt
 
-# Configura variables d'entorn
-export BUFFER_API_KEY="la_teva_clau"
-export BUFFER_PROFILE_ID="el_teu_profile_id"
+# Quin post toca avui? (no publica res)
+MODE=check python post.py
 
-python post.py
+# Genera la imatge d'avui a images/ (no publica res)
+MODE=generate python post.py
+
+# Un dels posts extra: SLOT 2 = migdia, SLOT 3 = tarda
+MODE=generate SLOT=2 python post.py
 ```
 
-Per provar la generació d'imatges sense publicar:
+Per veure les sis plantilles d'imatge d'un cop, sense tocar la programació:
 
 ```bash
 python generate_image.py
-# Crea /tmp/test_sempresol.png
+# Crea test_sempresol_{classica,capgirada,lateral,radial,llevant,nit}.png
+# a /tmp (o C:/Windows/Temp a Windows)
 ```
+
+Normalment la plantilla es tria sola pel hash del nom del fitxer. Amb
+`TEMPLATE=0..5` en pots forçar una, tant en local com al *Run workflow*.
 
 ---
 
@@ -110,15 +119,9 @@ publicació. Només cal afegir-les just a sota de la del dia, en ordre:
 - Les hores són hora catalana tot l'any (`timezone: Europe/Madrid` als crons).
 - Per publicar-ne un fora d'hora: **Actions > SempreSol – Post extra > Run
   workflow** i posa-hi el número de slot.
-- `generate_schedule.py` i `rebalance_towns.py` conserven les files extra.
 
 Recorda editar el `schedule.csv` **de GitHub** (és la font de veritat) o fer
 `git pull` abans de tocar el local.
-
-⚠️ `rebalance_towns.py` només conserva les files EXTRA (2a i 3a de cada dia):
-regenera la del matí a partir de `towns.json` i s'emporta per davant el poble i
-el text que hi hagis escrit a mà. Si tens un post del matí preparat per a una
-data concreta, no l'executis.
 
 ### Hashtags a mida
 
@@ -135,25 +138,31 @@ la regió més el hashtag del poble); no els substitueix:
   el log de l'execució t'avisa.
 - Deixar la cel·la buida (o no posar-hi columna) és el comportament de sempre.
 
-### Afegir nous missatges
+### Afegir noves frases
 
-Edita `data/messages.json` i afegeix les teves frases. Usa `{lugar}` com a placeholder del poble:
+`data/messages.json` està organitzat **per varietat dialectal**. Afegeix la
+frase a la llista que toqui i fes servir `{lugar}` com a marcador del poble:
 
 ```json
-"A {lugar}, el sol ha decidit fer hores extra. Per amor a l'art."
+{
+  "cat": ["A {lugar}, el sol ha decidit fer hores extra. Per amor a l'art."],
+  "bal": ["A {lugar}, es sol no s'atura mai."],
+  "val": ["A {lugar}, este sol no afluixa."],
+  "aran": ["En {lugar}, eth sòu non s'ature jamès."]
+}
 ```
 
-### Canviar l'hora de publicació
+Per a una broma d'un poble concret, `data/local_jokes.json`, amb el nom del
+poble com a clau. Tenen prioritat sobre les genèriques.
 
-Edita `post.py`:
-```python
-POST_HOUR = 10   # Hora UTC (10 = 12h hora espanyola estiu)
-```
+Cap de les dues coses no toca el que ja hi ha programat: les frases noves
+només entren als dies que `generate_schedule.py` afegeixi de nou al final.
 
 ### Canviar les hores de publicació
 
 El post del matí és a `.github/workflows/schedule.yml` i els dos extra a
 `.github/workflows/schedule-extra.yml`. Els crons van en hora catalana:
+
 ```yaml
 - cron: "30 7 * * *"        # 07:30, tot l'any
   timezone: Europe/Madrid
@@ -169,22 +178,53 @@ Dues coses a tenir en compte si les toques:
 
 ---
 
+## Manteniment de la programació
+
+```bash
+python generate_schedule.py [dies]
+```
+
+Allarga `schedule.csv` amb dies nous al final. **És incremental i segur**: no
+sobreescriu ni escurça res del que ja hi ha, edicions manuals incloses.
+
+```bash
+python rebalance_towns.py [dies]
+```
+
+Reordena `towns.json` per mantenir la proporció 60% cat / 25% val / 10% bal /
+5% aran i torna a generar la programació de zero.
+
+⚠️ **Només conserva les files EXTRA (2a i 3a de cada dia).** La del matí la
+regenera a partir de `towns.json` i s'emporta per davant el poble i el text que
+hi hagis escrit a mà. Si tens un post del matí preparat per a una data concreta,
+no l'executis.
+
+---
+
 ## Estructura del projecte
 
+Aquest bot viu dins del repositori del web de sempresol.cat, que n'ocupa
+l'arrel (`index.html`, `manifest.json`, `sw.js`…).
+
 ```
+.github/
+└── workflows/
+    ├── schedule.yml        # Post del matí (07:30)
+    └── schedule-extra.yml  # Posts de migdia (12:50) i tarda (19:30)
 sempresol-instagram/
 ├── data/
-│   ├── messages.json       # 203 missatges humorístics
-│   └── towns.json          # 290+ pobles catalans
-├── images/                 # Imatges generades (auto-commit)
-├── .github/
-│   └── workflows/
-│       ├── schedule.yml       # Post del matí (07:30)
-│       └── schedule-extra.yml # Posts de migdia i tarda
-├── generate_image.py       # Generador d'imatges Pillow
-├── buffer_client.py        # Client API Buffer
-├── post.py                 # Script principal
-├── requirements.txt
+│   ├── schedule.csv        # FONT DE VERITAT: data,poble,regio,text,hashtags
+│   ├── towns.json          # 840 pobles i la seva regió, en ordre de rotació
+│   ├── messages.json       # ~460 frases per varietat dialectal
+│   └── local_jokes.json    # Bromes lligades a un poble concret
+├── images/                 # Imatges generades (auto-commit; les llegeix Instagram)
+├── post.py                 # Script principal (MODE=check|generate|publish)
+├── generate_image.py       # Generador d'imatges Pillow (6 plantilles)
+├── instagram_client.py     # Client de la Instagram API + renovació del token
+├── generate_schedule.py    # Allarga schedule.csv (incremental)
+├── rebalance_towns.py      # Reordena towns.json i regenera la programació
+├── buffer_client.py        # Llegat de l'època de Buffer; ja no s'usa
+├── requirements.txt        # Pillow, requests
 └── README.md
 ```
 
