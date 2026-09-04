@@ -1,9 +1,11 @@
 name: SempreSol – Publica post diari a Instagram
 
 on:
-  # Cada dia a les 05:30 UTC → 07:30 CEST
   schedule:
-    - cron: "30 5 * * *"
+    # Cada dia a les 07:30, hora catalana (el canvi d'hora es gestiona sol
+    # gràcies a la clau timezone).
+    - cron: "30 7 * * *"
+      timezone: Europe/Madrid
 
   # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:

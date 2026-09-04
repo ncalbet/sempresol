@@ -1,4 +1,4 @@
-data,poble,regio,text
+data,poble,regio,text,hashtags
 2026-06-01,Cardedeu,cat,"A Cardedeu, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
 2026-06-02,Sort,cat,"A Sort, el club de senderisme ha eliminat la roba impermeable de la llista d'equipament recomanat. Per alleugerir la motxilla."
 2026-06-03,Sant Antoni de Vilamajor,cat,A Sant Antoni de Vilamajor viu un dia tan radiant que les plantes s'han despertat aplaudint aquest matí
@@ -103,8 +103,13 @@ data,poble,regio,text
 2026-09-07,Gessa,aran,"En Gessa, eth nèu qu'auie d'arribar deth nòrd s'a detudat a Tolosa. A vist es Pirinèus e a decidit non molestar."
 2026-09-08,Vallclara,cat,"A Vallclara la previsió és d’anticicló total, fins al punt que el sol no es pon: simplement fa una pausa tècnica per agafar aire."
 2026-09-09,Sant Fruitós de Bages,cat,Sant Fruitós de Bages registra unes condicions tan increïbles que fins i tot el propi clima s'aplaudeix a si mateix.
-2026-09-10,La Roca del Vallès,cat,"A La Roca del Vallès, la jornada es desenvolupa amb una serenitat meteorològica impecable. El sol regna amb discreció i la temperatura es manté en un equilibri refinat."
-2026-09-11,Villalonga,val,"A Villalonga, la previsió és tan repetitiva que sembla una cançó en bucle... però de les bones."
+2026-09-09,Cardedeu,cat,"A Cardedeu sempre van un pas per davant: avui glosen a les 19:30 h a Sant Corneli per escalfar motors. El sol hi serà."
+2026-09-10,La Roca del Vallès,cat,"A La Roca del Vallès, el sol ja ha tret la senyera del calaix i l'ha deixada planxada per demà. Avui, previsió d'assaig general.",#diada #onzedesetembre
+2026-09-10,Sant Hipòlit de Voltregà,cat,"Vigília de Diada a Sant Hipòlit de Voltregà: el cel s'ha quedat sense ni un núvol perquè demà no vol distraccions.",#diada #onzedesetembre
+2026-09-10,Tarragona,cat,"A Tarragona, el sol fa avui mitja jornada: diu que demà té acte institucional i hi vol arribar descansat.",#diada #onzedesetembre
+2026-09-11,Moià,cat,"A Moià, el sol s'ha aturat un moment sobre la casa on va néixer en Rafael Casanova. Després ha continuat, que la feina és la feina.",#diada #diadadecatalunya #onzedesetembre #11setembre
+2026-09-11,Berga,cat,"A Berga hi ha tantes senyeres als balcons que el sol ha hagut de repartir la llum en quatre franges perquè no se'n queixés cap.",#diada #diadadecatalunya #onzedesetembre #11setembre
+2026-09-11,Cardona,cat,"A Cardona, el vespre de l'Onze de Setembre pinta el cel de groc i de vermell. El sol assegura que és casualitat.",#diada #diadadecatalunya #onzedesetembre #11setembre
 2026-09-12,Bellmunt del Priorat,cat,El temps a Bellmunt del Priorat es defineix per la seva precisió i harmonia. Cada element encaixa amb una naturalitat exemplar.
 2026-09-13,Sant Vicenç de Torelló,cat,"A Sant Vicenç de Torelló, el clima ofereix una experiència d’equilibri total. Ni excessos ni carències: tot en la seva mesura exacta."
 2026-09-14,Quesa,val,"A Quesa, la realitat ha abaixat la persiana després de veure que no podia superar este nivell de perfecció."

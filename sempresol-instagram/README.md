@@ -1,10 +1,15 @@
 # ☀️ SempreSol Instagram Bot
 
-Bot que programa automàticament posts d'Instagram per a [sempresol.cat](https://sempresol.cat), publica 1 post diari amb:
+Bot que programa automàticament posts d'Instagram per a [sempresol.cat](https://sempresol.cat).
+Publica **fins a tres posts al dia** — matí (07:30), migdia (12:50) i tarda
+(19:30), hora catalana — cadascun amb:
 
 - Una **imatge 1080×1080** amb el nom del poble i una frase enginyosa
 - Un **caption** amb el missatge complet, el lema i els hashtags
-- Un **hashtag del poble** del dia
+- Un **hashtag del poble** del dia, més els que hi posis a la columna `hashtags`
+
+Del dia només és obligatòria la fila del matí: les altres dues es publiquen
+només si `data/schedule.csv` té 2a i 3a fila per a aquella data.
 
 ---
 
@@ -91,24 +96,44 @@ python generate_image.py
 
 ### Afegir un post extra un dia concret
 
-`data/schedule.csv` admet **més d'una fila per data**. La primera fila del dia és el
-post diari (07:30 CEST) i la segona és el post extra (13:00 CEST, workflow
-`schedule-extra.yml`). Només cal afegir la fila just a sota de la del dia:
+`data/schedule.csv` admet **fins a tres files per data**, una per cada hora de
+publicació. Només cal afegir-les just a sota de la del dia, en ordre:
 
 ```csv
-2026-08-20,Berga,cat,"A {lugar}, el sol fa hores extra."     ← post diari
-2026-08-20,Gandia,val,"A {lugar}, ..."                        ← post EXTRA
+2026-08-20,Berga,cat,"A {lugar}, el sol fa hores extra."     ← matí  (07:30)
+2026-08-20,Gandia,val,"A {lugar}, ..."                        ← migdia (12:50)
+2026-08-20,Cardona,cat,"A {lugar}, ..."                       ← tarda  (19:30)
 ```
 
-- Si un dia no té segona fila, el workflow extra acaba sense publicar res.
-- La imatge de l'extra porta sufix: `2026-08-20_Gandia_2.png`.
-- Es poden afegir més files (3a, 4a…), però el cron només publica el slot 2.
-  Per als altres: **Actions > SempreSol – Post extra > Run workflow** i posa-hi
-  el número de slot.
+- Si un dia no té 2a o 3a fila, el workflow extra acaba sense publicar res.
+- La imatge dels extra porta sufix: `2026-08-20_Gandia_2.png`.
+- Les hores són hora catalana tot l'any (`timezone: Europe/Madrid` als crons).
+- Per publicar-ne un fora d'hora: **Actions > SempreSol – Post extra > Run
+  workflow** i posa-hi el número de slot.
 - `generate_schedule.py` i `rebalance_towns.py` conserven les files extra.
 
 Recorda editar el `schedule.csv` **de GitHub** (és la font de veritat) o fer
 `git pull` abans de tocar el local.
+
+⚠️ `rebalance_towns.py` només conserva les files EXTRA (2a i 3a de cada dia):
+regenera la del matí a partir de `towns.json` i s'emporta per davant el poble i
+el text que hi hagis escrit a mà. Si tens un post del matí preparat per a una
+data concreta, no l'executis.
+
+### Hashtags a mida
+
+La 5a columna, `hashtags`, és opcional i **s'afegeix** als de sempre (el bloc de
+la regió més el hashtag del poble); no els substitueix:
+
+```csv
+2026-09-11,Moià,cat,"A {lugar}, ...",#diada #onzedesetembre
+```
+
+- Es pot escriure amb coixinet o sense, separat per espais o per comes.
+- Els que ja siguin al bloc de la regió o al del poble es descarten.
+- Instagram n'accepta 30 per post: si te'n passes, els sobrants es descarten i
+  el log de l'execució t'avisa.
+- Deixar la cel·la buida (o no posar-hi columna) és el comportament de sempre.
 
 ### Afegir nous missatges
 
@@ -125,13 +150,22 @@ Edita `post.py`:
 POST_HOUR = 10   # Hora UTC (10 = 12h hora espanyola estiu)
 ```
 
-### Canviar la freqüència de GitHub Actions
+### Canviar les hores de publicació
 
-Edita `.github/workflows/schedule.yml`:
+El post del matí és a `.github/workflows/schedule.yml` i els dos extra a
+`.github/workflows/schedule-extra.yml`. Els crons van en hora catalana:
 ```yaml
-- cron: "0 7 */5 * *"   # Cada 5 dies
-- cron: "0 7 */7 * *"   # Cada setmana
+- cron: "30 7 * * *"        # 07:30, tot l'any
+  timezone: Europe/Madrid
 ```
+
+Dues coses a tenir en compte si les toques:
+
+- Evita l'hora en punt: Actions va carregat a l'inici de cada hora i hi
+  endarrereix les execucions programades (per això el migdia és a les 12:50).
+- A `schedule-extra.yml`, el pas *Decideix quin SLOT toca* reparteix migdia i
+  tarda pel tall de les 16:00, hora catalana. Si mous un post a l'altra banda
+  d'aquesta hora, canvia també el tall.
 
 ---
 
@@ -145,7 +179,8 @@ sempresol-instagram/
 ├── images/                 # Imatges generades (auto-commit)
 ├── .github/
 │   └── workflows/
-│       └── schedule.yml    # GitHub Actions (cada 5 dies)
+│       ├── schedule.yml       # Post del matí (07:30)
+│       └── schedule-extra.yml # Posts de migdia i tarda
 ├── generate_image.py       # Generador d'imatges Pillow
 ├── buffer_client.py        # Client API Buffer
 ├── post.py                 # Script principal

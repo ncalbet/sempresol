@@ -15,19 +15,33 @@ Entorn (GitHub Secrets / Actions):
   GITHUB_REPOSITORY  — usuari/repo (injectat per Actions)
   GITHUB_REF_NAME    — branca (injectat per Actions)
   IMAGES_SUBPATH     — subcarpeta de les imatges al repo
-  SLOT               — quin post del dia (1 = el diari, 2 = el primer extra…)
+  SLOT               — quin post del dia (1 = el diari del matí, 2 = l'extra del
+                       migdia, 3 = l'extra de la tarda)
   TEMPLATE           — opcional: força la plantilla d'imatge (0-5). Si es deixa
                        buit, es tria sola pel hash del nom de fitxer.
 
 Dades:
-  data/schedule.csv  → programació editable: data,poble,regio,text
+  data/schedule.csv  → programació editable: data,poble,regio,text,hashtags
                        Es genera amb generate_schedule.py a partir de towns.json,
                        messages.json i local_jokes.json. És la FONT DE VERITAT.
 
-                       Normalment hi ha UNA fila per dia. Per publicar un post
-                       EXTRA un dia concret, només cal afegir una segona fila amb
-                       la mateixa data (l'ordre dins del fitxer mana: la 1a fila
-                       és el post del matí, la 2a l'extra del migdia).
+                       Normalment hi ha UNA fila per dia. Per publicar posts
+                       EXTRA un dia concret, cal afegir més files amb la mateixa
+                       data, just a sota. L'ordre dins del fitxer mana:
+                         1a fila → SLOT 1, post del matí    (07:30)
+                         2a fila → SLOT 2, extra del migdia (12:50)
+                         3a fila → SLOT 3, extra de la tarda (19:30)
+                       Hores en hora catalana: els workflows fixen la
+                       zona amb 'timezone: Europe/Madrid', o sigui que el
+                       canvi d'hora d'estiu/hivern no les mou.
+                       Si per a un SLOT no hi ha fila, el workflow acaba sense
+                       publicar res.
+
+                       La columna 'hashtags' és opcional i S'AFEGEIX als de
+                       sempre (bloc de la regió + hashtag del poble); no els
+                       substitueix. Es pot escriure amb coixinet o sense i
+                       separada per espais o comes: "#diada onzedesetembre".
+                       Els repetits es descarten.
 """
 
 import csv
@@ -75,6 +89,10 @@ FINAL_TEXTS = {
     ),
 }
 
+# Límit d'Instagram per post. El bloc de la regió ja en gasta uns quants;
+# la resta és el marge que queda per a la columna 'hashtags'.
+MAX_HASHTAGS = 30
+
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 IMG = ROOT / "images"
@@ -87,7 +105,9 @@ IMG.mkdir(exist_ok=True)
 # valor és una llista i no una sola fila: així cap fila es perd pel camí.
 SCHEDULE: dict[str, list[dict]] = {}
 with open(DATA / "schedule.csv", encoding="utf-8", newline="") as f:
-    for _row in csv.DictReader(f):
+    # restval="" perquè les files antigues (sense columna 'hashtags')
+    # continuïn funcionant.
+    for _row in csv.DictReader(f, restval=""):
         SCHEDULE.setdefault(_row["data"], []).append(_row)
 
 
@@ -99,11 +119,32 @@ def normalize_hashtag(town: str) -> str:
     return "".join(c for c in ascii_str if c.isalnum())
 
 
-def build_caption(full_message: str, town: str, regio: str) -> str:
+def build_caption(
+    full_message: str, town: str, regio: str, extra_tags: str = ""
+) -> str:
     body = full_message.replace("{lugar}", town)
     final = FINAL_TEXTS.get(regio, FINAL_TEXTS["cat"])
-    tag = normalize_hashtag(town)
-    return f"{body}\n\n{final}\n#{tag}"
+
+    # Els hashtags del bloc de la regió, per no repetir-los si es tornen a
+    # escriure a la columna 'hashtags'.
+    del_bloc = {w for w in final.lower().split() if w.startswith("#")}
+
+    tags = [f"#{normalize_hashtag(town)}"]
+    for brut in extra_tags.replace(",", " ").split():
+        tag = brut if brut.startswith("#") else f"#{brut}"
+        if tag.lower() in del_bloc or tag.lower() in {t.lower() for t in tags}:
+            continue
+        tags.append(tag)
+
+    # Instagram no accepta més de MAX_HASHTAGS per post; passar-se'n pot fer
+    # que els ignori tots.
+    marge = MAX_HASHTAGS - len(del_bloc)
+    if len(tags) > marge:
+        print(f"  ⚠️  Massa hashtags ({len(del_bloc) + len(tags)} > {MAX_HASHTAGS}). "
+              f"Es descarten: {' '.join(tags[marge:])}")
+        tags = tags[:marge]
+
+    return f"{body}\n\n{final}\n{' '.join(tags)}"
 
 
 def github_raw_url(image_filename: str) -> str | None:
@@ -132,7 +173,7 @@ def post_for_today(slot: int = 1) -> dict | None:
     town = row["poble"]
     regio = row["regio"]
     message = row["text"]
-    caption = build_caption(message, town, regio)
+    caption = build_caption(message, town, regio, row.get("hashtags") or "")
     # El post diari manté el nom de sempre; els extra porten sufix per no
     # trepitjar la imatge del matí si cau el mateix poble.
     suffix = "" if slot == 1 else f"_{slot}"
