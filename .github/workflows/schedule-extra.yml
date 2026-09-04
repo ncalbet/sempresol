@@ -1,17 +1,26 @@
 name: SempreSol – Post extra (opcional)
 
-# Publica un SEGON post del dia, però NOMÉS si a data/schedule.csv hi ha una
-# segona fila amb la data d'avui. Si no n'hi ha, el workflow acaba sense fer res.
+# Publica els posts EXTRA del dia (migdia i tarda), però NOMÉS si a
+# data/schedule.csv hi ha una segona (o tercera) fila amb la data d'avui.
+# Si no n'hi ha, el workflow acaba sense fer res.
 #
 # Per programar un post extra: afegeix al schedule.csv una fila amb la mateixa
-# data que la del post diari, just a sota. Exemple:
-#   2026-08-20,Berga,cat,"A {lugar}, ..."      ← post diari  (07:30 CEST)
-#   2026-08-20,Gandia,val,"A {lugar}, ..."     ← post extra  (13:00 CEST)
+# data que la del post diari, just a sota. L'ordre dins del fitxer mana:
+#   2026-08-20,Berga,cat,"A {lugar}, ..."      ← post diari  (07:30, SLOT 1)
+#   2026-08-20,Gandia,val,"A {lugar}, ..."     ← extra migdia (12:50, SLOT 2)
+#   2026-08-20,Cardona,cat,"A {lugar}, ..."    ← extra tarda  (19:30, SLOT 3)
+#
+# Totes les hores són hora catalana.
 
 on:
-  # Cada dia a les 11:00 UTC → 13:00 CEST
   schedule:
-    - cron: "0 11 * * *"
+    # Hora catalana: la clau timezone ja s'ocupa del canvi d'hora.
+    # A les 12:50 i no a les 13:00 en punt perquè Actions va carregat a
+    # l'inici de cada hora i hi endarrereix les execucions programades.
+    - cron: "50 12 * * *"       # post del migdia (SLOT 2)
+      timezone: Europe/Madrid
+    - cron: "30 19 * * *"       # post de la tarda (SLOT 3)
+      timezone: Europe/Madrid
 
   # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:
@@ -29,9 +38,6 @@ concurrency:
   group: sempresol-post
   cancel-in-progress: false
 
-env:
-  SLOT: ${{ github.event.inputs.slot || '2' }}
-
 jobs:
   extra:
     name: Publica el post extra del dia (si n'hi ha)
@@ -41,11 +47,27 @@ jobs:
       contents: write   # per fer commit de la imatge generada
 
     steps:
-      # ── 1. Checkout ──────────────────────────────────────────────────────
+      # ── 1. Quin post del dia toca publicar? ───────────────────────────────
+      # El SLOT surt de l'hora catalana real i no del cron que ha disparat el
+      # workflow: així una execució endarrerida per càrrega d'Actions continua
+      # publicant el post que li toca.
+      - name: Decideix quin SLOT toca
+        run: |
+          if [ -n "${{ github.event.inputs.slot }}" ]; then
+            slot="${{ github.event.inputs.slot }}"
+          elif [ "$(( 10#$(TZ=Europe/Madrid date +%H) ))" -lt 16 ]; then
+            slot=2
+          else
+            slot=3
+          fi
+          echo "Hora catalana: $(TZ=Europe/Madrid date +'%H:%M') → SLOT $slot"
+          echo "SLOT=$slot" >> "$GITHUB_ENV"
+
+      # ── 2. Checkout ───────────────────────────────────────────────────────
       - name: Checkout del repositori
         uses: actions/checkout@v7
 
-      # ── 2. Python ────────────────────────────────────────────────────────
+      # ── 3. Python ─────────────────────────────────────────────────────────
       - name: Configura Python 3.12
         uses: actions/setup-python@v7
         with:
@@ -53,12 +75,12 @@ jobs:
           cache: "pip"
           cache-dependency-path: sempresol-instagram/requirements.txt
 
-      # ── 3. Dependències Python ────────────────────────────────────────────
+      # ── 4. Dependències Python ────────────────────────────────────────────
       - name: Instal·la dependències Python
         working-directory: sempresol-instagram
         run: pip install -r requirements.txt
 
-      # ── 4. Hi ha post extra avui? ────────────────────────────────────────
+      # ── 5. Hi ha post extra avui? ─────────────────────────────────────────
       - name: Comprova si avui hi ha post extra
         id: check
         working-directory: sempresol-instagram
@@ -66,12 +88,12 @@ jobs:
           MODE: check
         run: python post.py
 
-      # ── 5. Fonts (només si cal generar la imatge) ────────────────────────
+      # ── 6. Fonts (només si cal generar la imatge) ─────────────────────────
       - name: Instal·la fonts
         if: steps.check.outputs.has_post == 'true'
         run: sudo apt-get install -y fonts-dejavu-core fonts-liberation
 
-      # ── 6. Genera la imatge extra ────────────────────────────────────────
+      # ── 7. Genera la imatge extra ─────────────────────────────────────────
       - name: Genera imatge del post extra
         if: steps.check.outputs.has_post == 'true'
         working-directory: sempresol-instagram
@@ -80,7 +102,7 @@ jobs:
           TEMPLATE: ${{ github.event.inputs.template }}
         run: python post.py
 
-      # ── 7. Commit + push de la imatge (perquè la URL raw sigui pública) ───
+      # ── 8. Commit + push de la imatge (perquè la URL raw sigui pública) ───
       - name: Desa imatge al repositori
         if: steps.check.outputs.has_post == 'true'
         run: |
@@ -91,7 +113,7 @@ jobs:
           git pull --rebase --autostash
           git push
 
-      # ── 8. Publica a Instagram + renova el token ─────────────────────────
+      # ── 9. Publica a Instagram + renova el token ──────────────────────────
       - name: Publica a Instagram
         if: steps.check.outputs.has_post == 'true'
         working-directory: sempresol-instagram
@@ -104,7 +126,7 @@ jobs:
           IMAGES_SUBPATH:    sempresol-instagram/images
         run: python post.py
 
-      # ── 9. Desa el token renovat al secret (auto-renovació) ──────────────
+      # ── 10. Desa el token renovat al secret (auto-renovació) ──────────────
       - name: Renova el secret IG_ACCESS_TOKEN
         if: success() && steps.check.outputs.has_post == 'true'
         env:

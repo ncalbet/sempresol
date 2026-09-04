@@ -56,7 +56,7 @@ def load_existing() -> dict[str, list[dict]]:
         return {}
     existing: dict[str, list[dict]] = {}
     with open(out, encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
+        for row in csv.DictReader(f, restval=""):
             existing.setdefault(row["data"], []).append(row)
     return existing
 
@@ -107,7 +107,9 @@ def main():
 
     out = DATA / "schedule.csv"
     with open(out, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["data", "poble", "regio", "text"])
+        writer = csv.DictWriter(
+            f, fieldnames=["data", "poble", "regio", "text", "hashtags"], restval=""
+        )
         writer.writeheader()
         writer.writerows(rows)
 

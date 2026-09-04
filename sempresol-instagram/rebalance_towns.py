@@ -73,7 +73,7 @@ def truncate_schedule() -> list[dict]:
         return []
 
     with open(SCHED_F, encoding="utf-8", newline="") as f:
-        rows = list(csv.DictReader(f))
+        rows = list(csv.DictReader(f, restval=""))
 
     kept: list[dict] = []
     extras: list[dict] = []
@@ -93,7 +93,9 @@ def truncate_schedule() -> list[dict]:
     print()
 
     with open(SCHED_F, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["data", "poble", "regio", "text"])
+        writer = csv.DictWriter(
+            f, fieldnames=["data", "poble", "regio", "text", "hashtags"], restval=""
+        )
         writer.writeheader()
         writer.writerows(kept)
 
@@ -106,7 +108,7 @@ def reinsert_extras(extras: list[dict]):
         return
 
     with open(SCHED_F, encoding="utf-8", newline="") as f:
-        rows = list(csv.DictReader(f))
+        rows = list(csv.DictReader(f, restval=""))
 
     # L'ordenació de Python és estable: per a una mateixa data, les files
     # regenerades (rows) queden abans que els extra.
@@ -114,7 +116,9 @@ def reinsert_extras(extras: list[dict]):
     merged.sort(key=lambda r: r["data"])
 
     with open(SCHED_F, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["data", "poble", "regio", "text"])
+        writer = csv.DictWriter(
+            f, fieldnames=["data", "poble", "regio", "text", "hashtags"], restval=""
+        )
         writer.writeheader()
         writer.writerows(merged)
 
