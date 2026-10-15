@@ -24,6 +24,8 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from lloc import compatible, fill
+
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 
@@ -42,7 +44,13 @@ with open(DATA / "local_jokes.json", encoding="utf-8") as f:
 
 def generic_message(idx: int, regio: str, town: str) -> str:
     pool = MESSAGES.get(regio, MESSAGES["cat"])
-    return pool[idx % len(pool)].replace("{lugar}", town)
+    # Si el nom és plural («els Ports»), se salten les plantilles on el lloc és
+    # el subjecte del verb. Per a la resta de noms la tria no canvia.
+    for k in range(len(pool)):
+        plantilla = pool[(idx + k) % len(pool)]
+        if compatible(plantilla, town):
+            return fill(plantilla, town)
+    return fill(pool[idx % len(pool)], town)
 
 
 def load_existing() -> dict[str, list[dict]]:
@@ -98,7 +106,7 @@ def main():
 
         if is_local:
             jokes = LOCAL_JOKES[town]
-            text = jokes[k % len(jokes)].replace("{lugar}", town)
+            text = fill(jokes[k % len(jokes)], town)
         else:
             text = generic_message(idx, regio, town)
 

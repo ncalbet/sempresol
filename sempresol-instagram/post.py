@@ -54,6 +54,7 @@ from urllib.parse import quote
 
 from generate_image import create_post_image
 from instagram_client import InstagramClient
+from lloc import fill
 
 
 # ── Configuració ──────────────────────────────────────────────────────────────
@@ -122,7 +123,7 @@ def normalize_hashtag(town: str) -> str:
 def build_caption(
     full_message: str, town: str, regio: str, extra_tags: str = ""
 ) -> str:
-    body = full_message.replace("{lugar}", town)
+    body = fill(full_message, town)
     final = FINAL_TEXTS.get(regio, FINAL_TEXTS["cat"])
 
     # Els hashtags del bloc de la regió, per no repetir-los si es tornen a
@@ -172,7 +173,9 @@ def post_for_today(slot: int = 1) -> dict | None:
     row = rows[slot - 1]
     town = row["poble"]
     regio = row["regio"]
-    message = row["text"]
+    # Si el text porta `{lugar}`, es resol aquí perquè la imatge i el peu
+    # rebin la frase ja feta (amb article i contraccions: «Al Priorat»).
+    message = fill(row["text"], town)
     caption = build_caption(message, town, regio, row.get("hashtags") or "")
     # El post diari manté el nom de sempre; els extra porten sufix per no
     # trepitjar la imatge del matí si cau el mateix poble.

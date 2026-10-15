@@ -1028,6 +1028,80 @@
 
 
 
+        // === Nom del lloc dins de les frases ===
+        // Mirall de sempresol-instagram/lloc.py: contrau (a + el -> al), elideix
+        // (de Alforja -> d'Alforja) i posa la majúscula a l'inici de frase.
+        // Serveix igual per a un poble que per a un territori.
+        const LLOC_PREP = /(^|[^\wÀ-ÿ'’·])(des de|de|per|a)\s+$/i;
+        const LLOC_CONTRACCIONS = {
+            'a':      { el: 'al',  els: 'als' },
+            'de':     { el: 'del', els: 'dels' },
+            'des de': { el: 'des del', els: 'des dels' },
+            'per':    { el: 'pel', els: 'pels' }
+        };
+
+        function analitzaLloc(nom) {
+            nom = nom.trim().replace(/\s+/g, ' ');
+            let art = '', resta = nom, m;
+            if ((m = nom.match(/^(els|les|el|la)\s+(\S.*)$/i))) {
+                art = m[1].toLowerCase(); resta = m[2];
+            } else if ((m = nom.match(/^l['’](\S.*)$/i))) {
+                art = "l'"; resta = m[1];
+            }
+            if (resta) resta = resta.charAt(0).toUpperCase() + resta.slice(1);
+            return { art: art, resta: resta };
+        }
+
+        function formaLloc(nom, prep) {
+            const { art, resta } = analitzaLloc(nom);
+            const ambArticle = !art ? resta : (art.endsWith("'") ? art + resta : art + ' ' + resta);
+            if (!prep) return ambArticle;
+            prep = prep.toLowerCase();
+            const contret = LLOC_CONTRACCIONS[prep][art];
+            if (contret) return contret + ' ' + resta;
+            if ((prep === 'de' || prep === 'des de') && !art && /^[aeiouàèéíòóúïüh]/i.test(resta)) {
+                return (prep === 'des de' ? "des d'" : "d'") + resta;
+            }
+            return prep + ' ' + ambArticle;
+        }
+
+        // Substitueix {lugar} (totes les aparicions) amb la preposició, l'article i la majúscula que toquen
+        function omple(plantilla, nom) {
+            const parts = plantilla.split('{lugar}');
+            let res = parts[0];
+            for (let i = 1; i < parts.length; i++) {
+                const pm = res.match(LLOC_PREP);
+                if (pm) {
+                    const prep = pm[2];
+                    let nou = formaLloc(nom, prep);
+                    if (prep.charAt(0) !== prep.charAt(0).toLowerCase()) {   // «A», «Des de»…
+                        nou = nou.charAt(0).toUpperCase() + nou.slice(1);
+                    }
+                    res = res.slice(0, pm.index + pm[1].length) + nou;
+                } else {
+                    let nou = formaLloc(nom);
+                    if (/(^|[.!?…]\s+)$/.test(res)) nou = nou.charAt(0).toUpperCase() + nou.slice(1);
+                    res += nou;
+                }
+                res += parts[i];
+            }
+            return res;
+        }
+
+        // Si el nom és plural («els Ports»), no serveixen les plantilles on el lloc és el subjecte del verb
+        function plantillaCompatible(plantilla, nom) {
+            const art = analitzaLloc(nom).art;
+            if (art !== 'els' && art !== 'les') return true;
+            let idx = -1;
+            while ((idx = plantilla.indexOf('{lugar}', idx + 1)) !== -1) {
+                const pre = plantilla.slice(0, idx);
+                const post = plantilla.slice(idx + 7);
+                if (LLOC_PREP.test(pre) || post.startsWith(':')) continue;
+                if (/(^|[.!?…,:;]\s*)$/.test(pre)) return false;
+            }
+            return true;
+        }
+
         // Avís discret (substitueix alert())
         let toastTimer;
         function notify(msg) {
@@ -1118,7 +1192,11 @@
                 messageIndex = parsed.index;
             } else {
                 // Generar un nou missatge
-                messageIndex = Math.floor(Math.random() * weatherMessages.length);
+                // Només plantilles que encaixen amb el nom (p. ex. si és plural)
+                let candidats = [];
+                weatherMessages.forEach((t, i) => { if (plantillaCompatible(t, searchValue)) candidats.push(i); });
+                if (!candidats.length) candidats = weatherMessages.map((_, i) => i);
+                messageIndex = candidats[Math.floor(Math.random() * candidats.length)];
                 const randomMessage = weatherMessages[messageIndex];
                 
                 // Obtenir el dia actual real
@@ -1127,7 +1205,7 @@
                 const todayDay = daysOfWeek[todayDate.getDay()];
                 
                 // Reemplaçar el placeholder amb el nom buscat
-                finalMessage = randomMessage.replace('{lugar}', searchValue);
+                finalMessage = omple(randomMessage, searchValue);
                 
                 // Afegir el dia real d'avui
                 finalMessage += ` La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.`;
@@ -1238,7 +1316,7 @@
             const city = document.getElementById('search-location').textContent;
             const temp = document.getElementById('search-temp').textContent;
             const url = buildShareUrl(city);
-            const text = `☀️ A ${city} fa sol i ${temp}°C!\nMira la previsió a Sempre Sol 👉 ${url}`;
+            const text = `☀️ ${omple('A {lugar} fa sol i ' + temp + '°C!', city)}\nMira la previsió a Sempre Sol 👉 ${url}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         });
 
@@ -1249,7 +1327,7 @@
             const url = buildShareUrl(city);
             const shareData = {
                 title: `☀️ ${city} — Sempre Sol`,
-                text: `A ${city} fa sol i ${temp}°C! Mira la previsió completa:`,
+                text: omple('A {lugar} fa sol i ' + temp + '°C! Mira la previsió completa:', city),
                 url: url
             };
             if (navigator.share) {
