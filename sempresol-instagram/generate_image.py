@@ -9,6 +9,8 @@ import math
 import os
 from PIL import Image, ImageDraw, ImageFont
 
+from lloc import fill
+
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 COLOR_GOLD   = (255, 215,   0)   # #FFD700 — groc daurat
@@ -217,19 +219,22 @@ def _render_content(draw, town, message_text, zone_top, zone_bottom,
     # Nom del poble
     town_upper = town.upper()
     if town_spaced:
-        # Tipografia amb espaiat: redueix mida fins que càpiga
-        for size in [80, 70, 60, 50, 42]:
+        # Tipografia amb espaiat: redueix mida fins que càpiga. Els noms que ja
+        # hi cabien queden exactament igual; per als molt llargs (territoris),
+        # després es retalla l'espaiat i, al final, la mida.
+        chars = list(town_upper)
+        for size, spacing in [(80, 14), (70, 14), (60, 14), (50, 14), (42, 14),
+                              (42, 8), (42, 4), (36, 4), (30, 4), (26, 2)]:
             f_town = load_font(bold=True, size=size)
-            chars  = list(town_upper)
-            total_w = sum(_text_w(draw, c, f_town) for c in chars) + 14 * (len(chars) - 1)
+            total_w = sum(_text_w(draw, c, f_town) for c in chars) + spacing * (len(chars) - 1)
             if total_w <= W - 2 * margin:
                 break
-        spaced_centered_text(draw, y, town_upper, f_town, text_color, spacing=14)
+        spaced_centered_text(draw, y, town_upper, f_town, text_color, spacing=spacing)
     else:
         f_town = load_font(bold=True, size=96)
         if _text_w(draw, town_upper, f_town) > W - 2 * margin:
             scale  = (W - 2 * margin) / _text_w(draw, town_upper, f_town)
-            f_town = load_font(bold=True, size=max(40, int(96 * scale)))
+            f_town = load_font(bold=True, size=max(28, int(96 * scale)))
         centered_text(draw, y, town_upper, f_town, text_color)
     y += 108
 
@@ -370,7 +375,7 @@ def create_post_image(town: str, full_message: str, output_path: str,
     Crea una imatge Instagram 1080x1080.
     Si template_idx és None, es deriva determinísticament del nom del fitxer (0-3).
     """
-    msg = full_message.replace("{lugar}", town)
+    msg = fill(full_message, town)
     idx = template_idx if template_idx is not None else _pick_template(output_path)
     _TEMPLATES[idx % len(_TEMPLATES)](town, msg, output_path)
     return output_path

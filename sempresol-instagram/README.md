@@ -158,6 +158,24 @@ poble com a clau. Tenen prioritat sobre les genèriques.
 Cap de les dues coses no toca el que ja hi ha programat: les frases noves
 només entren als dies que `generate_schedule.py` afegeixi de nou al final.
 
+### Posar un territori (o qualsevol lloc) en lloc d'un poble
+
+La columna `poble` pot ser una comarca, un territori o el que calgui: `el Priorat`,
+`les Terres de l'Ebre`, `l'Alt Empordà`. El mòdul `lloc.py` fa que `{lugar}` quedi
+bé gramaticalment: `A {lugar}` → «Al Priorat», `{lugar} viu…` → «El Priorat viu…».
+
+- Per triar frases que hi encaixin: `python lloc.py "les Terres de l'Ebre" -n 5`
+  (`--regio val|bal|aran` per a una altra varietat).
+- Escriu el nom amb l'article en minúscula (`el Priorat`); la majúscula es posa
+  sola quan la frase comença amb el lloc.
+- Els noms en plural (`els Ports`, `les Garrigues`) no encaixen amb les frases on
+  el lloc és el subjecte del verb («{lugar} viu…»): el programa les salta. Si el
+  nom és plural però no porta article (`Illes Balears`), afegeix `--plural`.
+- La imatge encongeix el nom perquè càpiga; provat amb noms de fins a 33
+  caràcters («la Vall de Boí i l'Alta Ribagorça»).
+- L'aranès (`En {lugar}`) no contrau.
+- Proves: `python test_lloc.py`.
+
 ### Canviar les hores de publicació
 
 El post del matí és a `.github/workflows/schedule.yml` i els dos extra a
