@@ -396,10 +396,20 @@
         .day-row {
             display: flex;
             align-items: center;
-            padding: 13px 4px;
+            width: 100%;
+            padding: 13px 8px;
+            background: none;
+            border: none;
             border-bottom: 1px solid var(--line);
+            border-radius: 0;
+            font: inherit;
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
         }
         .day-row:last-child { border-bottom: none; }
+        .day-row:hover { background: var(--paper); }
+        .day-row[aria-pressed="true"] { background: var(--paper); border-radius: 12px; }
 
         .dr-day { flex: 1; font-size: 16px; font-weight: 700; text-transform: capitalize; }
         .dr-date { font-size: 13px; color: var(--muted); margin-right: 16px; }
@@ -434,6 +444,72 @@
         .popup-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
         .leaflet-popup-content-wrapper { border-radius: 12px !important; }
+
+        /* === SELECTOR DE DIA === */
+        .day-bar {
+            padding: 14px 16px 12px;
+            background: var(--card);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .day-picker {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            padding-bottom: 2px;
+        }
+        .day-picker::-webkit-scrollbar { display: none; }
+
+        .day-chip {
+            flex: 1 0 62px;
+            padding: 8px 6px;
+            background: var(--card);
+            color: var(--ink);
+            border: 1.5px solid var(--line);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.25;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .day-chip small {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .day-chip:hover { border-color: var(--amber); }
+        .day-chip[aria-pressed="true"] {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: #fff;
+        }
+        .day-chip[aria-pressed="true"] small { color: #FFF8DC; }
+
+        .day-other {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+        .day-other input {
+            padding: 6px 8px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1.5px solid var(--line);
+            border-radius: 8px;
+        }
 
         /* === AVÍS (substitueix els alert()) === */
         #toast {
@@ -540,7 +616,14 @@
             <svg class="result-sun-big" viewBox="0 0 192 192" aria-hidden="true"><circle cx="96" cy="96" r="36" fill="#E45F1E"/><g stroke="#E45F1E" stroke-width="10" stroke-linecap="round"><line x1="96" y1="20" x2="96" y2="42"/><line x1="96" y1="150" x2="96" y2="172"/><line x1="20" y1="96" x2="42" y2="96"/><line x1="150" y1="96" x2="172" y2="96"/><line x1="39" y1="39" x2="54" y2="54"/><line x1="138" y1="138" x2="153" y2="153"/><line x1="153" y1="39" x2="138" y2="54"/><line x1="54" y1="138" x2="39" y2="153"/></g></svg>
             <div class="result-city" id="search-location"></div>
             <div class="result-temp-display"><span id="search-temp">24</span>°C</div>
-            <div class="result-condition-label">Assolellat · Sempre Sol</div>
+            <div class="result-condition-label" id="search-day-label">Assolellat · Sempre Sol</div>
+        </div>
+        <div class="day-bar">
+            <div class="day-picker" id="day-picker" role="group" aria-label="Dia de la previsió"></div>
+            <label class="day-other">
+                <span>Una altra data</span>
+                <input type="date" id="day-input">
+            </label>
         </div>
         <div class="result-message-card">
             <p id="search-description"></p>
@@ -558,7 +641,7 @@
     </div>
 
     <div id="charts-section" style="display: none;">
-        <div class="charts-block-title">Previsió per avui i demà</div>
+        <div class="charts-block-title" id="hourly-title">Previsió per avui i demà</div>
         <div id="hourly-chart"></div>
         <div class="charts-block-title" style="margin-top: 20px;">Propers 5 dies</div>
         <div id="five-days-chart" class="fivedays-list"></div>
@@ -1118,13 +1201,153 @@
             performSearch();
         }
 
-        // Funció per generar gràfic horari per avui i demà
-        function generateHourlyChart(location) {
+        // === Dia de la previsió ===
+        const NOMS_DIA = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
+        const NOMS_DIA_CURT = ['dg', 'dl', 'dt', 'dc', 'dj', 'dv', 'ds'];
+        const MESOS_DE = ['de gener', 'de febrer', 'de març', "d'abril", 'de maig', 'de juny',
+                          'de juliol', "d'agost", 'de setembre', "d'octubre", 'de novembre', 'de desembre'];
+        const MESOS_CURTS = ['gen', 'feb', 'març', 'abr', 'maig', 'juny', 'jul', 'ag', 'set', 'oct', 'nov', 'des'];
+        // Desviacions respecte la temperatura base (les de la llista de 5 dies de sempre: 26, 25, 27, 24, 25)
+        const DELTES_DIA = [0, -1, 1, -2, -1];
+        const CORBA_HORARIA = [10, 8, 9, 15, 22, 26, 20, 14];
+        // Les frases que parlen d'«avui», «ahir»… no val per a un altre dia
+        const MARCA_TEMPS = /(^|[^\wÀ-ÿ])(avui|hui|ahir|demà|aquest matí|aquesta nit)(?![\wÀ-ÿ])/i;
+
+        let diaSeleccionat = null;   // Date a mitjanit local; null = avui
+
+        function iniciDia(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+        function dataIso(d) {
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+        function dataDeIso(s) {
+            const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+            if (!m) return null;
+            const d = new Date(+m[1], +m[2] - 1, +m[3]);
+            return (d.getFullYear() === +m[1] && d.getMonth() === +m[2] - 1 && d.getDate() === +m[3]) ? d : null;
+        }
+        function diesFinsAra(d) {
+            return Math.round((iniciDia(d) - iniciDia(new Date())) / 86400000);
+        }
+        function majuscula(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
+        // «avui», «demà» o «dissabte 17 d'octubre»
+        function etiquetaDia(d) {
+            const n = diesFinsAra(d);
+            if (n === 0) return 'avui';
+            if (n === 1) return 'demà';
+            return NOMS_DIA[d.getDay()] + ' ' + d.getDate() + ' ' + MESOS_DE[d.getMonth()];
+        }
+
+        // Temperatures: el mateix decorat de sempre (≈ 26 °C), però coherent entre hero, hores i llista
+        function hashText(t) {
+            let h = 5381;
+            for (let i = 0; i < t.length; i++) h = ((h << 5) + h + t.charCodeAt(i)) | 0;
+            return Math.abs(h);
+        }
+        function ciutatDe(lloc) {
+            return cities.find(c => c.name.toLowerCase() === lloc.toLowerCase());
+        }
+        function baseTemp(lloc) {
+            const c = ciutatDe(lloc);
+            return c ? c.temp : 26;
+        }
+        function tempAra(lloc) {
+            const hora = new Date().getHours();
+            const franges = [0, 3, 6, 9, 12, 15, 18, 21];
+            let t = CORBA_HORARIA[0];
+            for (let i = 0; i < franges.length; i++) { if (hora >= franges[i]) t = CORBA_HORARIA[i]; }
+            const c = ciutatDe(lloc);
+            return c ? c.temp : t;
+        }
+        function tempDia(lloc, d) {
+            const n = diesFinsAra(d);
+            if (n <= 0) return tempAra(lloc);
+            const base = baseTemp(lloc);
+            if (n <= 5) return base + DELTES_DIA[n - 1];
+            return base + (hashText(lloc.toLowerCase() + '|' + dataIso(d)) % 5) - 2;
+        }
+
+        // Frase del dia: guardada al navegador per lloc i dia (com abans, però per al dia escollit)
+        function triaMissatge(lloc, dia) {
+            const esAvui = diesFinsAra(dia) === 0;
+            const clau = `weather_${lloc.toLowerCase()}_${dataIso(dia)}`;
+            try {
+                const guardat = localStorage.getItem(clau);
+                if (guardat) return JSON.parse(guardat).message;
+            } catch (e) { /* sense emmagatzematge: se'n tria una de nova */ }
+
+            // Només plantilles que encaixen amb el nom (p. ex. si és plural) i amb el dia
+            let candidats = [];
+            weatherMessages.forEach((t, i) => {
+                if (plantillaCompatible(t, lloc) && (esAvui || !MARCA_TEMPS.test(t))) candidats.push(i);
+            });
+            if (!candidats.length) candidats = weatherMessages.map((_, i) => i);
+            const idx = candidats[Math.floor(Math.random() * candidats.length)];
+            const missatge = omple(weatherMessages[idx], lloc) +
+                ' La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.';
+            try {
+                localStorage.setItem(clau, JSON.stringify({ message: missatge, index: idx }));
+            } catch (e) { /* idem */ }
+            return missatge;
+        }
+
+        // Fila de dies (avui, demà i cinc més) i selector d'una altra data
+        function pintaSelectorDia(dia) {
+            const avui = iniciDia(new Date());
+            const seleccionat = dataIso(dia);
+            let h = '';
+            for (let i = 0; i < 7; i++) {
+                const d = new Date(avui.getFullYear(), avui.getMonth(), avui.getDate() + i);
+                const iso = dataIso(d);
+                const etiqueta = i === 0 ? 'Avui' : i === 1 ? 'Demà' : NOMS_DIA_CURT[d.getDay()];
+                h += `<button type="button" class="day-chip" data-dia="${iso}" aria-pressed="${iso === seleccionat}">` +
+                     `<small>${etiqueta}</small>${d.getDate()}</button>`;
+            }
+            document.getElementById('day-picker').innerHTML = h;
+            const input = document.getElementById('day-input');
+            input.min = dataIso(avui);
+            input.value = seleccionat;
+        }
+
+        // A pantalles estretes la fila fa scroll: que el dia escollit quedi a la vista
+        function centraDiaSeleccionat() {
+            const cont = document.getElementById('day-picker');
+            const b = cont.querySelector('.day-chip[aria-pressed="true"]');
+            if (!b) return;
+            cont.scrollLeft += (b.getBoundingClientRect().left - cont.getBoundingClientRect().left)
+                             - (cont.clientWidth - b.offsetWidth) / 2;
+        }
+
+        function seleccionaDia(d) {
+            if (!d) return;
+            diaSeleccionat = iniciDia(d);
+            const lloc = document.getElementById('search-location').textContent;
+            if (lloc) mostraResultat(lloc, false);
+        }
+
+        document.getElementById('day-picker').addEventListener('click', function (e) {
+            const b = e.target.closest('.day-chip');
+            if (b) seleccionaDia(dataDeIso(b.dataset.dia));
+        });
+        document.getElementById('five-days-chart').addEventListener('click', function (e) {
+            const b = e.target.closest('.day-row');
+            if (b) seleccionaDia(dataDeIso(b.dataset.dia));
+        });
+        document.getElementById('day-input').addEventListener('change', function () {
+            const d = dataDeIso(this.value);
+            if (d && diesFinsAra(d) >= 0) {
+                seleccionaDia(d);
+            } else {
+                notify("Escull un dia a partir d'avui.");
+                this.value = dataIso(diaSeleccionat || new Date());
+            }
+        });
+
+        // Gràfic horari: avui i demà, o el dia escollit
+        function generateHourlyChart(lloc, dia) {
             const hourlyChart = document.getElementById('hourly-chart');
-            
             const hours = [0, 3, 6, 9, 12, 15, 18, 21];
-            const tempCurve = [10, 8, 9, 15, 22, 26, 20, 14];
             const windCurve = [3, 2, 2, 4, 6, 7, 5, 3];
+            const n = diesFinsAra(dia);
 
             function dayHTML(label, temps) {
                 let h = `<div class="forecast-day-block">`;
@@ -1143,109 +1366,83 @@
                 return h;
             }
 
-            hourlyChart.innerHTML = dayHTML('AVUI', tempCurve) + dayHTML('DEMÀ', tempCurve.map(t => t + 1));
+            const titol = document.getElementById('hourly-title');
+            if (n === 0) {
+                const desp = baseTemp(lloc) - 26;
+                const avui = CORBA_HORARIA.map(t => t + desp);
+                hourlyChart.innerHTML = dayHTML('AVUI', avui) + dayHTML('DEMÀ', avui.map(t => t + 1));
+                titol.textContent = 'Previsió per avui i demà';
+            } else {
+                const desp = tempDia(lloc, dia) - 26;
+                hourlyChart.innerHTML = dayHTML(etiquetaDia(dia).toUpperCase(), CORBA_HORARIA.map(t => t + desp));
+                titol.textContent = n === 1 ? 'Previsió per demà' : 'Previsió per al ' + etiquetaDia(dia);
+            }
         }
 
-        // Funció per generar gràfic de 5 dies
-        function generateFiveDaysChart() {
+        // Propers 5 dies: cada fila també serveix per escollir el dia
+        function generateFiveDaysChart(lloc, dia) {
             const container = document.getElementById('five-days-chart');
-            const daysOfWeek = ['diumenge','dilluns','dimarts','dimecres','dijous','divendres','dissabte'];
-            const monthNames = ['gen','feb','març','abr','maig','juny','jul','ag','set','oct','nov','des'];
-            const temps = [26, 25, 27, 24, 25];
-            const today = new Date();
+            const base = baseTemp(lloc);
+            const avui = iniciDia(new Date());
+            const seleccionat = dataIso(dia);
             let html = '';
             for (let i = 1; i <= 5; i++) {
-                const d = new Date(today);
-                d.setDate(today.getDate() + i);
-                html += `<div class="day-row">
-                    <div class="dr-day">${daysOfWeek[d.getDay()]}</div>
-                    <div class="dr-date">${d.getDate()} ${monthNames[d.getMonth()]}</div>
-                    <div class="dr-icon">☀️</div>
-                    <div class="dr-temp">${temps[i-1]}°C</div>
-                </div>`;
+                const d = new Date(avui.getFullYear(), avui.getMonth(), avui.getDate() + i);
+                const iso = dataIso(d);
+                html += `<button type="button" class="day-row" data-dia="${iso}" aria-pressed="${iso === seleccionat}">
+                    <span class="dr-day">${NOMS_DIA[d.getDay()]}</span>
+                    <span class="dr-date">${d.getDate()} ${MESOS_CURTS[d.getMonth()]}</span>
+                    <span class="dr-icon">☀️</span>
+                    <span class="dr-temp">${base + DELTES_DIA[i - 1]}°C</span>
+                </button>`;
             }
             container.innerHTML = html;
         }
+
+        // Pinta el resultat per a un lloc i el dia escollit. `animat`: amb l'esquelet de càrrega i el desplaçament.
+        function mostraResultat(lloc, animat) {
+            if (!diaSeleccionat || diesFinsAra(diaSeleccionat) < 0) diaSeleccionat = iniciDia(new Date());
+            const dia = diaSeleccionat;
+            const n = diesFinsAra(dia);
+            const resultDiv = document.getElementById('search-result');
+
+            document.getElementById('search-location').textContent = lloc;
+            document.getElementById('search-description').textContent = triaMissatge(lloc, dia);
+            document.getElementById('search-temp').textContent = tempDia(lloc, dia);
+            document.getElementById('search-day-label').textContent =
+                n === 0 ? 'Assolellat · Sempre Sol' : majuscula(etiquetaDia(dia)) + ' · Assolellat';
+            pintaSelectorDia(dia);
+            generateHourlyChart(lloc, dia);
+            generateFiveDaysChart(lloc, dia);
+
+            // L'adreça reflecteix el que es veu, així es pot copiar directament
+            try {
+                history.replaceState(null, '', '?lloc=' + encodeURIComponent(lloc) + '&dia=' + dataIso(dia));
+            } catch (e) { /* res */ }
+
+            if (animat) {
+                resultDiv.classList.add('loading-state');
+                resultDiv.style.display = 'block';
+                centraDiaSeleccionat();
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                setTimeout(() => {
+                    resultDiv.classList.remove('loading-state');
+                    document.getElementById('charts-section').style.display = 'block';
+                }, 400);
+            } else {
+                resultDiv.style.display = 'block';
+                centraDiaSeleccionat();
+                document.getElementById('charts-section').style.display = 'block';
+            }
+        }
+
         function performSearch() {
-            const searchInput = document.getElementById('search-input');
-            const searchValue = searchInput.value.trim();
-            
+            const searchValue = document.getElementById('search-input').value.trim();
             if (searchValue === '') {
                 notify('Si us plau, escriu un indret per buscar');
                 return;
             }
-
-            // Obtenir la data actual (sense hora)
-            const today = new Date().toISOString().split('T')[0];
-            
-            // Clau única per al lloc i la data
-            const cacheKey = `weather_${searchValue.toLowerCase()}_${today}`;
-            
-            // Verificar si ja tenim aquest missatge guardat per avui
-            let cachedData = localStorage.getItem(cacheKey);
-            let finalMessage, messageIndex;
-            
-            if (cachedData) {
-                // Usar el missatge guardat
-                const parsed = JSON.parse(cachedData);
-                finalMessage = parsed.message;
-                messageIndex = parsed.index;
-            } else {
-                // Generar un nou missatge
-                // Només plantilles que encaixen amb el nom (p. ex. si és plural)
-                let candidats = [];
-                weatherMessages.forEach((t, i) => { if (plantillaCompatible(t, searchValue)) candidats.push(i); });
-                if (!candidats.length) candidats = weatherMessages.map((_, i) => i);
-                messageIndex = candidats[Math.floor(Math.random() * candidats.length)];
-                const randomMessage = weatherMessages[messageIndex];
-                
-                // Obtenir el dia actual real
-                const todayDate = new Date();
-                const daysOfWeek = ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'];
-                const todayDay = daysOfWeek[todayDate.getDay()];
-                
-                // Reemplaçar el placeholder amb el nom buscat
-                finalMessage = omple(randomMessage, searchValue);
-                
-                // Afegir el dia real d'avui
-                finalMessage += ` La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.`;
-                
-                // Guardar a localStorage per a avui
-                localStorage.setItem(cacheKey, JSON.stringify({
-                    message: finalMessage,
-                    index: messageIndex
-                }));
-            }
-            
-            // Mostrar resultats de búsqueda
-            const resultDiv = document.getElementById('search-result');
-            document.getElementById('search-location').textContent = searchValue;
-            document.getElementById('search-description').textContent = finalMessage;
-
-            // Calcular temperatura per al hero
-            const currentHour = new Date().getHours();
-            const hourSlots = [0, 3, 6, 9, 12, 15, 18, 21];
-            const tempCurveHero = [10, 8, 9, 15, 22, 26, 20, 14];
-            let currentTemp = tempCurveHero[0];
-            for (let i = 0; i < hourSlots.length; i++) {
-                if (currentHour >= hourSlots[i]) currentTemp = tempCurveHero[i];
-            }
-            // Si la ciutat és a la nostra llista, usar la seva temperatura
-            const matchedCity = cities.find(c => c.name.toLowerCase() === searchValue.toLowerCase());
-            if (matchedCity) currentTemp = matchedCity.temp;
-            document.getElementById('search-temp').textContent = currentTemp;
-
-            // Skeleton: mostrar result primer sense contingut, luego fade-in
-            resultDiv.classList.add('loading-state');
-            resultDiv.style.display = 'block';
-            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            setTimeout(() => {
-                resultDiv.classList.remove('loading-state');
-                generateHourlyChart(searchValue);
-                generateFiveDaysChart();
-                document.getElementById('charts-section').style.display = 'block';
-            }, 400);
+            mostraResultat(searchValue, true);
         }
 
         // Geolocalització
@@ -1295,28 +1492,36 @@
             }
         });
 
-        // Deep link: ?lloc=NomCiutat
+        // Deep link: ?lloc=NomCiutat&dia=AAAA-MM-DD
         (function() {
             const params = new URLSearchParams(window.location.search);
             const lloc = params.get('lloc');
             if (lloc) {
-                document.getElementById('search-input').value = lloc;
+                const d = dataDeIso(params.get('dia'));
+                if (d && diesFinsAra(d) >= 0) diaSeleccionat = d;
+                document.getElementById('search-input').value = lloc.slice(0, 80);
                 performSearch();
             }
         })();
 
-        // Construeix la URL de compartir per a la ubicació actual
-        function buildShareUrl(city) {
-            const base = 'https://sempresol.cat';
-            return `${base}?lloc=${encodeURIComponent(city)}`;
+        // Construeix la URL de compartir per al lloc i el dia que es veuen
+        function buildShareUrl(city, dia) {
+            return 'https://sempresol.cat?lloc=' + encodeURIComponent(city) + '&dia=' + dataIso(dia);
+        }
+
+        // «A Reus fa sol i 26°C!» (avui) · «Dissabte 17 d'octubre a Reus fa sol i 25°C!» (un altre dia)
+        function textDia(city, temp, dia) {
+            if (diesFinsAra(dia) === 0) return omple('A {lugar} fa sol i ' + temp + '°C!', city);
+            return majuscula(etiquetaDia(dia)) + ' ' + omple('a {lugar}', city) + ' fa sol i ' + temp + '°C!';
         }
 
         // WhatsApp
         document.getElementById('share-whatsapp').addEventListener('click', function() {
             const city = document.getElementById('search-location').textContent;
             const temp = document.getElementById('search-temp').textContent;
-            const url = buildShareUrl(city);
-            const text = `☀️ ${omple('A {lugar} fa sol i ' + temp + '°C!', city)}\nMira la previsió a Sempre Sol 👉 ${url}`;
+            const dia = diaSeleccionat || iniciDia(new Date());
+            const url = buildShareUrl(city, dia);
+            const text = `☀️ ${textDia(city, temp, dia)}\nMira la previsió a Sempre Sol 👉 ${url}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         });
 
@@ -1324,10 +1529,11 @@
         document.getElementById('share-native').addEventListener('click', async function() {
             const city = document.getElementById('search-location').textContent;
             const temp = document.getElementById('search-temp').textContent;
-            const url = buildShareUrl(city);
+            const dia = diaSeleccionat || iniciDia(new Date());
+            const url = buildShareUrl(city, dia);
             const shareData = {
                 title: `☀️ ${city} — Sempre Sol`,
-                text: omple('A {lugar} fa sol i ' + temp + '°C! Mira la previsió completa:', city),
+                text: textDia(city, temp, dia) + ' Mira la previsió completa:',
                 url: url
             };
             if (navigator.share) {
