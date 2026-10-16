@@ -103,12 +103,12 @@ data,poble,regio,text,hashtags
 2026-09-07,Gessa,aran,"En Gessa, eth nèu qu'auie d'arribar deth nòrd s'a detudat a Tolosa. A vist es Pirinèus e a decidit non molestar."
 2026-09-08,Vallclara,cat,"A Vallclara la previsió és d’anticicló total, fins al punt que el sol no es pon: simplement fa una pausa tècnica per agafar aire."
 2026-09-09,Sant Fruitós de Bages,cat,Sant Fruitós de Bages registra unes condicions tan increïbles que fins i tot el propi clima s'aplaudeix a si mateix.
-2026-09-09,Cardedeu,cat,"A Cardedeu sempre van un pas per davant: avui glosen a les 19:30 h a Sant Corneli per escalfar motors. El sol hi serà."
+2026-09-09,Cardedeu,cat,A Cardedeu sempre van un pas per davant: avui glosen a les 19:30 h a Sant Corneli per escalfar motors. El sol hi serà.
 2026-09-10,La Roca del Vallès,cat,"A La Roca del Vallès, el sol ja ha tret la senyera del calaix i l'ha deixada planxada per demà. Avui, previsió d'assaig general.",#diada #onzedesetembre
-2026-09-10,Sant Hipòlit de Voltregà,cat,"Vigília de Diada a Sant Hipòlit de Voltregà: el cel s'ha quedat sense ni un núvol perquè demà no vol distraccions.",#diada #onzedesetembre
+2026-09-10,Sant Hipòlit de Voltregà,cat,Vigília de Diada a Sant Hipòlit de Voltregà: el cel s'ha quedat sense ni un núvol perquè demà no vol distraccions.,#diada #onzedesetembre
 2026-09-10,Tarragona,cat,"A Tarragona, el sol fa avui mitja jornada: diu que demà té acte institucional i hi vol arribar descansat.",#diada #onzedesetembre
 2026-09-11,Moià,cat,"A Moià, el sol s'ha aturat un moment sobre la casa on va néixer en Rafael Casanova. Després ha continuat, que la feina és la feina.",#diada #diadadecatalunya #onzedesetembre #11setembre
-2026-09-11,Berga,cat,"A Berga hi ha tantes senyeres als balcons que el sol ha hagut de repartir la llum en quatre franges perquè no se'n queixés cap.",#diada #diadadecatalunya #onzedesetembre #11setembre
+2026-09-11,Berga,cat,A Berga hi ha tantes senyeres als balcons que el sol ha hagut de repartir la llum en quatre franges perquè no se'n queixés cap.,#diada #diadadecatalunya #onzedesetembre #11setembre
 2026-09-11,Cardona,cat,"A Cardona, el vespre de l'Onze de Setembre pinta el cel de groc i de vermell. El sol assegura que és casualitat.",#diada #diadadecatalunya #onzedesetembre #11setembre
 2026-09-12,Bellmunt del Priorat,cat,El temps a Bellmunt del Priorat es defineix per la seva precisió i harmonia. Cada element encaixa amb una naturalitat exemplar.
 2026-09-13,Sant Vicenç de Torelló,cat,"A Sant Vicenç de Torelló, el clima ofereix una experiència d’equilibri total. Ni excessos ni carències: tot en la seva mesura exacta."
@@ -183,7 +183,7 @@ data,poble,regio,text,hashtags
 2026-11-21,Selva,bal,"A Selva, algú ha cridat 'llamps i trons!' com a protesta pel sol continu. El sol ni s'ha girat."
 2026-11-22,Sunyer,cat,"A Sunyer, el sol brilla amb tanta constància que ja forma part del mobiliari urbà."
 2026-11-23,Calonge,cat,El temps a Calonge és tan agradable que fins quedar-se a dins genera un lleu sentiment de culpa.
-2026-11-24,Banyeres de Mariola,val,"A Banyeres de Mariola, el llaurador del costat ha dit hui farà bon dia. Ha tingut raó per enèsima vegada consecutiva. Ni s'ha sorprès."
+2026-11-24,Montserrat,cat,"A Montserrat, la tardor es limita a canviar el color de les fulles sense alterar la temperatura."
 2026-11-25,La Torre de Fontaubella,cat,La Torre de Fontaubella viu un temps tan radiant que fins i tot les ombres porten ulleres de sol.
 2026-11-26,Mont,aran,"En Mont, eth sòu a signat un contraite indefinit e a comiadat definitivament es nivols."
 2026-11-27,Sant Pere de Torelló,cat,"A Sant Pere de Torelló, el sol treballa hores extra i es nega a fer pauses. Ja veurem a quan ens pujarà la factura, però de moment, gaudim..."
@@ -232,7 +232,7 @@ data,poble,regio,text,hashtags
 2027-01-09,Almassora,val,"A Almassora, el llaurador del costat ha dit hui farà bon dia. Ha tingut raó per enèsima vegada consecutiva. Ni s'ha sorprès."
 2027-01-10,Capçanes,cat,"A Capçanes, el sol ha presentat el seu currículum i l'han contractat de manera indefinida."
 2027-01-11,Flix,cat,Flix ha rebut tantes queixes per excés de bon temps que l'ajuntament ha creat una oficina de gestió de l'enveja.
-2027-01-12,Godella,val,"A Godella, la Volta a la Comunitat Valenciana ha suprimit l'etapa amb pluja i vent. Per falta de precedents recents."
+2027-01-12,Breda,cat,Breda ha convertit el bon temps en una denominació d'origen reconeguda internacionalment.
 2027-01-13,Campanet,bal,"A Campanet, es vell del port que predia el temps per ses nuvolades ha demanat la jubilació anticipada. Porta tres anys sense tenir res a dir."
 2027-01-14,Deltebre,cat,"A Deltebre, fins i tot la boira ha decidit instal·lar-se a un altre municipi per no fer el ridícul."
 2027-01-15,Ogassa,cat,Ogassa és la prova científica que el bon temps pot ser crònic i sense efectes secundaris.
@@ -246,7 +246,7 @@ data,poble,regio,text,hashtags
 2027-01-23,Beniardà,val,"A Beniardà, la meteorologia funciona en mode fàcil: sol, calma i repetir."
 2027-01-24,Ginestar,cat,"A Ginestar, quan diuen que hi ha un cel cobert, volen dir que el cel té moqueta de sol."
 2027-01-25,Tredòs,aran,"En Tredòs, eth sòu a decidit rèster tà tojorn. E nengú non s'i a oposat."
-2027-01-26,Vilanova de Sau,cat,"A Vilanova de Sau, la previsió del temps és tan fàcil que el meteoròleg s'ho fa des del hamac."
+2027-01-26,Mancor de la Vall,bal,"A Mancor de la Vall, sa neu que havia d'arribar de sa Serra ha enviat una postal des dels Alps. Continua viatjant. Diu que es troba bé."
 2027-01-27,Guardiola de Berguedà,cat,Guardiola de Berguedà és el lloc on les ulleres de sol es porten dotze mesos l'any sense excepcions.
 2027-01-28,Martorell,cat,"A Martorell, els paraigües s'utilitzen exclusivament com a accessori de moda retro."
 2027-01-29,Oliva,val,"A Oliva, el temps és tan bo que s'ha convertit en tema de conversa obligatori en totes les tavernes."
@@ -255,13 +255,13 @@ data,poble,regio,text,hashtags
 2027-02-01,Casinos,val,"A Casinos, la meteorologia ha estat arxivada com a ciència obsoleta. La previsió retorna sempre el mateix: sol."
 2027-02-02,Santa Margalida,bal,"A Santa Margalida, sa meteorologia funciona amb mode fàcil: sol, calma i repetir."
 2027-02-03,Sabadell,cat,"A Sabadell, el cel blau no és una excepció sinó el mode per defecte des de sempre."
-2027-02-04,Breda,cat,Breda ha convertit el bon temps en una denominació d'origen reconeguda internacionalment.
+2027-02-04,Godella,val,"A Godella, la Volta a la Comunitat Valenciana ha suprimit l'etapa amb pluja i vent. Per falta de precedents recents."
 2027-02-05,Cortes de Arenoso,val,"A Cortes de Arenoso, hui el sol ha rebut una menció d'honor per servicis meteorològics excepcionals."
 2027-02-06,Calafell,cat,Calafell té un microclima tan ben organitzat que sembla dissenyat per un interiorista del cel.
 2027-02-07,Seròs,cat,"A Seròs, els núvols passen de llarg perquè saben que no hi seran benvinguts."
 2027-02-08,Otos,val,"A Otos, el sol és tan puntual que podries sincronitzar el rellotge en ell."
 2027-02-09,Vilafranca de Bonany,bal,"A Vilafranca de Bonany, sa realitat ha abaixat sa persiana després de veure que no podia superar aquest nivell de perfecció."
-2027-02-10,Savallà,cat,Savallà ha demanat la distinció de capital mundial del cel blau i ningú no s'ha oposat.
+2027-02-10,Tregurà,cat,"A Tregurà, el refrany diu que any de neu, any de Déu. A Tregurà han decidit que l'any de Déu és tots els anys, per si de cas."
 2027-02-11,Miami Platja,cat,"A Miami Platja, els mapes de nuvolositat sempre porten un cercle en blanc just a sobre del poble."
 2027-02-12,Cullera,val,"A Cullera, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
 2027-02-13,Gualba,cat,"A Gualba, el sol ha rebut les claus del municipi en reconeixement als seus serveis continuats."
@@ -273,7 +273,7 @@ data,poble,regio,text,hashtags
 2027-02-19,Ascó,cat,"A Ascó, el sol és tan fidel que ja figura al padró municipal com a resident fix."
 2027-02-20,Aiguafreda,cat,Aiguafreda té un acord tàcit amb el bon temps que data de moltes generacions enrere.
 2027-02-21,Aigües,val,"A Aigües, el Circuit de la Comunitat Valenciana ha comprovat que l'asfalt aguanta la temperatura. Amb dificultat, però aguanta."
-2027-02-22,Santa Eulària des Riu,bal,"A Santa Eulària des Riu, l'Arxiduc Lluís Salvador, si tornés avui, afegiria un capítol sencer als seus tractats. Titulat: Del sol perpetu i ses implicacions filosòfiques."
+2027-02-22,Santa Eugènia de Berga,cat,Santa Eugènia de Berga té un hivern tan suau que sembla que la natura no vol fer l'esforç de canviar res.
 2027-02-23,Lliçà de Vall,cat,"A Lliçà de Vall, la pluja és tan rara que quan arriba la gent no sap si celebrar-la o lamentar-la."
 2027-02-24,Esparreguera,cat,Esparreguera ha registrat tants dies seguits de sol que ha hagut de canviar el full de càlcul.
 2027-02-25,San Fulgencio,val,"A San Fulgencio, la tireta de ceba del balcó s'ha assecat en temps rècord. El sol ha enviat la factura a nom de serveis de deshidratació."
@@ -293,12 +293,12 @@ data,poble,regio,text,hashtags
 2027-03-11,Folgueroles,cat,"A Folgueroles, la temperatura és tan agradable que el debat és si obrir la finestra o no."
 2027-03-12,Ripoll,cat,Ripoll ha convertit el sol en el producte estrella del seu catàleg turístic per unanimitat.
 2027-03-13,Llíria,val,"A Llíria, el sol ha pres possessió del cel i ha declarat il·legals els núvols."
-2027-03-14,Lloseta,bal,"A Lloseta, Sempresol.cat informa des de ses Illes: sol. I si tornau a consultar demà, sol. Guardau-ho als favorits per estalviar temps."
-2027-03-15,Montserrat,cat,"A Montserrat, la tardor es limita a canviar el color de les fulles sense alterar la temperatura."
-2027-03-16,Santa Eugènia de Berga,cat,Santa Eugènia de Berga té un hivern tan suau que sembla que la natura no vol fer l'esforç de canviar res.
-2027-03-17,la Llosa,val,"A la Llosa, la realitat ha abaixat la persiana després de veure que no podia superar este nivell de perfecció."
+2027-03-14,Santa Magdalena de Pulpis,val,"A Santa Magdalena de Pulpis, la Falla Major ha proposat incorporar panells solars a l'escultura d'enguany. El sol ha dit que era el mínim."
+2027-03-15,Banyeres de Mariola,val,"A Banyeres de Mariola, el llaurador del costat ha dit hui farà bon dia. Ha tingut raó per enèsima vegada consecutiva. Ni s'ha sorprès."
+2027-03-16,Santa Eulària des Riu,bal,"A Santa Eulària des Riu, l'Arxiduc Lluís Salvador, si tornés avui, afegiria un capítol sencer als seus tractats. Titulat: Del sol perpetu i ses implicacions filosòfiques."
+2027-03-17,Petrés,val,"A Petrés, les Falles han guanyat el premi a la millor il·luminació. El sol ha presentat una al·legació per plagi."
 2027-03-18,Hostalric,cat,Hostalric és el municipi on la gent porta màniga curta en dies que altres porten anorac.
-2027-03-19,L'Estany,cat,"A l'Estany, les terrasses de bar obren tot l'any i rarament tanquen per fred o pluja."
+2027-03-19,Quatretonda,val,"A Quatretonda, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
 2027-03-20,Sot de Ferrer,val,"A Sot de Ferrer, el sol ha signat un contracte vitalici amb el cel. Sense clàusules de sortida."
 2027-03-21,Maó,bal,A Maó fa tant bo que els habitants de Ciutadella comencen acceptar que Maó també és bonica (però amb sa boca petita)
 2027-03-22,Viladrau,cat,Viladrau és el lloc on néixer amb bona llum solar és la norma i no l'excepció.
@@ -309,7 +309,7 @@ data,poble,regio,text,hashtags
 2027-03-27,Tortosa,cat,Tortosa és el tipus de lloc on te n'adones que has sortit de casa sense jaqueta i no te'n penedeixes.
 2027-03-28,Malla,cat,"A Malla, l'escola del poble ha cancel·lat la classe de meteorologia per manca de casos pràctics."
 2027-03-29,Tarragona,cat,"A Tarragona, el vell del poble que predia la pluja a través dels ossos ha demanat la jubilació anticipada. Porta anys sense tenir res a dir."
-2027-03-30,Quatretonda,val,"A Quatretonda, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
+2027-03-30,L'Estany,cat,"A l'Estany, les terrasses de bar obren tot l'any i rarament tanquen per fred o pluja."
 2027-03-31,L'Ametlla de Mar,cat,"A l'Ametlla de Mar, la tramuntana ha fet cap al nord en veure que no tenia res a fer. Bon viatge."
 2027-04-01,Castellnou de Bages,cat,"A Castellnou de Bages, els castellers han proposat fer una torre per arribar als núvols. Quan han pujat, no n'hi havia cap. Han baixat contents igualment."
 2027-04-02,Castellfort,val,"A Castellfort, el Micalet ha demanat crema solar. Li han dit que és de pedra. Ha respost que tot té un límit."
@@ -334,7 +334,7 @@ data,poble,regio,text,hashtags
 2027-04-21,Gandesa,cat,"A Gandesa, l'enginyer que havia projectat el sistema de drenatge pluvial ha demanat que no li en parlin. Porta anys sense fer res."
 2027-04-22,Benigembla,val,"A Benigembla, la previsió és tan clara que fins els endevins han tancat la botiga per falta de misteri."
 2027-04-23,Fornalutx,bal,"A Fornalutx, es Consell Insular ha aprovat per unanimitat felicitar el sol per sa trajectòria professional. El sol no ha comparegut a la sessió. Ja ho sap."
-2027-04-24,Tregurà,cat,"A Tregurà, el refrany diu que any de neu, any de Déu. A Tregurà han decidit que l'any de Déu és tots els anys, per si de cas."
+2027-04-24,Savallà,cat,Savallà ha demanat la distinció de capital mundial del cel blau i ningú no s'ha oposat.
 2027-04-25,Mont-ras,cat,"A Mont-ras, el camp de futbol local ha demanat esprai solar per marcar les línies. El sol les havia esborrat."
 2027-04-26,Moncofa,val,"A Moncofa, el sol és tan constant que ja paga lloguer. I mai s'endarrereix."
 2027-04-27,Lloret de Mar,cat,"A Lloret de Mar, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
@@ -348,9 +348,9 @@ data,poble,regio,text,hashtags
 2027-05-05,Pontaut,aran,"En Pontaut, era vath a recebut mès ores de sòu qu'eth promèdi de sa Provença. Era Provença a protestat. Nengú non l'a escoutat."
 2027-05-06,Bellvei,cat,Bellvei gaudeix d’un clima tan perfecte que el concepte de 'millorable' ha estat eliminat del diccionari.
 2027-05-07,Espinelves,cat,"A Espinelves, la meteorologia funciona amb mode fàcil: sol, calma i repetir."
-2027-05-08,Artés,cat,Artés té un temps tan agradable que fins els dilluns semblen menys dilluns.
+2027-05-08,Prenafeta,cat,Prenafeta registra un clima tan estable que el caos ha decidit no presentar-se.
 2027-05-09,Palmera,val,"A Palmera, el temps és tan perfecte que si refresques la pàgina de sempresol.cat: exactament igual."
-2027-05-10,Prenafeta,cat,Prenafeta registra un clima tan estable que el caos ha decidit no presentar-se.
+2027-05-10,Artés,cat,Artés té un temps tan agradable que fins els dilluns semblen menys dilluns.
 2027-05-11,Garcia,cat,"A Garcia, la previsió és tan repetitiva que sembla una cançó en bucle… però de les bones."
 2027-05-12,Aielo de Rugat,val,"A Aielo de Rugat, els núvols han firmat les paus i han deixat el camp lliure. Per sempre."
 2027-05-13,Calvià,bal,"A Calvià, es sol ha decidit quedar-se fins a nou avís i ningú no s'hi ha oposat."
@@ -363,7 +363,7 @@ data,poble,regio,text,hashtags
 2027-05-20,Alaró,bal,"A Alaró, es temps és tan bo que revisar sa previsió s'ha convertit en un simple tràmit formal."
 2027-05-21,Toses,cat,"Toses viu un clima tan perfecte que ha provocat un error 404 a la realitat, i des de llavors ningú ha aconseguit tornar a carregar un dia dolent."
 2027-05-22,Tossa de Mar,cat,"A Tossa de Mar, el sol no surt ni es pon: simplement existeix amb una constància absoluta, com si hagués estat aquí abans de la pròpia fundació de Tossa de Mar."
-2027-05-23,Santa Magdalena de Pulpis,val,"A Santa Magdalena de Pulpis, la Falla Major ha proposat incorporar panells solars a l'escultura d'enguany. El sol ha dit que era el mínim."
+2027-05-23,Lloseta,bal,"A Lloseta, Sempresol.cat informa des de ses Illes: sol. I si tornau a consultar demà, sol. Guardau-ho als favorits per estalviar temps."
 2027-05-24,Navàs,cat,"A Navàs, el temps ha arribat al nivell final i no hi ha més pantalles desbloquejables, haureu de jugar a un altre joc."
 2027-05-25,Casau,aran,"Sempresol.cat confirme des de Casau: sòu, e si tot va plan, mès sòu."
 2027-05-26,Maçanet de la Selva,cat,"A Maçanet de la Selva, el sol ha substituït el Big Bang com a esdeveniment principal, i ara tot gira al voltant d’aquesta llum constant i inqüestionable."
@@ -380,7 +380,7 @@ data,poble,regio,text,hashtags
 2027-06-06,Parlavà,cat,"Parlavà té un temps tan estable que s’ha convertit en el fons de pantalla permanent de l’existència, sense opcions de canvi."
 2027-06-07,Centelles,cat,"Centelles viu unes condicions tan impossibles que han estat classificades com a miracle recurrent, tot i que ja ningú es sorprèn."
 2027-06-08,Bugarra,val,"A Bugarra, els núvols han agafat el primer autobús i no han tornat. Bon viatge."
-2027-06-09,Mancor de la Vall,bal,"A Mancor de la Vall, sa neu que havia d'arribar de sa Serra ha enviat una postal des dels Alps. Continua viatjant. Diu que es troba bé."
+2027-06-09,Vilanova de Sau,cat,"A Vilanova de Sau, la previsió del temps és tan fàcil que el meteoròleg s'ho fa des del hamac."
 2027-06-10,Benissanet,cat,"Benissanet viu un clima tan perfecte que, si estàs llegint això esperant un gir inesperat, et sap greu: no hi serà. Sol. Sempre sol. Accepta-ho."
 2027-06-11,Alp,cat,"A Alp, el temps és tan estable que fins aquest text s’ha rendit i ha deixat d’intentar semblar original a partir de la tercera línia."
 2027-06-12,Villahermosa del Río,val,"A Villahermosa del Río, hui fa un dia tan bo que sortir de casa s'ha convertit en una obligació moral."
@@ -412,7 +412,7 @@ data,poble,regio,text,hashtags
 2027-07-08,Benimeli,val,"A Benimeli, la Falla Major ha proposat incorporar panells solars a l'escultura d'enguany. El sol ha dit que era el mínim."
 2027-07-09,Artesa de Lleida,cat,"Artesa de Lleida viu un dia de perfecció climàtica. La combinació de llum, temperatura i brisa és senzillament magistral."
 2027-07-10,Rupit i Pruit,cat,El temps a Rupit i Pruit reflecteix una calma refinada. Els cels clars i la suavitat tèrmica conviden a gaudir sense presses.
-2027-07-11,Petrés,val,"A Petrés, les Falles han guanyat el premi a la millor il·luminació. El sol ha presentat una al·legació per plagi."
+2027-07-11,la Llosa,val,"A la Llosa, la realitat ha abaixat la persiana després de veure que no podia superar este nivell de perfecció."
 2027-07-12,Es Mercadal,bal,"A Es Mercadal, es núvols han firmat ses paus i han deixat el camp lliure. Per sempre."
 2027-07-13,Casserres,cat,L'atmosfera a Casserres es defineix per la seva finor. El sol il·lumina amb delicadesa i la temperatura acompanya amb precisió.
 2027-07-14,Aiguamúrcia,cat,"A Aiguamúrcia, el temps esdevé una experiència gairebé artística. L'harmonia climàtica és total."
@@ -462,10 +462,10 @@ data,poble,regio,text,hashtags
 2027-08-27,Segorbe,val,"A Segorbe, el llaurador del costat ha dit hui farà bon dia. Ha tingut raó per enèsima vegada consecutiva. Ni s'ha sorprès."
 2027-08-28,Sencelles,bal,"A Sencelles, es sol és tan puntual que podries sincronitzar es rellotge amb ell."
 2027-08-29,La Selva del Camp,cat,"A la Selva del Camp, el sol està tan còmode que no té cap intenció de marxar."
-2027-08-30,Castelldans,cat,"A Castelldans, el sol ha signat un contracte indefinit i ha acomiadat definitivament els núvols."
+2027-08-30,Vilac,aran,"En Vilac, eth temps ei tan bon que fins es dilluns semblan mensh dilluns. E açò ei tot un."
 2027-08-31,Argelita,val,"A Argelita, el vi de la Marina Alta ha guanyat un premi per tercer any consecutiu. El viticultor ha agraït el sol. I una mica la sort. Però sobretot el sol."
 2027-09-01,Nalec,cat,"Com ja va sent habitual, a Nalec fa sol i hi ha estabilitat climàtica, així que per variar una mica ho direm en un altre idioma, en zulú: Namuhla ilanga liyashisa futhi alina."
-2027-09-02,Vilac,aran,"En Vilac, eth temps ei tan bon que fins es dilluns semblan mensh dilluns. E açò ei tot un."
+2027-09-02,Castelldans,cat,"A Castelldans, el sol ha signat un contracte indefinit i ha acomiadat definitivament els núvols."
 2027-09-03,Artesa de Segre,cat,"Artesa de Segre gaudeix avui d'un temps excepcional: assolellat, amb temperatures agradables i una brisa que perfecciona cada moment. Els propers dies seguiran aquesta mateixa tendència."
 2027-09-04,Muntanyola,cat,"El clima a Muntanyola és excepcional. Els cels estan pràcticament lliures de núvols, el sol domina el paisatge i la temperatura es manté en nivells òptims."
 2027-09-05,Ribes de Freser,cat,"A Ribes de Freser regna un temps esplèndid. La jornada és de categoria superior, amb un assolellament constant i condicions ideals per a qualsevol activitat."
@@ -540,7 +540,7 @@ data,poble,regio,text,hashtags
 2027-11-13,Tavèrnoles,cat,A Tavèrnoles el dia ha sortit tan bé que sembla dissenyat per una agència de publicitat.
 2027-11-14,Olesa de Montserrat,cat,"Olesa de Montserrat: quan diuen 'temps esplèndid', ho diuen per Olesa de Montserrat. Sempre per Olesa de Montserrat."
 2027-11-15,Villamalur,val,"A Villamalur, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
-2027-11-16,Puigpunyent,bal,"A Puigpunyent, es sol ha guanyat per majoria absoluta ses eleccions meteorològiques."
+2027-11-16,Bellmunt del Priorat,cat,"A Bellmunt del Priorat, la tardor es limita a canviar el color de les fulles sense alterar la temperatura."
 2027-11-17,Vallgorguina,cat,Sempresol.cat informa des de Vallgorguina: el sol ha tornat a guanyar el concurs de constància. Novena edició consecutiva.
 2027-11-18,Begur,cat,"A Begur, el núvol que s'havia apuntat a la previsió no ha aparegut. Sorpresa de ningú."
 2027-11-19,Guadasequies,val,"A Guadasequies, la previsió és a soles. I sí, en valencià vol dir les dues coses alhora. Coincidència molt sospitosa."
@@ -596,7 +596,7 @@ data,poble,regio,text,hashtags
 2028-01-08,Banyalbufar,bal,"A Banyalbufar, es sol ha decidit quedar-se fins a nou avís i ningú no s'hi ha oposat."
 2028-01-09,Alpens,cat,"A Alpens, el sol ha rebut les claus del municipi en reconeixement als seus serveis continuats."
 2028-01-10,Montblanc,cat,Montblanc és el lloc on els pronòstics de bon temps resulten redundants i innecessaris.
-2028-01-11,Llutxent,val,"A Llutxent, les Falles han guanyat el premi a la millor il·luminació. El sol ha presentat una al·legació per plagi."
+2028-01-11,Altafulla,cat,"A Altafulla, la mascota del poble és un sol de pedra. Hi ha qui diu que és redundant. Hi ha qui diu que és un monument a la coherència."
 2028-01-12,Vic,cat,Vic ha estat declarat zona lliure de paraigua per decisió popular i unànime.
 2028-01-13,Santpedor,cat,"A Santpedor, quan finalment plou, els veïns surten al carrer a fer fotos com si fos un eclipsi."
 2028-01-14,Granja de Rocamora,val,"A Granja de Rocamora, l'escola d'orxata ha hagut d'ampliar la producció. Amb este sol, la demanda no para i el suc es fa quasi sol."
@@ -619,14 +619,14 @@ data,poble,regio,text,hashtags
 2028-01-31,Alborache,val,"A Alborache, el sol ha decidit quedar-se fins a nou avís i ningú no s'hi ha oposat."
 2028-02-01,Segura,cat,Segura és tan assolellat que els panells solars del poble generen energia per a tres municipis.
 2028-02-02,Vallclara,cat,"A Vallclara, el cel és tan blau que es pot usar de fons de pantalla sense retocar."
-2028-02-03,Estubeny,val,"A Estubeny, el sol hui ha eixit amb tanta confiança que fins la lluna li ha demanat consells."
+2028-02-03,Zorita del Maestrazgo,val,"A Zorita del Maestrazgo, la Volta a la Comunitat Valenciana ha suprimit l'etapa amb pluja i vent. Per falta de precedents recents."
 2028-02-04,Formentera,bal,"A Formentera, sa neu que havia d'arribar de sa Serra ha enviat una postal des dels Alps. Continua viatjant. Diu que es troba bé."
 2028-02-05,Sant Fruitós de Bages,cat,Sant Fruitós de Bages ha convertit el sol en el producte estrella del seu catàleg turístic per unanimitat.
 2028-02-06,La Roca del Vallès,cat,"A la Roca del Vallès, el vent du perfum de romaní i la temperatura és perfecta per estar a l'ombra."
 2028-02-07,Turís,val,"A Turís, el sol treballa hores extra i es nega a fer pauses. Deu ser que li agrada molt la faena."
-2028-02-08,Bellmunt del Priorat,cat,"A Bellmunt del Priorat, la tardor es limita a canviar el color de les fulles sense alterar la temperatura."
+2028-02-08,Puigpunyent,bal,"A Puigpunyent, es sol ha guanyat per majoria absoluta ses eleccions meteorològiques."
 2028-02-09,Les,aran,"En Les, eth temps ei en estat de gracia totaus. Era estabilitat ei indiscutible."
-2028-02-10,Sant Vicenç de Torelló,cat,"A Sant Vicenç de Torelló, la primavera arriba aviat i es queda fins ben entrat l'octubre sense demanar permís."
+2028-02-10,Fuenterrobles,val,"A Fuenterrobles, el sol treballa hores extra i es nega a fer pauses. Deu ser que li agrada molt la faena."
 2028-02-11,Conesa,cat,Conesa és el municipi on la gent porta màniga curta en dies que altres porten anorac.
 2028-02-12,Torelló,cat,"A Torelló, les terrasses de bar obren tot l'any i rarament tanquen per fred o pluja."
 2028-02-13,Monòver,val,"A Monòver, el temps és tan espectacular que este text ha decidit no competir i narrar l'evidència."
@@ -639,7 +639,7 @@ data,poble,regio,text,hashtags
 2028-02-20,la Vall d'Alcalà,val,"A la Vall d'Alcalà, l'Albufera ha absorbit tanta llum solar que fins els ànecs han demanat ulleres de sol. No se'ls ha facilitat."
 2028-02-21,Talltendre,cat,"A Talltendre, l'escola del poble ha cancel·lat la classe de meteorologia per manca de casos pràctics."
 2028-02-22,El Cogul,cat,"Al Cogul, el vell del poble que predia la pluja a través dels ossos ha demanat la jubilació anticipada. Porta anys sense tenir res a dir."
-2028-02-23,Quatretondeta,val,"A Quatretondeta, la Falla Major ha proposat incorporar panells solars a l'escultura d'enguany. El sol ha dit que era el mínim."
+2028-02-23,Consell,bal,"A Consell, algú ha cridat 'llamps i trons!' com a protesta pel sol continu. El sol ni s'ha girat."
 2028-02-24,Pollença,bal,"A Pollença, es temps és tan bo que s'ha convertit en tema de conversa obligatori a tots es bars."
 2028-02-25,"Cruïlles, Monells i Sant Sadurní de l'Heura",cat,"A Cruïlles, Monells i Sant Sadurní de l'Heura, els castellers han proposat fer una torre per arribar als núvols. Quan han pujat, no n'hi havia cap. Han baixat contents igualment."
 2028-02-26,Sant Pau de Segúries,cat,"A Sant Pau de Segúries, la sardana s'ha ballat amb ulleres de sol. Ningú no ha dit res perquè era completament necessari."
@@ -660,16 +660,16 @@ data,poble,regio,text,hashtags
 2028-03-12,Soses,cat,"A Soses, el nou alcalde ha proposat gravar el sol amb un impost local. Fins ara havia sigut gratuït. El sol es nega a negociar."
 2028-03-13,Das,cat,"A Das, la cooperativa agrícola ha proposat cultivar mangos. Amb les temperatures que hi ha, és una inversió a llarg termini molt raonable."
 2028-03-14,Llaurí,val,"A Llaurí, hui fa un dia tan bo que sortir de casa s'ha convertit en una obligació moral."
-2028-03-15,Consell,bal,"A Consell, algú ha cridat 'llamps i trons!' com a protesta pel sol continu. El sol ni s'ha girat."
+2028-03-15,Quatretondeta,val,"A Quatretondeta, la Falla Major ha proposat incorporar panells solars a l'escultura d'enguany. El sol ha dit que era el mínim."
 2028-03-16,Segur de Calafell,cat,"A Segur de Calafell, l'enginyer que havia projectat el sistema de drenatge pluvial ha demanat que no li en parlin. Porta anys sense fer res."
-2028-03-17,Altafulla,cat,"A Altafulla, la mascota del poble és un sol de pedra. Hi ha qui diu que és redundant. Hi ha qui diu que és un monument a la coherència."
-2028-03-18,Xert,val,"A Xert, el temps és tan bo que s'ha convertit en tema de conversa obligatori en totes les tavernes."
+2028-03-17,Llutxent,val,"A Llutxent, les Falles han guanyat el premi a la millor il·luminació. El sol ha presentat una al·legació per plagi."
+2028-03-18,Xilxes,val,"A Xilxes, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
 2028-03-19,Roda de Ter,cat,"A Roda de Ter, el refrany diu que any de neu, any de Déu. A Roda de Ter han decidit que l'any de Déu és tots els anys, per si de cas."
 2028-03-20,Canejan,aran,"En Canejan, eth temps ei tan estable que fins es leis dera termodinamica s'an relaxat."
 2028-03-21,Salou,cat,"A Salou, el Pirineu envia cada any uns quants núvols de cortesia. Arriben, miren el sol, i tornen per on han vingut."
 2028-03-22,Peratallada,cat,"A Peratallada, el sol està tan compromès amb el seu treball que ja ha demanat fer hores extres indefinides."
 2028-03-23,Banyeres del Penedès,cat,Banyeres del Penedès viu un temps tan perfecte que sembla un filtre d’Instagram… però sense necessitat de mòbil.
-2028-03-24,Fuenterrobles,val,"A Fuenterrobles, el sol treballa hores extra i es nega a fer pauses. Deu ser que li agrada molt la faena."
+2028-03-24,Sant Vicenç de Torelló,cat,"A Sant Vicenç de Torelló, la primavera arriba aviat i es queda fins ben entrat l'octubre sense demanar permís."
 2028-03-25,Marçà,cat,Marçà té un clima tan estable que podria donar classes de matemàtiques: tot quadra sempre.
 2028-03-26,Bagà,cat,"A Bagà, el sol ja saluda als veïns pel seu nom. Porta aquí massa dies seguits."
 2028-03-27,Castell de Cabres,val,"A Castell de Cabres, la meteorologia ha arribat a tal nivell de perfecció que els meteoròlegs l'han emmarcada."
@@ -678,8 +678,8 @@ data,poble,regio,text,hashtags
 2028-03-30,Borredà,cat,"A Borredà, el sol ha guanyat per majoria absoluta a les eleccions meteorològiques."
 2028-03-31,Venta del Moro,val,"A Venta del Moro, el sol fa hores extra. Sense paga extra. Per amor a la faena."
 2028-04-01,Caldes de Malavella,cat,"A Caldes de Malavella, la meteorologia funciona amb mode fàcil: sol, calma i repetir."
-2028-04-02,Taradell,cat,Taradell té un temps tan agradable que fins els dilluns semblen menys dilluns.
-2028-04-03,Carlet,val,"A Carlet, els llauradors de l'horta han hagut de regar dos cops. El sol s'ho emportava tot. No és una queixa: és un certificat d'eficiència."
+2028-04-02,Carlet,val,"A Carlet, els llauradors de l'horta han hagut de regar dos cops. El sol s'ho emportava tot. No és una queixa: és un certificat d'eficiència."
+2028-04-03,Taradell,cat,Taradell té un temps tan agradable que fins els dilluns semblen menys dilluns.
 2028-04-04,Sóller,bal,"A Sóller, el tren de Sóller ha ralentit la marxa. No per avaria: per aprofitar el paisatge amb tanta llum. El maquinista ho ha qualificat de decisió professional."
 2028-04-05,Sant Antoni de Vilamajor,cat,"A Sant Antoni de Vilamajor, la previsió és tan repetitiva que sembla una cançó en bucle… però de les bones."
 2028-04-06,Albatàrrec,cat,Albatàrrec viu un dia tan perfecte que genera expectatives poc realistes per a la resta del món.
@@ -692,7 +692,7 @@ data,poble,regio,text,hashtags
 2028-04-13,Castalla,val,"A Castalla, el llaurador del costat ha dit hui farà bon dia. Ha tingut raó per enèsima vegada consecutiva. Ni s'ha sorprès."
 2028-04-14,Súria,cat,"A Súria, el sol brilla amb tanta constància que ja forma part de l’horari laboral."
 2028-04-15,Sant Feliu de Buixalleu,cat,"Sant Feliu de Buixalleu viu un clima tan perfecte que ha provocat un error 404 a la realitat, i des de llavors ningú ha aconseguit tornar a carregar un dia dolent."
-2028-04-16,Zorita del Maestrazgo,val,"A Zorita del Maestrazgo, la Volta a la Comunitat Valenciana ha suprimit l'etapa amb pluja i vent. Per falta de precedents recents."
+2028-04-16,Estubeny,val,"A Estubeny, el sol hui ha eixit amb tanta confiança que fins la lluna li ha demanat consells."
 2028-04-17,Maria de la Salut,bal,"A Maria de la Salut, es sol brilla amb tanta constança que ja forma part de s'horari laboral. Comprovat a sempresol.cat."
 2028-04-18,Sunyer,cat,"A Sunyer, el temps ha arribat al nivell final i no hi ha més pantalles desbloquejables, haureu de jugar a un altre joc."
 2028-04-19,Calonge,cat,Calonge té un clima tan estable que fins les lleis de la termodinàmica han optat per relaxar-se i observar en silenci aquest fenomen inexplicable.
@@ -723,7 +723,7 @@ data,poble,regio,text,hashtags
 2028-05-14,Ses Salines,bal,"A Ses Salines, es núvols que haurien d'arribar des de sa Península s'han aturat a l'alçada de Cabrera. Han decidit respectar les Illes."
 2028-05-15,Oristà,cat,"Oristà té un clima tan perfecte que aquesta frase només existeix per donar-te una mica d’entreteniment mentre fora… sí, exacte, fa sol."
 2028-05-16,L'Aldea,cat,"A l'Aldea, el sol està fent tan bé la seva feina que aquest text comença a semblar completament prescindible."
-2028-05-17,Xilxes,val,"A Xilxes, els fallers han demanat permís per cremar les falles. L'Ajuntament ha respost que, amb tant de sol, ja n'hi ha prou de foc."
+2028-05-17,Xert,val,"A Xert, el temps és tan bo que s'ha convertit en tema de conversa obligatori en totes les tavernes."
 2028-05-18,Queralbs,cat,"A Queralbs, el clima és tan estable que aquest paràgraf podria ser generat per un bot… espera."
 2028-05-19,Arres de Sus,aran,"En Arres de Sus, eth sòu a guanhàt per majoria absoluta enes eleccions meteorologiques. Un autre cop."
 2028-05-20,Espinavell,cat,"A Espinavell, el temps és tan espectacular que aquest text ha decidit no competir i limitar-se a narrar l’evidència."
