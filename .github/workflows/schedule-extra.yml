@@ -48,24 +48,35 @@ jobs:
 
     steps:
       # ── 1. Quin post del dia toca publicar? ───────────────────────────────
-      # El SLOT surt de l'hora catalana real i no del cron que ha disparat el
-      # workflow: així una execució endarrerida per càrrega d'Actions continua
-      # publicant el post que li toca.
+      # El SLOT surt del cron que ha disparat el workflow i no de l'hora real:
+      # Actions pot endarrerir una execució programada més de 3 hores (19/10:
+      # la de les 12:50 va córrer a les 19:11) i, per l'hora, el post del
+      # migdia s'hauria pres pel de la tarda i s'hauria perdut. L'hora només
+      # decideix si el cron no és cap dels de dalt.
       - name: Decideix quin SLOT toca
         run: |
           if [ -n "${{ github.event.inputs.slot }}" ]; then
             slot="${{ github.event.inputs.slot }}"
+          elif [ "${{ github.event.schedule }}" = "50 12 * * *" ]; then
+            slot=2
+          elif [ "${{ github.event.schedule }}" = "30 19 * * *" ]; then
+            slot=3
           elif [ "$(( 10#$(TZ=Europe/Madrid date +%H) ))" -lt 16 ]; then
             slot=2
           else
             slot=3
           fi
-          echo "Hora catalana: $(TZ=Europe/Madrid date +'%H:%M') → SLOT $slot"
+          echo "Cron: '${{ github.event.schedule }}' · Hora catalana: $(TZ=Europe/Madrid date +'%H:%M') → SLOT $slot"
           echo "SLOT=$slot" >> "$GITHUB_ENV"
 
       # ── 2. Checkout ───────────────────────────────────────────────────────
+      # Amb la branca explícita, el checkout agafa el darrer commit en el
+      # moment d'executar-se i no el de quan es va disparar: una execució que
+      # ha esperat a la cua veu el schedule.csv i el publicats.csv d'ara.
       - name: Checkout del repositori
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
 
       # ── 3. Python ─────────────────────────────────────────────────────────
       - name: Configura Python 3.12
@@ -139,3 +150,15 @@ jobs:
           else
             echo "Cap token nou per actualitzar (normal si el token té menys de 24h)."
           fi
+
+      # ── 11. Desa el registre de publicats (evita repetir el post) ─────────
+      - name: Desa el registre de publicats
+        if: always() && steps.check.outputs.has_post == 'true'
+        run: |
+          git config user.name  "SempreSol Bot"
+          git config user.email "bot@sempresol.cat"
+          git add sempresol-instagram/data/publicats.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "📋 Publicat $(date +'%Y-%m-%d') slot $SLOT"
+          git pull --rebase --autostash
+          git push

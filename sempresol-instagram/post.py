@@ -42,6 +42,12 @@ Dades:
                        substitueix. Es pot escriure amb coixinet o sense i
                        separada per espais o comes: "#diada onzedesetembre".
                        Els repetits es descarten.
+
+  data/publicats.csv → registre del que ja ha sortit: data,slot,poble,publicat
+                       (hora UTC). MODE=publish hi afegeix una fila després de
+                       publicar i no torna a publicar un slot que ja hi és: així
+                       un llançament manual i el cron del mateix slot no fan
+                       dos posts iguals. Els workflows en fan commit.
 """
 
 import csv
@@ -98,6 +104,7 @@ ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 IMG = ROOT / "images"
 IMG.mkdir(exist_ok=True)
+PUBLICATS = DATA / "publicats.csv"
 
 
 # ── Dades ─────────────────────────────────────────────────────────────────────
@@ -193,6 +200,28 @@ def post_for_today(slot: int = 1) -> dict | None:
     }
 
 
+def ja_publicat(date_str: str, slot: int) -> bool:
+    """True si data/publicats.csv diu que aquest slot d'aquest dia ja ha sortit."""
+    if not PUBLICATS.exists():
+        return False
+    with open(PUBLICATS, encoding="utf-8", newline="") as f:
+        return any(
+            r["data"] == date_str and r["slot"] == str(slot)
+            for r in csv.DictReader(f)
+        )
+
+
+def registra_publicat(p: dict):
+    """Afegeix el post a data/publicats.csv (el workflow en fa commit)."""
+    nou = not PUBLICATS.exists()
+    with open(PUBLICATS, "a", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        if nou:
+            w.writerow(["data", "slot", "poble", "publicat"])
+        ara = datetime.now(tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        w.writerow([p["date_str"], p["slot"], p["town"], ara])
+
+
 # ── Modes ─────────────────────────────────────────────────────────────────────
 
 def run_generate(p: dict):
@@ -220,6 +249,8 @@ def run_publish(p: dict):
     client = InstagramClient()
     result = client.publish_photo(img_url, p["caption"])
     print(f"   Publicat OK — id: {result.get('id', 'OK')}")
+    # Abans de renovar el token: si la renovació falla, el post ja consta.
+    registra_publicat(p)
 
     # Renovació del token (escriu el nou a new_token.txt si s'ha pogut renovar)
     new_token = client.refresh_token()
@@ -228,16 +259,19 @@ def run_publish(p: dict):
         print("   Token renovat (escrit a new_token.txt).")
 
 
-def run_check(p: dict | None, date_str: str, slot: int):
-    """Informa (a Actions) si hi ha post per a aquest slot, sense fer res més."""
-    if p:
+def run_check(p: dict | None, date_str: str, slot: int, publicat: bool):
+    """Informa (a Actions) si hi ha post per publicar en aquest slot, sense fer
+    res més. Un post que ja ha sortit compta com a «no n'hi ha»."""
+    if p and publicat:
+        print(f"[CHECK] {date_str} slot {slot}: {p['town']} ja s'ha publicat.")
+    elif p:
         print(f"[CHECK] {date_str} slot {slot}: {p['town']} [{p['regio']}] ✓")
     else:
         print(f"[CHECK] {date_str} slot {slot}: cap fila programada.")
     gh_output = os.environ.get("GITHUB_OUTPUT")
     if gh_output:
         with open(gh_output, "a", encoding="utf-8") as f:
-            f.write(f"has_post={'true' if p else 'false'}\n")
+            f.write(f"has_post={'true' if p and not publicat else 'false'}\n")
 
 
 def main():
@@ -249,9 +283,10 @@ def main():
     print("=" * 60)
 
     p = post_for_today(slot)
+    publicat = p is not None and ja_publicat(date_str, slot)
 
     if mode == "check":
-        run_check(p, date_str, slot)
+        run_check(p, date_str, slot, publicat)
         return
 
     if p is None:
@@ -261,6 +296,11 @@ def main():
             sys.exit(1)
         # Els posts extra són opcionals: si avui no n'hi ha, no és cap error.
         print(f"   Avui ({date_str}) no hi ha post extra per al slot {slot}. Res a fer.")
+        return
+
+    if publicat:
+        print(f"   {date_str} slot {slot} ({p['town']}) ja s'ha publicat "
+              f"(data/publicats.csv). Res a fer.")
         return
 
     if mode == "publish":

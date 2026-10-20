@@ -25,8 +25,13 @@ jobs:
 
     steps:
       # ── 1. Checkout ──────────────────────────────────────────────────────
+      # Amb la branca explícita, el checkout agafa el darrer commit en el
+      # moment d'executar-se i no el de quan es va disparar: una execució que
+      # ha esperat a la cua veu el schedule.csv i el publicats.csv d'ara.
       - name: Checkout del repositori
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
 
       # ── 2. Python ────────────────────────────────────────────────────────
       - name: Configura Python 3.12
@@ -86,3 +91,15 @@ jobs:
           else
             echo "Cap token nou per actualitzar (normal si el token té menys de 24h)."
           fi
+
+      # ── 9. Desa el registre de publicats (evita repetir el post) ──────────
+      - name: Desa el registre de publicats
+        if: always()
+        run: |
+          git config user.name  "SempreSol Bot"
+          git config user.email "bot@sempresol.cat"
+          git add sempresol-instagram/data/publicats.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "📋 Publicat $(date +'%Y-%m-%d')"
+          git pull --rebase --autostash
+          git push
