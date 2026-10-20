@@ -21,6 +21,13 @@ on:
       timezone: Europe/Madrid
     - cron: "30 19 * * *"       # post de la tarda (SLOT 3)
       timezone: Europe/Madrid
+    # Reserves: Actions de vegades no arriba a disparar un cron. Com que
+    # post.py no torna a publicar el que ja consta a data/publicats.csv, la
+    # reserva només publica si el cron principal no ho ha fet.
+    - cron: "50 14 * * *"       # reserva del migdia (SLOT 2)
+      timezone: Europe/Madrid
+    - cron: "30 21 * * *"       # reserva de la tarda (SLOT 3)
+      timezone: Europe/Madrid
 
   # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:
@@ -48,26 +55,42 @@ jobs:
 
     steps:
       # ── 1. Quin post del dia toca publicar? ───────────────────────────────
-      # El SLOT surt del cron que ha disparat el workflow i no de l'hora real:
-      # Actions pot endarrerir una execució programada més de 3 hores (19/10:
-      # la de les 12:50 va córrer a les 19:11) i, per l'hora, el post del
-      # migdia s'hauria pres pel de la tarda i s'hauria perdut. L'hora només
-      # decideix si el cron no és cap dels de dalt.
-      - name: Decideix quin SLOT toca
+      # El SLOT i el dia surten del cron que ha disparat el workflow i no de
+      # l'hora real: Actions pot endarrerir una execució programada moltes
+      # hores (19/10: la de les 12:50 va córrer a les 19:11; 12/10: la de les
+      # 19:30 a les 01:44). Per l'hora, el post del migdia s'hauria pres pel
+      # de la tarda, i passada la mitjanit s'hauria agafat el de l'endemà.
+      # Si ara és abans de l'hora del cron (amb una hora de marge), l'execució
+      # és d'ahir. L'hora només decideix el SLOT si el cron no és cap dels de
+      # dalt, i aleshores post.py fa servir el dia d'avui en UTC, com sempre.
+      - name: Decideix quin SLOT i quin dia toquen
         run: |
+          hora=""
+          case "${{ github.event.schedule }}" in
+            "50 12 * * *") slot=2; hora=1250 ;;
+            "50 14 * * *") slot=2; hora=1450 ;;
+            "30 19 * * *") slot=3; hora=1930 ;;
+            "30 21 * * *") slot=3; hora=2130 ;;
+          esac
           if [ -n "${{ github.event.inputs.slot }}" ]; then
             slot="${{ github.event.inputs.slot }}"
-          elif [ "${{ github.event.schedule }}" = "50 12 * * *" ]; then
-            slot=2
-          elif [ "${{ github.event.schedule }}" = "30 19 * * *" ]; then
-            slot=3
-          elif [ "$(( 10#$(TZ=Europe/Madrid date +%H) ))" -lt 16 ]; then
-            slot=2
-          else
-            slot=3
+            hora=""
+          elif [ -z "$hora" ]; then
+            if [ "$(( 10#$(TZ=Europe/Madrid date +%H) ))" -lt 16 ]; then slot=2; else slot=3; fi
           fi
           echo "Cron: '${{ github.event.schedule }}' · Hora catalana: $(TZ=Europe/Madrid date +'%H:%M') → SLOT $slot"
           echo "SLOT=$slot" >> "$GITHUB_ENV"
+          if [ -n "$hora" ]; then
+            ara=$(TZ=Europe/Madrid date +%H%M)
+            avui=$(TZ=Europe/Madrid date +%F)
+            if [ $(( 10#${ara:0:2} * 60 + 10#${ara:2:2} )) -lt $(( 10#${hora:0:2} * 60 + 10#${hora:2:2} - 60 )) ]; then
+              dia=$(date -u -d "$avui -1 day" +%F)
+            else
+              dia=$avui
+            fi
+            echo "Dia del post: $dia"
+            echo "DIA=$dia" >> "$GITHUB_ENV"
+          fi
 
       # ── 2. Checkout ───────────────────────────────────────────────────────
       # Amb la branca explícita, el checkout agafa el darrer commit en el

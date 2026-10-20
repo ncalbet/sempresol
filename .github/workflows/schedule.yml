@@ -6,6 +6,11 @@ on:
     # gràcies a la clau timezone).
     - cron: "30 7 * * *"
       timezone: Europe/Madrid
+    # Reserva: Actions de vegades no arriba a disparar un cron. Com que
+    # post.py no torna a publicar el que ja consta a data/publicats.csv, la
+    # reserva només publica si el cron principal no ho ha fet.
+    - cron: "30 9 * * *"
+      timezone: Europe/Madrid
 
   # Permet executar-ho manualment des de Actions > Run workflow
   workflow_dispatch:
@@ -24,6 +29,31 @@ jobs:
       contents: write   # per fer commit de la imatge generada
 
     steps:
+      # ── 0. Quin dia toca publicar? ───────────────────────────────────────
+      # El dia surt del cron que ha disparat el workflow i no de l'hora real,
+      # per si Actions endarrereix l'execució fins a l'endemà: si ara és abans
+      # de l'hora del cron (amb una hora de marge), l'execució és d'ahir. En
+      # un llançament manual no es fixa i post.py fa servir avui en UTC.
+      - name: Decideix quin dia toca
+        run: |
+          case "${{ github.event.schedule }}" in
+            "30 7 * * *") hora=0730 ;;
+            "30 9 * * *") hora=0930 ;;
+            *) hora="" ;;
+          esac
+          echo "Cron: '${{ github.event.schedule }}' · Hora catalana: $(TZ=Europe/Madrid date +'%H:%M')"
+          if [ -n "$hora" ]; then
+            ara=$(TZ=Europe/Madrid date +%H%M)
+            avui=$(TZ=Europe/Madrid date +%F)
+            if [ $(( 10#${ara:0:2} * 60 + 10#${ara:2:2} )) -lt $(( 10#${hora:0:2} * 60 + 10#${hora:2:2} - 60 )) ]; then
+              dia=$(date -u -d "$avui -1 day" +%F)
+            else
+              dia=$avui
+            fi
+            echo "Dia del post: $dia"
+            echo "DIA=$dia" >> "$GITHUB_ENV"
+          fi
+
       # ── 1. Checkout ──────────────────────────────────────────────────────
       # Amb la branca explícita, el checkout agafa el darrer commit en el
       # moment d'executar-se i no el de quan es va disparar: una execució que

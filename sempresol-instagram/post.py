@@ -19,6 +19,9 @@ Entorn (GitHub Secrets / Actions):
                        migdia, 3 = l'extra de la tarda)
   TEMPLATE           — opcional: força la plantilla d'imatge (0-5). Si es deixa
                        buit, es tria sola pel hash del nom de fitxer.
+  DIA                — opcional: dia del calendari (AAAA-MM-DD). Els workflows
+                       el calculen a partir del cron, per si l'execució s'ha
+                       endarrerit fins a l'endemà. Si no hi és, avui en UTC.
 
 Dades:
   data/schedule.csv  → programació editable: data,poble,regio,text,hashtags
@@ -167,13 +170,23 @@ def github_raw_url(image_filename: str) -> str | None:
     return None
 
 
+def dia_del_post() -> str:
+    """El dia del calendari que toca: DIA si el workflow l'ha fixat, si no
+    avui en UTC."""
+    dia = os.environ.get("DIA", "").strip()
+    if dia:
+        datetime.strptime(dia, "%Y-%m-%d")  # un format dolent ha de petar aquí
+        return dia
+    return datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+
+
 def post_for_today(slot: int = 1) -> dict | None:
     """Llegeix de schedule.csv el post d'avui per a aquest slot.
 
     slot=1 és el post diari (1a fila del dia), slot=2 el primer extra, etc.
     Retorna None si avui no hi ha cap fila per a aquest slot.
     """
-    date_str = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+    date_str = dia_del_post()
     rows = SCHEDULE.get(date_str, [])
     if slot > len(rows):
         return None
@@ -277,7 +290,7 @@ def run_check(p: dict | None, date_str: str, slot: int, publicat: bool):
 def main():
     mode = os.environ.get("MODE", "generate").lower()
     slot = int(os.environ.get("SLOT", "1"))
-    date_str = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+    date_str = dia_del_post()
     print("=" * 60)
     print(f"  SempreSol Instagram Bot — MODE={mode} SLOT={slot}")
     print("=" * 60)

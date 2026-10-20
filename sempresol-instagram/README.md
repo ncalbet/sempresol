@@ -16,10 +16,10 @@ només si `data/schedule.csv` té 2a i 3a fila per a aquella data.
 ## Com funciona
 
 ```
-GitHub Actions (3 crons, hora catalana)
-  schedule.yml        07:30 → SLOT 1
-  schedule-extra.yml  12:50 → SLOT 2
-                      19:30 → SLOT 3
+GitHub Actions (3 crons + 3 de reserva, hora catalana)
+  schedule.yml        07:30 (reserva 09:30) → SLOT 1
+  schedule-extra.yml  12:50 (reserva 14:50) → SLOT 2
+                      19:30 (reserva 21:30) → SLOT 3
         │
         ▼
   post.py, en tres passades (variable MODE):
@@ -119,6 +119,10 @@ publicació. Només cal afegir-les just a sota de la del dia, en ordre:
 - Les hores són hora catalana tot l'any (`timezone: Europe/Madrid` als crons).
 - Per publicar-ne un fora d'hora: **Actions > SempreSol – Post extra > Run
   workflow** i posa-hi el número de slot.
+- Cada post que surt queda apuntat a `data/publicats.csv` (data, slot, poble,
+  hora UTC) i ja no es torna a publicar. Per això cada hora té un cron de
+  reserva dues hores més tard, que només publica si el principal no ho ha fet,
+  i un llançament manual no fa que el cron el repeteixi.
 
 Recorda editar el `schedule.csv` **de GitHub** (és la font de veritat) o fer
 `git pull` abans de tocar el local.
@@ -190,9 +194,11 @@ Dues coses a tenir en compte si les toques:
 
 - Evita l'hora en punt: Actions va carregat a l'inici de cada hora i hi
   endarrereix les execucions programades (per això el migdia és a les 12:50).
-- A `schedule-extra.yml`, el pas *Decideix quin SLOT toca* reparteix migdia i
-  tarda pel tall de les 16:00, hora catalana. Si mous un post a l'altra banda
-  d'aquesta hora, canvia també el tall.
+- El primer pas de cada workflow tradueix cada cron (`github.event.schedule`)
+  a un SLOT i a una hora, i en treu el dia del post: Actions pot endarrerir una
+  execució moltes hores, fins i tot fins a l'endemà. Si canvies o afegeixes un
+  cron, canvia també aquesta llista; si no, el dia el tria `post.py` (avui en
+  UTC) i el SLOT, el tall de les 16:00.
 
 ---
 
