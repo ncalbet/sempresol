@@ -274,6 +274,14 @@
             color: var(--ink);
         }
 
+        .result-trend {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--muted);
+        }
+
         #search-result.loading-state .result-hero {
             background: linear-gradient(90deg, #ffe680 25%, #fff3c0 50%, #ffe680 75%);
             background-size: 600px 100%;
@@ -289,7 +297,8 @@
         #search-result.loading-state .result-city,
         #search-result.loading-state .result-temp-display,
         #search-result.loading-state .result-condition-label,
-        #search-result.loading-state #search-description {
+        #search-result.loading-state #search-description,
+        #search-result.loading-state #search-trend {
             opacity: 0;
         }
 
@@ -627,6 +636,7 @@
         </div>
         <div class="result-message-card">
             <p id="search-description"></p>
+            <p class="result-trend" id="search-trend"><strong>Tendència:</strong> aquest temps excepcional es mantindrà estable els propers dies.</p>
         </div>
         <div class="share-bar">
             <button class="share-btn share-wa" id="share-whatsapp" title="Compartir per WhatsApp">
@@ -1272,7 +1282,9 @@
             const clau = `weather_${lloc.toLowerCase()}_${dataIso(dia)}`;
             try {
                 const guardat = localStorage.getItem(clau);
-                if (guardat) return JSON.parse(guardat).message;
+                // Les desades abans de separar la tendència la porten enganxada al final
+                if (guardat) return JSON.parse(guardat).message
+                    .replace(' La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.', '');
             } catch (e) { /* sense emmagatzematge: se'n tria una de nova */ }
 
             // Només plantilles que encaixen amb el nom (p. ex. si és plural) i amb el dia
@@ -1282,8 +1294,8 @@
             });
             if (!candidats.length) candidats = weatherMessages.map((_, i) => i);
             const idx = candidats[Math.floor(Math.random() * candidats.length)];
-            const missatge = omple(weatherMessages[idx], lloc) +
-                ' La previsió per als propers dies assegura que aquest temps excepcional es mantindrà estable.';
+            // La tendència ja no s'hi enganxa: va en una línia a part (#search-trend)
+            const missatge = omple(weatherMessages[idx], lloc);
             try {
                 localStorage.setItem(clau, JSON.stringify({ message: missatge, index: idx }));
             } catch (e) { /* idem */ }
