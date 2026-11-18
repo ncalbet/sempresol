@@ -142,6 +142,21 @@ la regió més el hashtag del poble); no els substitueix:
   el log de l'execució t'avisa.
 - Deixar la cel·la buida (o no posar-hi columna) és el comportament de sempre.
 
+### Versos (salts de línia)
+
+El `text` pot tenir salts de línia dins de les cometes: la imatge comença una
+línia nova a cada salt (i, si un vers no hi cap, el talla per paraules) i el
+peu del post els manté. Una línia buida queda en blanc. Va bé per als rodolins:
+
+```csv
+2027-01-15,Moià,cat,"«A Moià, de bon matí,
+el sol ja ha esmorzat aquí.»
+Previsió de @usuari_inventat, corresponsal de SempreSol.",#rimadorcat
+```
+
+Edita'l amb un editor de text o amb el mòdul `csv` de Python: un `sed` o una
+lectura línia a línia tallarien la fila en dos.
+
 ### Afegir noves frases
 
 `data/messages.json` està organitzat **per varietat dialectal**. Afegeix la

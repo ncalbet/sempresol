@@ -149,14 +149,21 @@ def spaced_centered_text(draw, y, text, font, color, spacing=14, width=W):
 
 
 def wrap_text(draw, text, font, max_w):
-    words, lines, cur = text.split(), [], []
-    for word in words:
-        cur.append(word)
-        if _text_w(draw, " ".join(cur), font) > max_w and len(cur) > 1:
-            cur.pop()
-            lines.append(" ".join(cur))
-            cur = [word]
-    if cur:
+    # Els salts de línia del text es respecten (versos d'un rodolí): cada tros
+    # comença una línia nova i, si no hi cap, es talla per paraules. Una línia
+    # buida queda com a línia en blanc. Sense salts, el resultat és el de sempre.
+    lines = []
+    for paragraph in text.split("\n"):
+        words, cur = paragraph.split(), []
+        if not words:
+            lines.append("")
+            continue
+        for word in words:
+            cur.append(word)
+            if _text_w(draw, " ".join(cur), font) > max_w and len(cur) > 1:
+                cur.pop()
+                lines.append(" ".join(cur))
+                cur = [word]
         lines.append(" ".join(cur))
     return lines
 
